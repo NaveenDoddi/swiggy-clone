@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <title>Restaurant registration page</title>
+
+    <style>
+        a{
+            text-decoration: none;
+            color:  #fd7e14;
+
+        }
+        img{
+            height: 80px;
+            width: auto;
+        }
+        input, button{
+            height: 50px;
+            width: 100%;
+        }
+        .btn{
+            background-color: #fd7e14;
+            font-weight: 700;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container d-flex justify-content-center p-5">
+        <div style="height: 80vh; width: 60vh ;" class="d-flex flex-column justify-content-center">
+            <div class="d-flex justify-content-between gap-3 mb-3">
+                <div>
+                    <h2 class="h2">Restaurant Sign Up</h2>
+                    <p><small><span>or </span><a href="RestaurantLogin.html"> Log to Your account</a></small></p>
+                </div>
+                <div>
+                    <img src="images/login.avif" alt="logo">
+                </div>
+            </div>
+            <div>
+                <form>
+                    <div class="form-group">
+                      <label for="formGroupExampleInput">Username</label>
+                      <input type="text" class="form-control p-4 mb-1 mt-1" id="formGroupExampleInput" placeholder="Enter your name" minlength="6" required>
+                      <p style="color: grey;">Minimum 6 characters</p>
+                    </div>
+                    <div class="form-group">
+                      <label for="formGroupExampleInput2">Email</label>
+                      <input type="email" class="form-control p-4 mb-2 mt-1" id="formGroupExampleInput2" placeholder="Enter your Email" required>
+                      <div class="invalid-feedback">Invalid email</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="formGroupExampleInput">Restaurant Name</label>
+                        <input type="text" class="form-control p-4 mb-1 mt-1" id="formGroupExampleInput" placeholder="Restaurant" minlength="8" required>
+                        <p style="color: grey;">Minimum 8 characters</p>
+                      </div>
+                      <div class="form-group">
+                        <label for="formGroupExampleInput">Restaurant Address</label>
+                        <input type="text" class="form-control p-4 mb-1 mt-1" id="formGroupExampleInput" placeholder="Address" minlength="5" required>
+                        <!-- <p style="color: grey;">Minimum 8 characters</p> -->
+                      </div>
+                    <div class="form-group">
+                        <label for="formGroupExampleInput2">Phone Number</label>
+                        <input type="tel" class="form-control p-4 mb-2 mt-1" id="formGroupExampleInput2" placeholder="Enter 10-digit mobile number" pattern="[0-9]{10}" required>
+                      </div>
+
+                    <button type="submit" class="btn btn-primary mb-1" onclick="run()"> Sign Up </button>
+                    
+                  </form>
+
+            </div>
+
+
+        </div>
+    </div>
+</body>
+</html>
