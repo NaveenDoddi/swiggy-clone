@@ -1,0 +1,25 @@
+{
+    "Restaurants": [
+      {
+        "name": "hangouts",
+        "address": "leela mahal, Tirupati",
+        "mobile": "8555913494",
+        "email": "hangoutsSwiggy@gmail.com",
+        "username": "naveen123",
+        "password": "123",
+        "id": 1
+      }
+    ],
+    "Customers": [
+      {
+        "name": "navven",
+        "gender": "male",
+        "mobile": "8555913494",
+        "email": "ssssssss@gmail.com",
+        "username": "naveen12",
+        "password": "123",
+        "id": 1
+      }
+      
+    ]
+  }
