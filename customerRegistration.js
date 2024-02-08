@@ -1,16 +1,16 @@
 
 // CUSTOMER SIGN-UP CODE
 const customerForm = document.getElementById("customerForm")
-const nameInput = document.getElementById('name');
-const emailInput = document.getElementById('email');
-const mobileInput = document.getElementById('mobile');
+
 // console.log(nameInput, emailInput, mobileInput)
 
 customerForm.addEventListener("submit", function(e){
-// function Run() {
+    const nameInput = document.getElementById('name');
+    const emailInput = document.getElementById('email');
+    const mobileInput = document.getElementById('mobile');
     e.preventDefault()
     const formData = {
-        name: nameInput.value,
+        username: nameInput.value,
         email: emailInput.value,
         mobile: mobileInput.value
     }
@@ -18,6 +18,7 @@ customerForm.addEventListener("submit", function(e){
     fetch('http://localhost:3000/Data')
         .then(response => response.json())
         .then(jsonData => {
+
             jsonData.Customers[jsonData.Customers.length] = formData
 
             // Post the modified data to the server
@@ -42,3 +43,6 @@ customerForm.addEventListener("submit", function(e){
             console.error('Error reading JSON file:', error);
         });
 })
+
+
+

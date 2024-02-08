@@ -2,40 +2,30 @@
   "Data": {
     "Restaurants": [
       {
-        "name": "hangouts",
-        "address": "leela mahal, Tirupati",
-        "mobile": "8555913494",
-        "email": "hangoutsSwiggy@gmail.com",
-        "username": "naveen123",
-        "password": "123",
-        "id": 1
+        "name": "Narugondla Vishnuvardhan",
+        "email": "narugondla.vishnu@gmail.com",
+        "restaurant": "orion hotel",
+        "address": "tirupati",
+        "mobile": "9392347220"
+      },
+      {
+        "username": "ddddddd",
+        "email": "narugondla.vishnu@gmail.com",
+        "restaurant": "orion hotel",
+        "address": "tirupati",
+        "mobile": "9696967220"
       }
     ],
     "Customers": [
       {
-        "name": "navven",
-        "email": "ssssssss@gmail.com",
-        "mobile": "8555913494"
-      },
-      {
-        "name": "Vishnuvardhan",
+        "username": "Vishnuvardhan",
         "email": "narugondla.vishnu@gmail.com",
         "mobile": "9392347220"
       },
       {
-        "name": "ushasri",
-        "email": "usha@gmail.com",
-        "mobile": "1234567890"
-      },
-      {
-        "name": "vishnu",
-        "email": "vishnuvardhanvicky99@gmail.com",
-        "mobile": "3453453455"
-      },
-      {
-        "name": "Vishnuvardhan",
-        "email": "kannasri113@gmail.com",
-        "mobile": "3453453455"
+        "username": "naveen",
+        "email": "naveen@gmail.com",
+        "mobile": "2855858585"
       }
     ]
   }

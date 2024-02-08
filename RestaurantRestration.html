@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
     <title>Restaurant registration page</title>
 
     <style>
@@ -40,32 +42,32 @@
                 </div>
             </div>
             <div>
-                <form>
+                <form class="form" id="restaurantForm">
                     <div class="form-group">
                       <!-- <label for="formGroupExampleInput">Username</label> -->
-                      <input type="text" class="form-control p-4 mb-1 mt-1" id="formGroupExampleInput" placeholder="Enter your username" minlength="6" required>
+                      <input type="text" class="form-control p-4 mb-1 mt-1" id="name" name="name" placeholder="Enter your username" minlength="6" required>
                       <p style="color: grey; text-align: right;"><small>Minimum 6 characters</small></p>
                     </div>
                     <div class="form-group">
                       <!-- <label for="formGroupExampleInput2">Email</label> -->
-                      <input type="email" class="form-control p-4 mb-2 mt-1" id="formGroupExampleInput2" placeholder="Email" required>
+                      <input type="email" class="form-control p-4 mb-2 mt-1" id="email" name="email" placeholder="Email" required>
                       <div class="invalid-feedback">Invalid email</div>
                     </div>
                     <div class="form-group">
                         <!-- <label for="formGroupExampleInput">Restaurant Name</label> -->
-                        <input type="text" class="form-control p-4 mb-1 mt-1" id="formGroupExampleInput" placeholder="Restaurant" minlength="8" required>
+                        <input type="text" class="form-control p-4 mb-1 mt-1" id="restaurant" name="restaurant" placeholder="Restaurant" minlength="8" required>
                       </div>
                       <div class="form-group">
                         <!-- <label for="formGroupExampleInput">Restaurant Address</label> -->
-                        <input type="text" class="form-control p-4 mb-1 mt-1" id="formGroupExampleInput" placeholder="Address" minlength="5" required>
+                        <input type="text" class="form-control p-4 mb-1 mt-1" id="address" name="address" placeholder="Address" minlength="5" required>
                         <!-- <p style="color: grey;">Minimum 8 characters</p> -->
                       </div>
                     <div class="form-group">
                         <!-- <label for="formGroupExampleInput2">Phone Number</label> -->
-                        <input type="tel" class="form-control p-4 mb-2 mt-1" id="formGroupExampleInput2" placeholder="Enter 10-digit mobile number" pattern="[0-9]{10}" required>
+                        <input type="tel" class="form-control p-4 mb-2 mt-1" id="mobile" name="mobile" placeholder="Enter 10-digit mobile number" pattern="[0-9]{10}" required>
                       </div>
 
-                    <button type="submit" class="btn btn-primary mb-1" onclick="run()"> Sign Up </button>
+                    <button type="submit" name="submit" value="submit" class="btn btn-primary mb-1"> Sign Up </button>
                     
                   </form>
 
@@ -73,5 +75,6 @@
 
         </div>
     </div>
+    <script type="text/javascript" src="restaurantRegistration.js"></script>
 </body>
 </html>
