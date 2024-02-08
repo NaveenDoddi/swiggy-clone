@@ -1,4 +1,5 @@
 {
+  "Data": {
     "Restaurants": [
       {
         "name": "hangouts",
@@ -13,13 +14,29 @@
     "Customers": [
       {
         "name": "navven",
-        "gender": "male",
-        "mobile": "8555913494",
         "email": "ssssssss@gmail.com",
-        "username": "naveen12",
-        "password": "123",
-        "id": 1
+        "mobile": "8555913494"
+      },
+      {
+        "name": "Vishnuvardhan",
+        "email": "narugondla.vishnu@gmail.com",
+        "mobile": "9392347220"
+      },
+      {
+        "name": "ushasri",
+        "email": "usha@gmail.com",
+        "mobile": "1234567890"
+      },
+      {
+        "name": "vishnu",
+        "email": "vishnuvardhanvicky99@gmail.com",
+        "mobile": "3453453455"
+      },
+      {
+        "name": "Vishnuvardhan",
+        "email": "kannasri113@gmail.com",
+        "mobile": "3453453455"
       }
-      
     ]
   }
+}
