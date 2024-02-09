@@ -1404,6 +1404,10 @@ body{
         height: 80px;
         width: 70px;
     }
+    .s-icon-main{
+    
+       margin-left: 0% !important;
+      }
 
     /* #mind{
         /*  */
@@ -1448,4 +1452,8 @@ body{
     .h5tag{
         font-size: 10px;
     }
+    .s-icon-main{
+    margin-left: 0% !important;
+    display: none;
+   }
 }
