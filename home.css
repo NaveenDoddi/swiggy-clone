@@ -1315,6 +1315,7 @@ body{
         height: 880px;
         display: grid;
         width: 100%;
+        margin-left: 0% !important;
     }
     #content{
         font-size: 21px;
@@ -1349,7 +1350,7 @@ body{
         margin-right: 7%;
     }
     #foodDiv{
-        margin-left: 9%;
+        margin-left: 1%;
         margin-right: 0%;
         /* border: 1px solid black; */
     }
@@ -1419,6 +1420,9 @@ body{
         height: 80px;
         width: 70px;
     }
+    .s-icon-main{
+        display: none;
+    }
 
     /* #mind{
         /*  */
@@ -1485,5 +1489,8 @@ body{
     #bestplacce{
         /* border: 1px solid black; */
         height: 400px;
+    }
+    .s-icon-main{
+        display: none;
     }
 }
