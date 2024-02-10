@@ -14,6 +14,34 @@
         "restaurant": "orion hotel",
         "address": "tirupati",
         "mobile": "9696967220"
+      },
+      {
+        "username": "Vishnuvardhan",
+        "email": "narugondla.vishnu@gmail.com",
+        "restaurant": "orion hotel",
+        "address": "tirupati",
+        "mobile": "9392347220"
+      },
+      {
+        "username": "Vishnuvardhan",
+        "email": "narugondla.vishnu@gmail.com",
+        "restaurant": "orion hotel",
+        "address": "tirupati",
+        "mobile": "9392347220"
+      },
+      {
+        "username": "usha",
+        "email": "usha@gmail.com",
+        "restaurant": "orion hotel",
+        "address": "tirupati",
+        "mobile": "2232323232"
+      },
+      {
+        "username": "Vishnuvardhan",
+        "email": "naveen123@gmailcom",
+        "restaurant": "orion hotel",
+        "address": "tirupati",
+        "mobile": "2323234343"
       }
     ],
     "Customers": [
@@ -26,6 +54,11 @@
         "username": "naveen",
         "email": "naveen@gmail.com",
         "mobile": "2855858585"
+      },
+      {
+        "username": "Vishnuvardhan",
+        "email": "vishnu@gmail.com",
+        "mobile": "3453453455"
       }
     ]
   }
