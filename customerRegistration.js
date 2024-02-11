@@ -1,26 +1,25 @@
-//Restaurant Sign-up here
-const restaurantForm = document.getElementById("restaurantForm")
-const nameInput = document.getElementById('name');
-const emailInput = document.getElementById('email');
-const addressInput = document.getElementById('address');
-const restaurantInput = document.getElementById('restaurant');
-const mobileInput = document.getElementById('mobile');
-restaurantForm.addEventListener("submit", function(e){
-    
+
+// CUSTOMER SIGN-UP CODE
+const customerForm = document.getElementById("customerForm")
+
+// console.log(nameInput, emailInput, mobileInput)
+
+customerForm.addEventListener("submit", function(e){
+    const nameInput = document.getElementById('name');
+    const emailInput = document.getElementById('email');
+    const mobileInput = document.getElementById('mobile');
     e.preventDefault()
     const formData = {
         username: nameInput.value,
         email: emailInput.value,
-        restaurant: restaurantInput.value,
-        address: addressInput.value,
         mobile: mobileInput.value
     }
-    console.log(formData)
     // Read the existing JSON data
     fetch('http://localhost:3000/Data')
         .then(response => response.json())
         .then(jsonData => {
-            const arr = jsonData.Restaurants
+
+            const arr = jsonData.Customers
             function checking(arr){
                 for(var i = 0;i < arr.length;i++){
                     if(arr[i].email == emailInput.value){
@@ -43,7 +42,7 @@ restaurantForm.addEventListener("submit", function(e){
                 return true
             }
             if(checking(arr) == true){
-                jsonData.Restaurants[jsonData.Restaurants.length] = formData
+                jsonData.Customers[jsonData.Customers.length] = formData
                 // Post the modified data to the server
                 fetch('http://localhost:3000/Data', {
                     method: 'POST',
@@ -55,7 +54,7 @@ restaurantForm.addEventListener("submit", function(e){
                 .then(response => response.json())
                 .then(updatedData => {
                     alert("You are signed-up successfully")
-                    window.location.href = "RestaurantLogin.html"
+                    window.location.href = "customerLogin.html"
                     console.log('Data posted successfully:', updatedData);
                 })
                 .catch(error => {
@@ -67,3 +66,6 @@ restaurantForm.addEventListener("submit", function(e){
             console.error('Error reading JSON file:', error);
         });
 })
+
+
+

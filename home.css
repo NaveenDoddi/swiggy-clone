@@ -1114,10 +1114,14 @@ body{
         /*  */
     /* }  */
 }
-@media screen and (max-width: 300px) {
+@media screen and (max-width: 400px) {
     #Toprest{
         /* border: 1px solid black; */
-        height:300px ;
+
+        height:auto ;
+    }
+    .mindFood{
+        height: 200px;
     }
     #dishItems{
         height: 80%;
@@ -1127,6 +1131,9 @@ body{
     display: flex;
     position: relative;
     scroll-behavior: smooth;
+    }
+    .size{
+        font-size: 6px;
     }
     .cartitems{
         height: 200px;
@@ -1142,10 +1149,11 @@ body{
         /* border:1px solid black; */
     }
     .card-body > p{
-        font-size: 15px;
+        font-size: 10px;
+        /* color:blue ; */
     }
     #card-body > p{
-        font-size: 15px;
+        font-size: 10px;
     }
     .cards-body > h5 {
         font-size: 10px;
@@ -1275,11 +1283,15 @@ body{
         width: 100px;
     }
 }
-@media screen and (max-width: 680px) {
+@media screen and (max-width: 576px) {
     #foodDiv{
         display: grid;
         height: 1400px;
         /* border: 1px solid black; */
+    }
+    .star{
+        height: 19px;
+        width: 19px;
     }
     .cardsitem{
         display: grid;
@@ -1300,29 +1312,33 @@ body{
     }
     #bestplace{
         /* border: 1px solid black; */
-        height: 450px;
+        height: 880px;
         display: grid;
         width: 100%;
+        margin-left: 0% !important;
     }
     #content{
         font-size: 21px;
     }
     .allplace{
+        height: 330px;
+    /* } */
         justify-content: center;
         /* border: 1px solid black; */
         display: inline;
         width: 100%;
-        height: 180px;
-    }
+        height: 300px;
+     } 
     .twoplaces{
-        justify-content: center;
-        /* display: grid; */
+        justify-content: center; 
+        display: grid;
         width: 100%;
-        height: 100px;
-    }
+        height: 200px;
+    } 
     .single{
-        width: 50%;
-        height: 60px;
+        width: 100%;
+        height: 80px;
+        /* margin-left: ; */
     }
     #online > #mind{
         height:80px ;
@@ -1334,7 +1350,7 @@ body{
         margin-right: 7%;
     }
     #foodDiv{
-        margin-left: 9%;
+        margin-left: 1%;
         margin-right: 0%;
         /* border: 1px solid black; */
     }
@@ -1354,7 +1370,7 @@ body{
         display: none;
     }
     .itemImg{
-        height: 110px;
+        height: 130px;
         /* border: 1px solid black; */
     }
     .cartitems >h5{
@@ -1405,9 +1421,8 @@ body{
         width: 70px;
     }
     .s-icon-main{
-    
-       margin-left: 0% !important;
-      }
+        display: none;
+    }
 
     /* #mind{
         /*  */
@@ -1452,8 +1467,32 @@ body{
     .h5tag{
         font-size: 10px;
     }
+    .single{
+        /* border: 1px solid black; */
+        margin-left: 0px;
+    }
+    .allplace{
+        /* border: 1px solid black; */
+        margin-left: 0px;
+    }
+    .twoplaces{
+        /* border: 1px solid black; */
+        margin-left: 0px;
+    }
+    .star{
+        height: 16px;
+        width: 16px;
+    }
+    #bestplacce > #mind{
+        height: 70px;
+    }
+    #bestplacce{
+        /* border: 1px solid black; */
+        height: 400px;
+    }
+    
     .s-icon-main{
-    margin-left: 0% !important;
-    display: none;
-   }
+        display: none;
+    }
 }
+
