@@ -42,6 +42,20 @@
         "restaurant": "orion hotel",
         "address": "tirupati",
         "mobile": "2323234343"
+      },
+      {
+        "username": "ushasri",
+        "email": "ushasrigajal@gmail.com",
+        "restaurant": "pluserest",
+        "address": "vani nagar",
+        "mobile": "9390986960"
+      },
+      {
+        "username": "ushasri",
+        "email": "telugugajini@gmail.com",
+        "restaurant": "pulserest",
+        "address": "vani nagar",
+        "mobile": "9704393397"
       }
     ],
     "Customers": [
