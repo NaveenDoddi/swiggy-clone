@@ -3,11 +3,171 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="home.css">
     <title>Document</title>
 </head>
 <body>
+
     
-    restaurant Dashboard
+  <nav class="navbar  navbar-expand-lg bg-body-dark navbar navbar-dark bg-#211e3b fixed-top">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#" style="color: rgb(7, 7, 7);">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" height="50px" id="IconChangeColor" class="s-icon-main" height="200" width="200"><path class="uim-primary" d="M10.04674,14.6931c-.6537,0-1.3077-.01213-1.961.00356a1.34217,1.34217,0,0,1-1.32992-.74721A11.18811,11.18811,0,0,1,5.2302,8.43165a6.27226,6.27226,0,0,1,1.84692-4.2846A6.71782,6.71782,0,0,1,9.77066,2.3954a6.608,6.608,0,0,1,3.64843-.243,6.831,6.831,0,0,1,5.34315,5.711.50726.50726,0,0,1-.34456.60247,4.95025,4.95025,0,0,1-1.57287.37382,14.83135,14.83135,0,0,1-3.148.04575c-.4199-.05212-.49612-.13556-.49938-.569-.00446-.59239-.0015-1.18484-.0021-1.77726-.0001-.09192-.00159-.18384-.00357-.27574a.297.297,0,0,0-.31381-.335c-.23448-.008-.33857.12462-.33935.34045-.00368,1.01116-.00232,2.02234-.0018,3.03351.00015.28725.18225.35756.427.35734.90906-.00081,1.81815-.00412,2.72717.00265a6.9447,6.9447,0,0,1,1.67041.16169,1.20325,1.20325,0,0,1,1.0117,1.63471,14.17062,14.17062,0,0,1-1.49447,3.87148,34.228,34.228,0,0,1-3.57641,5.25988c-.345.42932-.71124.84147-1.05994,1.26787-.15794.19314-.27715.18895-.431-.01052a43.866,43.866,0,0,1-3.42652-4.95565c-.12627-.22061-.22613-.45664-.3332-.68786-.1029-.22223-.01869-.36755.19318-.46728a2.59609,2.59609,0,0,1,.8005-.19481,7.70388,7.70388,0,0,1,2.348.0199c.44979.08231.52372.188.5232.639-.0004.34728-.0057.69461-.00056,1.0418.00326.22058.06579.43157.32967.42949.26288-.00208.32486-.214.3261-.4341.00407-.72517-.00119-1.4504.00336-2.17556.002-.31218-.19531-.37176-.44456-.37226q-1.04184-.0021-2.08369-.00049Z" data-name="Brand Logos" id="mainIconPathAttribute" stroke-width="0" stroke="#ff0000" fill="orange"></path></svg></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+          <svg xmlns="http://www.w3.org/2000/svg" height="20px" width="20px" fill=" #2f2f31" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z"/></svg>
+        </button>
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Swiggy</h5>
+            <svg style="color: white"height="45px" id="swiggy-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path class="uim-primary" d="M10.04674,14.6931c-.6537,0-1.3077-.01213-1.961.00356a1.34217,1.34217,0,0,1-1.32992-.74721A11.18811,11.18811,0,0,1,5.2302,8.43165a6.27226,6.27226,0,0,1,1.84692-4.2846A6.71782,6.71782,0,0,1,9.77066,2.3954a6.608,6.608,0,0,1,3.64843-.243,6.831,6.831,0,0,1,5.34315,5.711.50726.50726,0,0,1-.34456.60247,4.95025,4.95025,0,0,1-1.57287.37382,14.83135,14.83135,0,0,1-3.148.04575c-.4199-.05212-.49612-.13556-.49938-.569-.00446-.59239-.0015-1.18484-.0021-1.77726-.0001-.09192-.00159-.18384-.00357-.27574a.297.297,0,0,0-.31381-.335c-.23448-.008-.33857.12462-.33935.34045-.00368,1.01116-.00232,2.02234-.0018,3.03351.00015.28725.18225.35756.427.35734.90906-.00081,1.81815-.00412,2.72717.00265a6.9447,6.9447,0,0,1,1.67041.16169,1.20325,1.20325,0,0,1,1.0117,1.63471,14.17062,14.17062,0,0,1-1.49447,3.87148,34.228,34.228,0,0,1-3.57641,5.25988c-.345.42932-.71124.84147-1.05994,1.26787-.15794.19314-.27715.18895-.431-.01052a43.866,43.866,0,0,1-3.42652-4.95565c-.12627-.22061-.22613-.45664-.3332-.68786-.1029-.22223-.01869-.36755.19318-.46728a2.59609,2.59609,0,0,1,.8005-.19481,7.70388,7.70388,0,0,1,2.348.0199c.44979.08231.52372.188.5232.639-.0004.34728-.0057.69461-.00056,1.0418.00326.22058.06579.43157.32967.42949.26288-.00208.32486-.214.3261-.4341.00407-.72517-.00119-1.4504.00336-2.17556.002-.31218-.19531-.37176-.44456-.37226q-1.04184-.0021-2.08369-.00049Z" data-name="Brand Logos" fill="white"></path></svg>
+            <span id="swiggy-heading">Swiggy</span></h5>
+          <button type="button"   class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+          <ul class="navbar-nav justify-content-center flex-grow-1 pe-3">
+            <li class="nav-item">
+                
+                <a class="nav-link mx-lg-2" id="nav-link" aria-current="page" href="#" style="padding-top: 18px;">
+                    <button>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentcolor" class="bi bi-search" viewBox="0 0 16 16">
+                        <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+                        </svg>Search
+                    </button>
+                </a>
+
+
+            </li>
+            <li class="nav-item">
+              <a class="nav-link mx-lg-2" id="nav-link" href="#about" style="padding-top: 18px;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-percent" viewBox="0 0 16 16">
+                  <path d="M13.442 2.558a.625.625 0 0 1 0 .884l-10 10a.625.625 0 1 1-.884-.884l10-10a.625.625 0 0 1 .884 0M4.5 6a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m0 1a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5m7 6a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m0 1a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5"/>
+                </svg><span style="padding: 11px 10px;">Offers</span></a>
+              </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link mx-lg-2" id="nav-link" href="#project" style="padding-top: 18px;">
+
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M256 504c137 0 248-111 248-248S393 8 256 8 8 119 8 256s111 248 248 248zm-103.4-76.7l53.4-53.4c31.8 13.5 68.1 13.5 100 0l53.4 53.4c-63.2 38.3-143.6 38.3-206.8 0zM336 256c0 44.1-35.9 80-80 80s-80-35.9-80-80 35.9-80 80-80 80 35.9 80 80zm91.3 103.4l-53.4-53.4c13.5-31.8 13.5-68.1 0-100l53.4-53.4c38.3 63.2 38.3 143.6 0 206.8zM359.4 84.7l-53.4 53.4c-31.8-13.5-68.1-13.5-100 0L152.6 84.7c63.2-38.3 143.6-38.3 206.8 0zM84.7 152.6l53.4 53.4c-13.5 31.8-13.5 68.1 0 100L84.7 359.4c-38.3-63.2-38.3-143.6 0-206.8z"/></svg>
+                  <span style="padding: 11px 10px;">Help</span>
+
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link mx-lg-2" id="nav-link" href="#resume" style="padding-top: 20px;">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
+                    <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10s-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664z"/>
+                  </svg><span style="padding: 11px 10px;">Sign in</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link mx-lg-2" id="nav-link" href="#certifications" style="padding-top: 18px;">
+
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-cart2" viewBox="0 0 16 16">
+                    <path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5M3.14 5l1.25 5h8.22l1.25-5zM5 13a1 1 0 1 0 0 2 1 1 0 0 0 0-2m-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0m9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2m-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0"/>
+                  </svg><span style="padding: 18px 10px;">Cart</span>
+
+                </a>
+
+              </li>
+             
+            
+        </div>
+      </div>
+    </div>
+  </nav>
+
+    <div id="header">
+        <nav class="navbar navbar-expand-md" style="background-color: #fd7e14;">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="#">Swiggy</a>
+              <a href="">Restaurantname</a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                  <a class="nav-link" href="#">Features</a>
+                  <a class="nav-link" href="#">Pricing</a>
+                  <a class="nav-link">Disabled</a>
+                </div>
+              </div>
+            </div>
+        </nav>
+    </div>
+
+    <div id="body">
+
+    </div>
+
+    <div id="footer">
+        <div class="app">
+            <div class="app-text">
+            <h1 class="j">For better experience,download<br> the Swiggy app now</h1>
+            </div>
+        <div class="app-icons">
+      
+        <a target="_blank" href="https://play.google.com/store/apps/details?id=in.swiggy.android" style="text-decoration: none;">
+        <img src="https://www.logo.wine/a/logo/Google_Play/Google_Play-Badge-Logo.wine.svg" alt="" width="200px" height="150px">
+        </a>
+        
+        <a target="_blank" href="https://apps.apple.com/in/app/swiggy-food-delivery-more/id989540920" style="text-decoration: none;">
+        <img src="https://w7.pngwing.com/pngs/34/523/png-transparent-app-store-apple-logo-apple-text-logo-video-game.png" alt="" width="160px" height="46px">
+        </a>
+      </div>
+      </div>
+        <div class="grid-container1">
+          <div>
+            <svg style="color: white"height="45px" id="swiggy-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path class="uim-primary" d="M10.04674,14.6931c-.6537,0-1.3077-.01213-1.961.00356a1.34217,1.34217,0,0,1-1.32992-.74721A11.18811,11.18811,0,0,1,5.2302,8.43165a6.27226,6.27226,0,0,1,1.84692-4.2846A6.71782,6.71782,0,0,1,9.77066,2.3954a6.608,6.608,0,0,1,3.64843-.243,6.831,6.831,0,0,1,5.34315,5.711.50726.50726,0,0,1-.34456.60247,4.95025,4.95025,0,0,1-1.57287.37382,14.83135,14.83135,0,0,1-3.148.04575c-.4199-.05212-.49612-.13556-.49938-.569-.00446-.59239-.0015-1.18484-.0021-1.77726-.0001-.09192-.00159-.18384-.00357-.27574a.297.297,0,0,0-.31381-.335c-.23448-.008-.33857.12462-.33935.34045-.00368,1.01116-.00232,2.02234-.0018,3.03351.00015.28725.18225.35756.427.35734.90906-.00081,1.81815-.00412,2.72717.00265a6.9447,6.9447,0,0,1,1.67041.16169,1.20325,1.20325,0,0,1,1.0117,1.63471,14.17062,14.17062,0,0,1-1.49447,3.87148,34.228,34.228,0,0,1-3.57641,5.25988c-.345.42932-.71124.84147-1.05994,1.26787-.15794.19314-.27715.18895-.431-.01052a43.866,43.866,0,0,1-3.42652-4.95565c-.12627-.22061-.22613-.45664-.3332-.68786-.1029-.22223-.01869-.36755.19318-.46728a2.59609,2.59609,0,0,1,.8005-.19481,7.70388,7.70388,0,0,1,2.348.0199c.44979.08231.52372.188.5232.639-.0004.34728-.0057.69461-.00056,1.0418.00326.22058.06579.43157.32967.42949.26288-.00208.32486-.214.3261-.4341.00407-.72517-.00119-1.4504.00336-2.17556.002-.31218-.19531-.37176-.44456-.37226q-1.04184-.0021-2.08369-.00049Z" data-name="Brand Logos" fill="white"></path></svg>
+            <span id="swiggy-heading">Swiggy</span>
+            <p id="font1">
+              © 2023 Bundl Technologies<br>
+              Pvt. Ltd
+              
+            </p>
+      
+          </div>
+          <div class="grid-container2" >
+            <p id="font2">Company</p>
+            <p id="font1">About us<br>
+              Careers<br>
+              Team<br>
+              Swiggy one<br>
+              Swiggy Instamart<br>
+              Swiggy Genie</p>
+          </div>
+          <div>
+            <p id="font2">CONTACT</p>
+            <p id="font1">
+              Help & Support<br>
+              Partner with us<br>
+              Ride with us</p>
+          
+         
+            <p id="font2">LEGAL</p>
+            <p id="font1">
+              Terms & Conditions<br>
+              Cookie Policy<br>
+              Privacy Policy<br>
+              </p>
+          </div>
+        
+          <div>
+            <p id="font2">We deliver to:</p>
+            <p id="font1">
+              Bagalore<br>
+              Hyderabad<br>
+              Delhi<br>
+              Gurgoan<br>
+              Delhi<br>
+              Mumbai<br>
+              Pune
+            </p>
+      
+          </div>
+          </div>
+        </div>
+    </div>
     
 </body>
 </html>

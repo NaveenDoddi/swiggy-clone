@@ -41,8 +41,8 @@
             </div>
  
             <div>
-                <input type="text" placeholder="Username" id="username" class="p-4 mb-1 mt-1">
-                <input type="password" placeholder="Password" id="password" class="p-4 mb-2">
+                <input type="email" placeholder="Email" id="email" class="p-4 mb-1 mt-1" required>
+                <input type="password" placeholder="Password" id="password" class="p-4 mb-2" required>
                 <button class="btn mb-1" onclick="run()"> LOGIN </button>
                 <div>
                     <p class="text-left"><small class="fs-15">By clicking on Login, I accept the <strong>Terms & Conditions & Privacy Policy</strong> </small></p>
@@ -57,15 +57,15 @@
     </div>
     <script>
         function run(){
-            var username = document.getElementById("username").value
+            var username = document.getElementById("email").value
             var password = document.getElementById("password").value
 
-            fetch("http://localhost:3000/Restaurants?username="+username)
+            fetch("http://localhost:3000/Restaurants?email="+username)
             .then(response => response.json())
             .then((data)=> {
  
                 try {
-                    if(username == data[0].username){
+                    if(username == data[0].email){
                         if(password == data[0].password){
                             console.log(data)
                             localStorage.setItem("usernameRestaurant", "naveen123")
@@ -76,10 +76,7 @@
                         }
                     }
                 } catch (error) {
-                    // window.location.href = "i.html"
-                    
-                } finally {
-                    
+                    window.alert("user not found")
                 }
             
             })

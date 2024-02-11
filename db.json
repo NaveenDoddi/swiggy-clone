@@ -1,32 +1,42 @@
 {
-  "Data": {
-    "Restaurants": [
-      {
-        "name": "Narugondla Vishnuvardhan",
-        "email": "narugondla.vishnu@gmail.com",
-        "restaurant": "orion hotel",
-        "address": "tirupati",
-        "mobile": "9392347220"
-      },
-      {
-        "username": "ddddddd",
-        "email": "narugondla.vishnu@gmail.com",
-        "restaurant": "orion hotel",
-        "address": "tirupati",
-        "mobile": "9696967220"
-      }
-    ],
-    "Customers": [
-      {
-        "username": "Vishnuvardhan",
-        "email": "narugondla.vishnu@gmail.com",
-        "mobile": "9392347220"
-      },
-      {
-        "username": "naveen",
-        "email": "naveen@gmail.com",
-        "mobile": "2855858585"
-      }
-    ]
-  }
+  "restaurants": [
+    {
+      "restaurant": "ooorin restaurant",
+      "address": "Tirupati",
+      "mobile": "8555913494",
+      "email": "naveen@gmail.com",
+      "username": "naveene",
+      "password": "123456",
+      "id": 3
+    },
+    {
+      "restaurant": "ps4 Restaurant",
+      "address": "Tirupati",
+      "mobile": "8555913494",
+      "email": "vishnu@gmail.com",
+      "username": "vishnu",
+      "password": "123456",
+      "id": 4
+    }
+  ],
+  "customers": [
+    {
+      "username": "Vishnuvardhan",
+      "email": "narugondla.vishnu@gmail.com",
+      "mobile": "9392347220",
+      "id": 1
+    },
+    {
+      "username": "naveen",
+      "email": "naveen@gmail.com",
+      "mobile": "9866190676",
+      "id": 3
+    },
+    {
+      "username": "naveen",
+      "email": "naveen@gmail.com",
+      "mobile": "8555913494",
+      "id": 4
+    }
+  ]
 }
