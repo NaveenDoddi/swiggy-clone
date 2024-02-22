@@ -78,7 +78,7 @@
 
         function run(){
             var form = document.getElementById('restaurantForm')
-            console.log(form.checkVisibility())
+            
             if(form.checkValidity()){
                 const newHotel = {
             
@@ -87,47 +87,41 @@
                     mobile:document.getElementById('mobile').value,
                     email: document.getElementById('email').value,
                     username: document.getElementById('name').value,
-                    password: document.getElementById('password').value
+                    password: document.getElementById('password').value,
+                    items: []
 
                 }
 
-                fetch("http://localhost:3000/restaurants")
+                fetch("http://localhost:3000/restaurants?email="+newHotel.email)
                 .then(response => response.json())
-                .then((data)=> {
-                    var existance = data.some((element) => element.email == newHotel.email)
-
-                    if(existance){
+                .then((data) => {
+                    if(data.length != 0){
                         alert("Email is already used, Try new one..!")
 
                     }else{
                         fetch("http://localhost:3000/restaurants",{
-                        method: "POST",
-                        body: JSON.stringify(newHotel),
-                        headers: {'Content-Type': 'application/json'},
-                    })
-                    .then(response => {
-                        if (response.ok) {
+                            method: "POST",
+                            body: JSON.stringify(newHotel),
+                            headers: {'Content-Type': 'application/json'},
+                        })
+                        .then(response => {
+                            if (response.ok) {
+                                window.location = "RestaurantDashboard.html"
 
-                            alert("You are signed-up successfully")
-                            localStorage.setItem("restaurantMial", newHotel.email)
-                            window.location.href = "RestaurantDashboard.html"
+                                // alert("You are signed-up successfully")
+                                localStorage.setItem("restaurantMail", newHotel.email)
 
-                        }
-                    })  
+                            }
+                        })  
 
                     }
-
                 })
-
+                
             }else{
                 window.alert("invalid form")
             }
         }
 
-
-       
-          
-    
     </script>
 </body>
 </html>

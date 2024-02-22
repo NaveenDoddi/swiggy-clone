@@ -61,9 +61,8 @@
             .then((data)=> {
  
                 try{
-                    console.log(data)
                     localStorage.setItem("customerMobile", data[0].mobile)
-                    window.location.href = "customerDashboard.html"
+                    window.location.href = "home.html"
                     
                 } catch(error){
                     window.alert("user not found")

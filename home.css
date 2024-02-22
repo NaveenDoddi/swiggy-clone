@@ -627,6 +627,7 @@ body{
 #dishItems::-webkit-scrollbar{
     width:0;
 }
+
 .cartitems{
     min-width: 32%;
     /* margin-left: 0.5%; */
@@ -653,7 +654,7 @@ body{
     margin-bottom: 2px;
 }
 .card-text{
-    display: flex;
+    /* display:; */
     margin-top: 3%;
     
     font-size: 16px;

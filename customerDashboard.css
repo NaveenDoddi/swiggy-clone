@@ -1,0 +1,61 @@
+.navbar-nav :hover{
+    color: #fd7e14;
+}
+.nav-item button{
+    /* display: inline-block; */
+    /* border: 1px solid black; */
+    /* height: 40px; */
+    padding: 1px;
+    width: 100%;
+}
+
+
+#mindItems, #topResItems{
+    overflow: auto;
+    scroll-behavior: smooth;
+    width: 100%;
+    white-space: nowrap;
+    border-bottom: 1px solid rgb(223, 220, 220);
+}
+
+#mindItems div, #topResItems #card{
+    display: inline-block;
+    text-align: center;
+    padding: 5px;
+    text-decoration: none;
+}
+
+#mindItems div img{
+    max-width: 140px;
+}
+#mindItems::-webkit-scrollbar, #topResItems::-webkit-scrollbar {
+    display: none;
+}
+
+#Toprest button , #mindDiv button{
+    background-color: rgb(223, 220, 220);
+}
+
+#Toprest img{
+    border-radius: 20px;
+}
+.card{
+    border: none;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.card img:hover {
+   transform: scale(0.9);
+}
+#logo:hover{
+    transform: scale(1.2);
+}
+
+.card img, #logo{
+  transition: transform 0.3s ease-in-out;
+}
+
+.offcanvas-body a:hover{
+    color: #fd7e14;
+}
