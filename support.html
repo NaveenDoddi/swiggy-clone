@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <script src="https://kit.fontawesome.com/accd26a21f.js" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="customerDashboard.css">
+
+    <link rel="icon" type="image/x-icon" href="images/Swiggy_logo.png">
+
+    <title>Order Food Online from India's Best Food Delivery Service | Swiggy</title>
+
+
+    <style>
+        input:focus{
+            outline:black;
+        }
+
+        #mindItems{
+            img{
+                height: 80px;
+                width: auto;
+                border-radius: 50px;
+            }
+        }
+        .nav button{
+            /* height: 60px; */
+            color: black;
+            padding: 15px;
+            border-radius: 10px;
+            background-color: white;
+        }
+        .nav-pills .nav-link.active {
+            background-color: lightgray;
+            color: black;
+            font-size: large;
+        }
+
+        
+        .table td, .table th{
+            background-color: lightgray;
+            padding: 20px;
+            border-bottom: 1px solid white;
+           
+ 
+        }
+        .table td:hover{
+            color: #fd7e14;
+        }
+        
+    </style>
+</head>
+<body class="" style="background-color: cadetblue;">
+    <div class="">
+        <div>
+            <nav class="bg-body-tertiary">
+                <div class="d-flex justify-content-between bg-light">
+                    
+                    <div class="p-3">
+                        <div>
+                            <img src="images/Swiggy_logo.png" alt="logo" style="max-width: 60px; float: left;" id="logo">  
+                            <span class="fw-bolder">HELP</span>
+                        </div>
+                    </div>
+
+                    <div class="pt-3">
+                        <div class="d-md-none">
+                            <button type="button" class="btn" data-bs-toggle="offcanvas" data-bs-target="#right">
+                                <i class="fa-solid fa-bars"></i>
+                            </button>
+                        </div>
+                        
+                        <div class="offcanvas-md offcanvas-end" tabindex="-1" id="right" aria-labelledby="offcanvasExampleLabel">
+                            <div class="offcanvas-header">
+                                <h5 class="offcanvas-title" id="offcanvasExampleLabel">Details</h5>
+                                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" data-bs-target="#right" aria-label="Close"></button>
+                            </div>
+                            <div class="offcanvas-body">
+                                <div class="">
+                                    <a href="search.html"><button class="btn"><i class="fa-solid fa-search"></i> &nbsp; Search</button></a>
+                                    <a href="#"><button class="btn"><i class="fa-solid fa-percent"></i> &nbsp; Offers</button></a>
+                                    <a href="support.html"><button style="color: #fd7e14;" class="btn"><i class="fa-solid fa-life-ring"></i> &nbsp; Help</button></a>
+                                    <a href="customerLogin.html"><button class="btn"><i class="fa-solid fa-user"></i> &nbsp; SignIn</button></a>
+                                    <a href="cart.html"><button class="btn"><i class="fa-solid fa-cart-shopping"></i> &nbsp; Cart</button></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+        
+                </div>
+            </nav>
+        </div>
+        
+
+        <div class="body m-md-5 m-1 mt-3 ">
+            <div class="text-light">
+                <h1>Help & Support</h1>
+                <h6>Let's take a step ahead and help you better.</h6>
+                
+            </div>
+
+            <div class="m-1 mt-3">
+                <div class="d-flex align-items-start bg-light">
+                    <div class="nav flex-column nav-pills me-3 m-3 m-md-5 mr-0 bg-light" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                      <button class="nav-link active" id="v-pills-patner-tab" data-bs-toggle="pill" data-bs-target="#v-pills-patner" type="button" role="tab" aria-controls="v-pills-patner" aria-selected="true">Partner Onboarding                    </button>
+                      <button class="nav-link" id="v-pills-legal-tab" data-bs-toggle="pill" data-bs-target="#v-pills-legal" type="button" role="tab" aria-controls="v-pills-legal" aria-selected="false">Legal</button>
+                      <button class="nav-link" id="v-pills-FAQs-tab" data-bs-toggle="pill" data-bs-target="#v-pills-FAQs" type="button" role="tab" aria-controls="v-pills-FAQs" aria-selected="false">Disabled</button>
+                    </div>
+
+                    <div class="tab-content m-3 m-md-5 ml-0" id="v-pills-tabContent" style="background-color: lightgray;">
+                      <div class="tab-pane fade show active" id="v-pills-patner" role="tabpanel" aria-labelledby="v-pills-patner-tab" tabindex="0">
+                        <table class="table">
+                            <tr>
+                                <th class="h4">Partner Onboarding</th>
+                            </tr>
+                            <tr>
+                                <td>I want to partner my restaurant with Swiggy</td>
+                            </tr>
+                            <tr>
+                                <td>What are the mandatory documents needed to list my restaurant on Swiggy?</td>
+                            </tr>
+                            <tr>
+                                <td>After I submit all documents, how long will it take for my restaurant to go live on Swiggy?</td>
+                            </tr>
+                            <tr>
+                                <td>What is this one time Onboarding fees? Do I have to pay for it while registering?</td>
+                            </tr>
+                            <tr>
+                                <td>Who should I contact if I need help & support in getting onboarded?</td>
+                            </tr>
+                            <tr>
+                                <td>How much commission will I be charged by Swiggy?</td>
+                            </tr>
+                            <tr>
+                                <td>I don’t have an FSSAI licence for my restaurant. Can it still be onboarded?</td>
+                            </tr>
+
+                        </table>
+                      </div>
+                      <div class="tab-pane fade" id="v-pills-legal" role="tabpanel" aria-labelledby="v-pills-legal-tab" tabindex="0">
+
+                        <table class="table">
+                            <tr>
+                                <th class="h4">Legal</th>
+                            </tr>
+                            <tr>
+                                <td>Terms of Use</td>
+                            </tr>
+                            <tr>
+                                <td>Privacy Policy</td>
+                            </tr>
+                            <tr>
+                                <td>Cancellations and Refunds</td>
+                            </tr>
+                            <tr>
+                                <td>Terms of Use for Swiggy ON-TIME / Assured</td>
+                            </tr>
+                        
+                        </table>
+
+                      </div>
+                      <div class="tab-pane fade" id="v-pills-FAQs" role="tabpanel" aria-labelledby="v-pills-FAQs-tab" tabindex="0">
+                        
+                        <table class="table">
+                            <tr>
+                                <th class="h4">FAQs</th>
+                            </tr>
+                            <tr>
+                                <td>What is Swiggy Customer Care Number?</td>
+                            </tr>
+                            <tr>
+                                <td>I want to explore career opportunities with Swiggy</td>
+                            </tr>
+                            <tr>
+                                <td>I want to provide feedback</td>
+                            </tr>
+                            <tr>
+                                <td>Can I edit my order?</td>
+                            </tr>
+                            <tr>
+                                <td>I want to cancel my order</td>
+                            </tr>
+                            <tr>
+                                <td>I want to cancel my order</td>
+                            </tr>
+                            <tr>
+                                <td>Is there a minimum order value?</td>
+                            </tr>
+                            <tr>
+                                <td>Do you charge for delivery?</td>
+                            </tr>
+                            <tr>
+                                <td>How long do you take to deliver?</td>
+                            </tr>
+                            <tr>
+                                <td>I want an invoice for my order</td>
+                            </tr>
+                        
+                        </table>
+
+
+                      </div>
+                    </div>
+                  </div>
+            </div>
+
+            
+            
+        </div>
+
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+</body>
+</html>
