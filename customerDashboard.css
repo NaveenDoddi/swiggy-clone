@@ -56,3 +56,8 @@
 .offcanvas-body a:hover{
     color: #fd7e14;
 }
+
+.footerItems img{
+    height: 100px;
+    width: 200px;
+}
