@@ -10,8 +10,52 @@
     <link rel="icon" type="image/x-icon" href="images/Swiggy_logo.png">
 
     <title>Order Food Online from India's Best Food Delivery Service | Swiggy</title>
+
+
+    <style>
+        .offersDiv {
+            width: auto;
+            height: 150px;
+            position: relative;
+            overflow: hidden;
+                
+            font-weight: 500;
+        }
+        
+        .content {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            transform: translateY(100%);
+            /* text-align: center; */
+            transition: transform 1s ease-in-out;
+        }
+        .content.active {
+            transform: translateY(10%);
+        }
+
+        .carousel-item{
+            text-align: center;
+        }
+
+        .carousel-item img{
+            height: 200px;
+        }
+        .footer1Items{
+            padding: 10px;
+            border: 1px solid lightgray;
+            border-radius: 10px;
+            text-align: center;
+            width: 150px;
+
+
+        }
+
+    </style>
 </head>
-<body>
+<body onload="displayItems()">
     <div class="m-2">
         <div>
             <nav class="  bg-body-tertiary">
@@ -62,7 +106,7 @@
                             <div class="offcanvas-body">
                                 <div class="">
                                     <a href="search.html"><button class="btn"><i class="fa-solid fa-search"></i> &nbsp; Search</button></a>
-                                    <a href="#"><button class="btn"><i class="fa-solid fa-percent"></i> &nbsp; Offers</button></a>
+                                    <a href="#offers"><button class="btn"><i class="fa-solid fa-percent"></i> &nbsp; Offers</button></a>
                                     <a href="support.html"><button class="btn"><i class="fa-solid fa-life-ring"></i> &nbsp; Help</button></a>
                                     <a href="customerLogin.html"><button class="btn"><i class="fa-solid fa-user"></i> &nbsp; SignIn</button></a>
                                     <a href="cart.html"><button class="btn"><i class="fa-solid fa-cart-shopping"></i> &nbsp; Cart</button></a>
@@ -85,7 +129,6 @@
 
                 <div>
                     <div id="mindDiv">
-        
                         <div class="d-flex justify-content-between">
                             <div class="fw-bolder fs-5 m-2">What's on your mind?</div>
                             <div class="d-flex">
@@ -93,8 +136,6 @@
                                 <button  style="width: 40px; height: 40px;" class="btn rounded-circle bg-secondar" onclick="scrolltoLeft(this)"><i class="fa-solid fa-arrow-right"></i></button>
                             </div>
                         </div>
-        
-
                         <div id="mindItems">
                             <div>
                                 <img src="images/Dosa.avif" >
@@ -130,6 +171,47 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- carousels -->
+                <div class=" d-flex justify-content-center mt-5 row">
+                    <div id="carouselExampleRide" class="carousel slide col col-md-8" data-bs-ride="true">
+                        <div class="carousel-indicators">
+                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 4"></button>
+                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="4" aria-label="Slide 5"></button>
+                        </div>
+                        <div class="carousel-inner" >
+                            <div class="carousel-item active">
+                                <img src="images/cara1.webp" class="d-block w-100 w-md-50" alt="...">
+                              </div>
+                              <div class="carousel-item">
+                                <img src="images/cara3.jpg" class="d-block w-100" alt="...">
+                              </div>
+                              <div class="carousel-item">
+                                <img src="images/cara2.png" class="d-block w-100" alt="...">
+                              </div>
+                              <div class="carousel-item">
+                                <img src="images/cara2.avif" class="d-block w-100" alt="...">
+                              </div>
+                              <div class="carousel-item">
+                                <img src="images/cara4.jpg" class="d-block w-100" alt="...">
+                            </div>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleRide" data-bs-slide="prev">
+                          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                          <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleRide" data-bs-slide="next">
+                          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                          <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
+
+                </div>
+                
+                <!-- top restaurants scroll div -->
         
                 <div class="mt-5" id="Toprest">
         
@@ -181,7 +263,7 @@
                                 <img src="images/topres4.png" class="card-img-top" alt="...">
                                 <div class="card-body text-start">
                                   <h6 class="card-title">Sarvi Restaurant</h6>
-                                  <h6 class="card-text"> <i class="fa-solid fa-star text-success"></i> 4.3 30-35 mins</h6>
+                                  <h6 class="card-text"> <i class="fa-solid fa-star text-warning"></i> 3.7 30-35 mins</h6>
                                   <p class="card-text fw-light">Biryani, chinese, Indian kebabs... <br>Banjara Hills</p>
                                 </div>
                             </div>
@@ -192,7 +274,7 @@
                                 <img src="images/topres5.png" class="card-img-top" alt="...">
                                 <div class="card-body text-start">
                                   <h6 class="card-title">Hotel Rumaan</h6>
-                                  <h6 class="card-text"> <i class="fa-solid fa-star text-success"></i> 4.3 30-35 mins</h6>
+                                  <h6 class="card-text"> <i class="fa-solid fa-star text-warning"></i> 3.3 30-35 mins</h6>
                                   <p class="card-text fw-light">Biryani, chinese, Tandoor, Indian... <br>Banjara Hills</p>
                                 </div>
                             </div>
@@ -214,7 +296,7 @@
                                 <img src="images/topres7.png" class="card-img-top" alt="...">
                                 <div class="card-body text-start">
                                   <h6 class="card-title">Al Rabea Al Arabi Cafeteria</h6>
-                                  <h6 class="card-text"> <i class="fa-solid fa-star text-success"></i> 4.4 20-25 mins</h6>
+                                  <h6 class="card-text"> <i class="fa-solid fa-star text-danger"></i> 2.3 20-25 mins</h6>
                                   <p class="card-text fw-light">Arabian, Lebanese <br>Mehadipatnam</p>
                                 </div>
                             </div>
@@ -236,7 +318,7 @@
                                 <img src="images/topres9.png" class="card-img-top" alt="...">
                                 <div class="card-body text-start">
                                   <h6 class="card-title">Sweet Truth - Cake and Desserts</h6>
-                                  <h6 class="card-text"> <i class="fa-solid fa-star text-success"></i> 4.1 30-40 mins</h6>
+                                  <h6 class="card-text"> <i class="fa-solid fa-star text-warning"></i> 2.1 30-40 mins</h6>
                                   <p class="card-text fw-light">Snacks, Bakery, Desserts, Beverages <br>Abids</p>
                                 </div>
                             </div>
@@ -246,11 +328,121 @@
                 </div>
             </div>
 
-        </div>
+            <!-- credit cards show -->
+            <div id="offers" class="container bg-light text-dark mt-4">
 
+                <div class="offersDiv">
+                    <p><small></small></p>
+                    <div class="text-center"><img src="images/offersLogo.jpg" style="height: 50px;" alt=""> </div>
         
+                    <div class="offersDiv text-center">
+                        <div class="content active" id="content1">
+                          <p>* get up to 60% Off on your first order </p>
+                      </div>
+                        <div class="content" id="content2">
+                          <p> * Flat 40% Off on Biryani's </p>
+                      </div>
+                        <div class="content" id="content3">
+                          <p>* Debit or credit card users of ICICI Bank can get upto 50% off on select orders.</p>
+                      </div>
+                        <div class="content" id="content3">
+                          <p>* Apply Coupon : SPFOODFEST2310 *Once per Account </p>
+                      </div>
+                        <div class="content" id="content4">
+                          <p>* Meals starting from Rs. 99 </p>
+                      </div>
+                    </div>
+        
+                </div>
+        
+            </div>
 
-        <div>
+            <!-- new items added -->
+
+            <div>
+                <div class="fw-bolder fs-5 m-2 mt-4 text-center">For You</div>
+                <div class="row m-2 mt-2 d-flex justify-content-center" id="dishItemsnew">
+
+                </div>
+            </div>
+
+        </div>
+        
+        <div class="footer1 m-2" id="footer1">
+            <div class="fw-bolder fs-5 m-2">Best Places to Eat Across Cities</div>
+                <marquee behavior="smooth" direction="left" class="row">
+                    <div class="gap-3 row">
+                        <div class="footer1Items">
+                            Bangalore
+                        </div>
+                        <div class="footer1Items">
+                            Pune
+                        </div>
+                        <div class="footer1Items">
+                            Mumbai
+                        </div>
+                        <div class="footer1Items ">
+                            Delhi
+                        </div>
+                        <div class="footer1Items ">
+                            Hyderabad
+                        </div>
+                        <div class="footer1Items ">
+                            Chennai
+                        </div>
+                        <div class="footer1Items ">
+                            Chandigarh
+                        </div>
+                        <div class="footer1Items ">
+                            Ahmedabad
+                        </div>
+                        <div class="footer1Items ">
+                            Jaipur
+                        </div>
+                        <div class="footer1Items ">
+                            Nagpur
+                        </div>
+                        <div class="footer1Items ">
+                            Bhubaneswar
+                        </div>
+                        <div class="footer1Items ">
+                            Kochi
+                        </div>
+                        <div class="footer1Items ">
+                            Surat
+                        </div>
+                        <div class="footer1Items ">
+                            Dehradun
+                        </div>
+                        <div class="footer1Items ">
+                            Vadodara
+                        </div>
+                        <div class="footer1Items ">
+                            Udaipur
+                        </div>
+                        <div class="footer1Items ">
+                            Vizag
+                        </div>
+                        <div class="footer1Items ">
+                            Ranchi
+                        </div>
+                        <div class="footer1Items ">
+                            Thiruvananthapuram
+                        </div>
+                        <div class="footer1Items ">
+                            Pondicherry
+                        </div>
+                        <div class="footer1Items ">
+                            Agra
+                        </div>
+                        <div class="footer1Items ">
+                            Noida
+                        </div>
+                    </div>
+                    
+                </marquee>
+                
+            </div>
 
         </div>
 
@@ -260,14 +452,114 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 
     <script>
+        function displayItems(){
+                
+            fetch("http://localhost:3000/restaurants")
+            .then(res => res.json())
+            .then(data => {
+              data.map((restaurants)=>{
+            
+                Object.values(restaurants.items).map((item)=>{
+                
+                  var div = document.createElement('div')
+                  div.className = "card col col-11 col-sm-6 col-md-4 col-lg-3 bg-light text-dark p-1"
+                  div.style.width = "18 rem"
+
+                  var cardDiv = document.createElement("div")
+                  cardDiv.className = "cardimage"
+                
+                  var cardImage = document.createElement("img")
+                  cardImage.src = item.pic
+                  cardImage.style.height = "170px"
+                  cardImage.style.borderRadius= "20px"
+
+                  cardImage.className = "card-img-top"
+
+                  cardDiv.append(cardImage)
+                
+                  var cardBody = document.createElement("div")
+                  cardBody.className="card-body"
+
+                  var cardDetails = document.createElement("div")
+                  cardDetails.className = "card-text"
+
+                  var star = document.createElement("i")
+                  star.className = "fa-solid fa-star text-warning"
+
+
+                  var restaurantNmae = document.createElement("h6")
+                  restaurantNmae.innerText = restaurants.restaurant+" "
+                  restaurantNmae.className = "card-title"
+                  restaurantNmae.append(star)
+                  cardDetails.append(restaurantNmae)
+                
+                  var itemName = document.createElement("h6")
+                  itemName.innerText = item.dishName
+                  cardDetails.append(itemName)
+                
+                  var itemPrice = document.createElement("p")
+                  itemPrice.innerText = "Price: " + item.Price + "/-"
+                  itemPrice.append(document.createElement("br"))
+
+                  var itemDes = document.createElement("span")
+
+                  itemDes.innerText = item.Description
+                  itemPrice.append(itemDes)
+
+                  cardDetails.append(itemPrice)
+
+                  cardBody.append(cardDetails)
+
+                  var addButton = document.createElement("button")
+                  addButton.className = "btn btn-success btn-sm"
+                  addButton.innerText = "Add +"
+                  addButton.addEventListener("click", addtoCart)
+
+                  cardBody.append(addButton)
+                
+                  cardDiv.append(cardBody)
+                
+                  div.append(cardDiv)
+                  document.getElementById("dishItemsnew").append(div)
+                
+                })
+            
+            })
+          
+
+            })
+        }
+
+
+        function addtoCart(element){
+
+            console.log(element.currentTarget.parentNode.parentNode)
+        }
+
+
         function scrolltoLeft(element) {
             var div = element.parentElement.parentElement.parentElement.getElementsByTagName("div")[3]
             div.scrollLeft += 270;            
-        }  
+        }
         function scrolltoRight(element) {
             element.parentElement.parentElement.parentElement.getElementsByTagName("div")[3].scrollLeft -= 270;
-        }  
+        }
+
+
+        const contents = document.getElementsByClassName('content');
+        let currentIndex = 0;
+      
+        function rotateContent() {
+          contents[currentIndex].classList.remove('active');
+          currentIndex = (currentIndex + 1) % contents.length;
+          contents[currentIndex].classList.add('active');
+        }
+      
+        // Rotate the content every 3 seconds
+        setInterval(rotateContent, 3000);
     </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
 
 </body>
 </html>

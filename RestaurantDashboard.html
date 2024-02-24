@@ -6,10 +6,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/accd26a21f.js" crossorigin="anonymous"></script>
-    <!-- <link rel="stylesheet" href="home.css"> -->
     <title>Swiggy</title>
     <link rel="icon" type="image/x-icon" href="images/Swiggy_logo.png">
-
 
     <style>
       
@@ -41,38 +39,67 @@
       }
     </style>
 </head>
+
 <body onload="displayItems()">
     <div id="header">
-        <nav class="navbar" style="background-color: #fd7e14;">
-            <div class="container-fluid">
-              <!-- <a class="navbar-brand" href="#">Swiggy</a> -->
-              <img class="navbar-brand" src="images/Swiggy_logo.png" alt="logo" style="max-width: 50px;">
-              <span  id="restaurantName" class="fs-1 fw-bolder text-light">Restaurantname</span>
-              <!-- Button for toggling the offcanvas menu -->
-              <button class="navbar-toggler btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
-                <span class="navbar-toggler-icon"></span>
-              </button>
-              
-              <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
-                <div class="offcanvas-header">
-                    <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Details</h5>
-                    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      <nav class="bg-body-tertiary">
+        <div class="d-flex justify-content-between bg-light">
+            
+            <div class=" p-3">
+              <div>
+                  <img src="images/Swiggy_logo.png" alt="logo" style="max-width: 60px; float: left;" id="logo">  
+                  <button type="button" class="btn d-flex mx-auto" data-bs-toggle="offcanvas" data-bs-target="#left">
+                    <span id="restaurantName">Restaurant Name</span> &nbsp; <i class="fa-solid fa-chevron-down" style="color:#fd7e14"></i>
+                  </button>
+              </div>
+                
+            <!-- for userdetails off canvass on left side  -->
+                
+                <div class="offcanvas offcanvas-start" tabindex="-1" id="left" aria-labelledby="left">
+                    <div class="offcanvas-header">
+                        <h5 class="offcanvas-title" id="offcanvasExampleLabel">Details</h5>
+                        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                    </div>
+                    <div class="offcanvas-body">
+                        <div class="navbar-nav">
+                            <a class="nav-link" href="#">Username: <span id="usernameSpan"></span></a>
+                            <a class="nav-link" href="#">Address: <span id="addressSpan"></span></a>
+                            <a class="nav-link" href="#">Mobile: <span id="mobileSpan"></span></a>
+                            <a class="nav-link" href="#">E-mail: <span id="emailSpan"></span></a>
+                            <a class="nav-link" href="#"><button class="btn btn-danger" onclick="logout()">Logout</button></a>
+                            <a class="nav-link" href="#">@about Swiggy</a>
+                            <a class="nav-link Disabled d-none" href="#"><span id="idSpan"></span></a>
+                        </div>
+                    </div>
+                </div>                        
+            </div>
+
+            <div class="pt-3">
+
+                <div class="d-sm-none">
+                    <button type="button" class="btn" data-bs-toggle="offcanvas" data-bs-target="#right">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
                 </div>
-                <div class="offcanvas-body">
-                    <div class="navbar-nav">
-                        <a class="nav-link" href="#">Username: <span id="usernameSpan"></span></a>
-                        <a class="nav-link" href="#">Address: <span id="addressSpan"></span></a>
-                        <a class="nav-link" href="#">Mobile: <span id="mobileSpan"></span></a>
-                        <a class="nav-link" href="#">E-mail: <span id="emailSpan"></span></a>
-                        <a class="nav-link" href="#"><button class="btn btn-danger" onclick="logout()">Logout</button></a>
-                        <a class="nav-link" href="#">@about Swiggy</a>
-                        <a class="nav-link Disabled d-none" href="#"><span id="idSpan"></span></a>
+                
+                <div class="offcanvas-sm offcanvas-end" tabindex="-1" id="right" aria-labelledby="offcanvasExampleLabel">
+                    <div class="offcanvas-header">
+                        <h5 class="offcanvas-title" id="offcanvasExampleLabel">Details</h5>
+                        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" data-bs-target="#right" aria-label="Close"></button>
+                    </div>
+                    <div class="offcanvas-body">
+                        <div class="">
+                            <a href="search.html"><button class="btn"><i class="fa-solid fa-search"></i> &nbsp; Search</button></a>
+                            <a href="#"><button class="btn"><i class="fa-solid fa-percent"></i> &nbsp; Offers</button></a>
+                            <a href="support.html"><button class="btn"><i class="fa-solid fa-life-ring"></i> &nbsp; Help</button></a>
+                        </div>
                     </div>
                 </div>
-              </div>
-
             </div>
-        </nav>
+
+        </div>
+      </nav>
+
     </div>
 
     <div id="body">
@@ -230,7 +257,6 @@
             descriptionTag.className = "fs-6 fw-normal"
             descriptionTag.innerText = item.Description +', ' + data[0].address
             cardDetails.append(descriptionTag)
-
             
             cardBody.append(cardDetails)
 
