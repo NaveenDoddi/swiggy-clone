@@ -77,9 +77,9 @@
                                 <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                             </div>
                             <div class="offcanvas-body">
+                                <div onclick="getLocation()" id="location">Get you current location</div>
                                 <div class="navbar-nav">
                                     <a class="nav-link" href="#">Username: <span id="usernameSpan"></span></a>
-                                    <a class="nav-link" href="#">Address: <span id="addressSpan"></span></a>
                                     <a class="nav-link" href="#">Mobile: <span id="mobileSpan"></span></a>
                                     <a class="nav-link" href="#">E-mail: <span id="emailSpan"></span></a>
                                     <a class="nav-link" href="#"><button class="btn btn-danger" onclick="logout()">Logout</button></a>
@@ -382,7 +382,11 @@
 
                     </div>
                     
+
                     
+                    <div class="justify-content-end align-items-end d-none" id="showLess">
+                        <button class="btn btn-sm" onclick="showLess()">show less ^</button>
+                    </div>
                 </div>
             </div>
 
@@ -532,6 +536,8 @@
                 2: {id: '3D39D20CB1DADACA9BA3326877ECFEDB', name: 'Exotic Blooming Teas', address: 'Exotic Blooming Teas, Syndicate Bank, Rd Number 7,…Banjara Hills, Hyderabad, Telangana 500034, India', phone_number: '+918897416197', website: 'http://www.exoticbloomingtea.com/'},
             }
 
+            document.getElementById("location").innerText = Object.values(data)[0].address
+
             Object.values(data).map((item)=>{
 
                 var div = document.createElement("div")
@@ -579,14 +585,35 @@
                 
 
             })
+            document.getElementById("restsNearbyMe").className = "row"
 
-            document.getElementById("restsNearbyMeBtns").style.visibility = "hidden"
-            document.getElementById("restsNearbyMeBtns").style.visibility = "hidden"
+            document.getElementById("restsNearbyMeBtns").className = "d-none"
+            document.getElementById("showLess").className = "d-flex justify-content-end "
 
 
         }
 
+        function showLess(){
+            document.getElementById("restsNearbyMeBtns").className = "d-flex"
+            document.getElementById("showLess").className = "d-none"
+            document.getElementById("restsNearbyMe").className = "d-none"
+        }
+
         function displayItems(){
+
+            var mobile_number = localStorage.getItem("customerMobile")
+
+            fetch("http://localhost:3000/customers?mobile="+mobile_number)
+            .then(res => res.json())
+            .then(data => {
+                document.getElementById("usernameSpan").innerText = data[0].username 
+                document.getElementById("mobileSpan").innerText = data[0].mobile 
+                document.getElementById("emailSpan").innerText = data[0].email 
+                document.getElementById("idSpan").innerText = data[0].id
+            })
+
+
+            
                 
             fetch("http://localhost:3000/restaurants")
             .then(res => res.json())
