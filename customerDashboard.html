@@ -366,6 +366,26 @@
                 </div>
             </div>
 
+            <div>
+                <div class="fw-bolder fs-5 m-2 mt-4 ">Explore Every Restaurants Near Me</div>
+                <div class="row m-2 mt-2 gap-2 ">
+                    <div class="d-flex justify-content-center" id="restsNearbyMeBtns">
+                        <button class="footer1Items w-50 btn" onclick="restsNearbyMe()">
+                            Explore Restaurants Near Me
+                        </button>
+                        <button class="footer1Items w-50 btn" onclick="restsNearbyMe()">
+                            Explore Top Restaurants Near Me
+                        </button>
+                    </div>
+
+                    <div id="restsNearbyMe" class="row">
+
+                    </div>
+                    
+                    
+                </div>
+            </div>
+
         </div>
 
         <!-- city divs -->
@@ -504,6 +524,68 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 
     <script>
+
+        function restsNearbyMe(){
+            const data = {
+                0: {id: '6D65ED574E567164792CC7B73A7F27CB', name: 'Coffee to Cocktails Bar', address: 'Lobby Level, Hyatt Place, Rd Number 1, Zahara Naga…Banjara Hills, Hyderabad, Telangana 500034, India', phone_number: '+914067801234', website: 'https://hyderabadbanjarahills.place.hyatt.com/en/h…ils-bar.html?src=gbl_lcl_hyzh_coffee_to_cocktails',},
+                1: {id: '7122C99C3552DA62DDE04E60107AFE08', name: 'The Gallery Cafe', address: 'H. No, 8-2-465, Road No 4, Green Valley, Banjara Hills, Hyderabad, Telangana 500034, India', phone_number: '+919030616161', location:{}},
+                2: {id: '3D39D20CB1DADACA9BA3326877ECFEDB', name: 'Exotic Blooming Teas', address: 'Exotic Blooming Teas, Syndicate Bank, Rd Number 7,…Banjara Hills, Hyderabad, Telangana 500034, India', phone_number: '+918897416197', website: 'http://www.exoticbloomingtea.com/'},
+            }
+
+            Object.values(data).map((item)=>{
+
+                var div = document.createElement("div")
+                div.className = " col col-12 col-md-6"
+
+                var table = document.createElement("table")
+                table.className = "table bg-light text-dark p-1"
+
+
+                var tableHead = document.createElement("tr")
+                var td = document.createElement("th")
+                td.innerText = item.name
+                tableHead.append(td)
+                table.append(tableHead)
+
+                var address = document.createElement("tr")
+                var td = document.createElement("td")
+                td.innerText = item.address 
+
+                address.append(td)
+                table.append(address)
+
+                var phone_number = document.createElement("tr")
+                var td = document.createElement("td")
+                
+                
+                var star = document.createElement("i")
+                star.className = "fa-solid fa-phone fa-shake"
+                td.append(star)
+                
+
+                var span = document.createElement("span")
+                span.innerText = item.phone_number
+                span.className = "bg-light"
+
+                td.append(span)
+                
+                phone_number.append(td)
+                
+                table.append(phone_number)
+
+                
+                div.append(table)
+                document.getElementById("restsNearbyMe").append(div)
+                
+
+            })
+
+            document.getElementById("restsNearbyMeBtns").style.visibility = "hidden"
+            document.getElementById("restsNearbyMeBtns").style.visibility = "hidden"
+
+
+        }
+
         function displayItems(){
                 
             fetch("http://localhost:3000/restaurants")

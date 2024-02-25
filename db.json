@@ -56,68 +56,8 @@
       "email": "table9@gmail.com",
       "username": "tables",
       "password": "123456",
-      "items": {},
+      "items": "f",
       "id": 4
-    },
-    {
-      "restaurant": "ooorin restaurant",
-      "address": "Tirupati",
-      "mobile": "8555913494",
-      "email": "naveen2@gmail.com",
-      "username": "naveene",
-      "password": "123456",
-      "items": {},
-      "id": 5
-    },
-    {
-      "restaurant": "ooorin restaurant",
-      "address": "Tirupati",
-      "mobile": "8555913494",
-      "email": "naveen3@gmail.com",
-      "username": "naveene",
-      "password": "123456",
-      "items": {},
-      "id": 6
-    },
-    {
-      "restaurant": "ooorin restaurant",
-      "address": "Tirupati",
-      "mobile": "8555913494",
-      "email": "naveen1@gmail.com",
-      "username": "naveene",
-      "password": "123456",
-      "items": [],
-      "id": 7
-    },
-    {
-      "restaurant": "ooorin restaurant",
-      "address": "Tirupati",
-      "mobile": "8555913494",
-      "email": "naveen6@gmail.com",
-      "username": "naveene",
-      "password": "123456",
-      "items": [],
-      "id": 8
-    },
-    {
-      "restaurant": "ooorin restaurant",
-      "address": "Tirupati",
-      "mobile": "8555913494",
-      "email": "naveen8@gmail.com",
-      "username": "naveene",
-      "password": "123456",
-      "items": [],
-      "id": 9
-    },
-    {
-      "restaurant": "ooorin restaurant",
-      "address": "Tirupati",
-      "mobile": "8555913494",
-      "email": "naveen9@gmail.com",
-      "username": "naveene",
-      "password": "123456",
-      "items": [],
-      "id": 10
     },
     {
       "restaurant": "ooorin restaurant",

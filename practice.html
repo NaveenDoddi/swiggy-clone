@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id="p"></p>
+    <button onclick="getLocation()">click</button>
+    <script>
+        var x = document.getElementById("p")
+        function getLocation() {
+          if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition);
+          } else { 
+            x.innerHTML = "Geolocation is not supported by this browser.";
+          }
+        }
+
+        function showPosition(position) {
+            var lat = position.coords.latitude
+            var long = position.coords.longitude
+            // const url = 'https://map-places.p.rapidapi.com/nearbysearch/json?location='+lat+'%2C'+long;
+            // const options = {
+            //   method: 'GET',
+            //     headers: {
+            //     'X-RapidAPI-Key': 'f90cbe6df8msh64ea992d6e80c97p1168e5jsn5b36b9b19652',
+            //     'X-RapidAPI-Host': 'map-places.p.rapidapi.com'
+            //   }
+            // }
+            const url = 'https://trueway-places.p.rapidapi.com/FindPlacesNearby?location='+lat+'%2C'+long+'&type=cafe&radius=500&language=en';
+const options = {
+  method: 'GET',
+  headers: {
+    'X-RapidAPI-Key': 'f90cbe6df8msh64ea992d6e80c97p1168e5jsn5b36b9b19652',
+    'X-RapidAPI-Host': 'trueway-places.p.rapidapi.com'
+  }
+};
+            fetch(url,options)
+            .then(res => res.json())
+            .then(data => console.log(data))
+            console.log("s")
+            x.innerHTML = "Latitude: " + position.coords.latitude + 
+            "<br>Longitude: " + position.coords.longitude;
+        }
+
+        
+
+        
+    </script>
+</body>
+
+</html>
