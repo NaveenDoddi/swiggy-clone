@@ -166,29 +166,27 @@
     <script>
 
       function addItem(){
+        const newItem = {
+          restaurant:document.getElementById("restaurantName").innerText,
+          email: document.getElementById("emailSpan").innerHTML,
 
-        var id = document.getElementById("idSpan").innerText
-        
-        var item = {
-          dishName: document.getElementById("name").value,
+          dishName: document.getElementById("name").value.toLowerCase(),
           Price: document.getElementById("Price").value,
           Description: document.getElementById("Discription").value,
           pic: document.getElementById('photo').src
         }
-
-        fetch("http://localhost:3000/restaurants/"+id)
-        .then(res => res.json())
-        .then((data) => {
-          data.items.push(item)
-          fetch("http://localhost:3000/restaurants/"+id,{
-            method: "PATCH",
-            body: JSON.stringify({ items: data.items }),
-            headers: {'Content-Type': 'application/json'}
-          })
-          
+        
+        fetch("http://localhost:3000/items",{
+          method: "POST",
+          body: JSON.stringify(newItem),
+          headers: {'Content-Type': 'application/json'},   
         })
-        
-        
+
+        .then(response => {
+          if (response.ok) {
+              alert("New Item added successfully")
+          }
+        }) 
       }
 
       function uploadImageforRegistration(){
@@ -222,8 +220,13 @@
           document.getElementById("mobileSpan").innerText = data[0].mobile 
           document.getElementById("emailSpan").innerText = data[0].email 
           document.getElementById("idSpan").innerText = data[0].id
+        })
 
-          data[0].items.map((item)=>{
+        fetch("http://localhost:3000/items?email="+userMail)
+        .then(res => res.json())
+        .then(data => {
+
+          data.map((item)=>{
             var cardDiv = document.createElement('div')
             cardDiv.className = "card col col-11 col-sm-5 col-md-5 col-lg-3 bg-light text-dark p-2"
 
@@ -256,7 +259,7 @@
 
             var descriptionTag = document.createElement("div")
             descriptionTag.className = "fs-6 fw-normal"
-            descriptionTag.innerText = item.Description +', ' + data[0].address
+            descriptionTag.innerText = item.Description
             cardDetails.append(descriptionTag)
             
             cardBody.append(cardDetails)
