@@ -715,20 +715,23 @@
 
             console.log(item)
 
+            fetch("http://localhost:3000/customers?mobile="+mobile_number)
+            .then(res => res.json())
+            .then((data)=> {
+                var updatedCart = data[0].cart
+                updatedCart.push(item)
+                console.log(updatedCart)
+
+                var id = data[0].id
+                fetch("http://localhost:3000/customers/"+id, {
+                    method: "PATCH",
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify( {cart : updatedCart } ),
+                })
+                
+            })
 
             
-            // fetch("http://localhost:3000/customers?mobile="+mobile_number)
-            // .then(res => res.json())
-            // .then((data)=> {
-            //     data[0].cart.push(item)
-            //     console.log(data[0].cart)
-            // })
-
-            fetch("http://localhost:3000/customers/1", {
-                method: "PATCH",
-                headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify( {cart : [item] } ),
-            })
 
         }
 
