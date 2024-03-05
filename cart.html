@@ -27,38 +27,35 @@
         }
     </style>
 </head>
-<body onload="displayCart()">
+<body onload="displayCart()" class="bg-body-tertiary">
     <div class="m-2 ">
         <div>
             <nav class="bg-body-tertiary">
                 <div class="d-flex justify-content-between bg-light">
                     
-                    <div class=" p-3">
+                    <div class="p-3">
                         <div>
-                            <img src="images/Swiggy_logo.png" alt="logo" style="max-width: 60px; float: left;" id="logo">  
+                            <img src="images/Swiggy_logo.png" alt="logo" style="max-width: 60px;" id="logo">  
                             <span class="fs-6 fw-bold">SECURE CHECKOUT</span>
                         </div>
                     </div>
                         
                     <div class="pt-3">
-
-                        <div class="d-md-none">
+                        
+                        <div class="d-sm-none">
                             <button type="button" class="btn" data-bs-toggle="offcanvas" data-bs-target="#right">
                                 <i class="fa-solid fa-bars"></i>
                             </button>
                         </div>
                         
-                        <div class="offcanvas-md offcanvas-end" tabindex="-1" id="right" aria-labelledby="offcanvasExampleLabel">
+                        <div class="offcanvas-sm offcanvas-end" tabindex="-1" id="right" aria-labelledby="offcanvasExampleLabel">
                             <div class="offcanvas-header">
                                 <h5 class="offcanvas-title" id="offcanvasExampleLabel">Details</h5>
                                 <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" data-bs-target="#right" aria-label="Close"></button>
                             </div>
                             <div class="offcanvas-body">
                                 <div class="">
-                                    <a href="search.html"><button class="btn"><i class="fa-solid fa-search"></i> &nbsp; Search</button></a>
-                                    <a href="#"><button class="btn"><i class="fa-solid fa-percent"></i> &nbsp; Offers</button></a>
                                     <a href="support.html"><button class="btn"><i class="fa-solid fa-life-ring"></i> &nbsp; Help</button></a>
-                                    <a href="customerLogin.html"><button class="btn"><i class="fa-solid fa-user"></i> &nbsp; SignIn</button></a>
                                     <a href="cart.html"><button style="color: #fd7e14;" class="btn"><i class="fa-solid fa-cart-shopping"></i> &nbsp; Cart</button></a>
                                 </div>
                             </div>
@@ -69,7 +66,6 @@
             </nav>
         </div>
 
-        
 
         <div class="body m-md-5 mt-3">
 
@@ -84,35 +80,169 @@
                 </div>
             </div>
 
+            <div class="row gap-5 mt-3">
 
-            <div id="cardDiv">
-                <div id="carditems">
+                <div id="cardDiv" class="col-md-7">
+                    <div id="cartItems">
+    
+                    </div>
+    
+                    <div id="coupons">
+                        <div class="p-2 border mb-4" style="background-color: white;">
+                            <h6><input type="checkbox"> &nbsp; Opt in for No-contact Delivery</h6>
+                            <p class="fw-light p-2" style="font-size: small;"> Unwell, or avoiding contact? Please select no-contact delivery. Partner will safely place the order outside your door (not for COD)</p>    
+                        </div>
+                        
+                        <div class="text-center w-100 mb-4" style="border-style: dotted;">
+                            <button type="button" class="btn btn-lg w-100" data-bs-toggle="offcanvas" data-bs-target="#coupon">
+                                <img src="images/offerslogo1.png" alt="" style="height: 30px;">&nbsp; Apply Coupon
+                            </button>
+                        </div>
 
+                        <div class="offcanvas offcanvas-start" tabindex="-1" id="coupon" aria-labelledby="offcanvasCoupons">
+                            <div class="offcanvas-header">
+                                <h6 class="offcanvas-title" id="offcanvasCoupons"> AVAILABLE COUPONS </h6>
+                                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                            </div>
 
+                            <div class="offcanvas-body">
+                                <div class="border p-2">
+                                    <div style="border-bottom: 1px solid;">
+                                        <div class="p-2 mt-3">
+                                            <div class="p-2 h6"><span class="p-2 h6" style="background-color: #f3c097;">SWIGGYIT</span> </div>
+                                            <p style="font-size: small;"><span class="fs-6 mt-2 " style="font-weight: 700;">20% off on select items </span> <br>Use code SWIGGYIT & get 20% off on orders above ₹179. Applicable on select items. Maximum discount: ₹50</p>
+                                            <button class="btn p-2" data-bs-dismiss="offcanvas" aria-label="Close" style="border: 1px solid #fd7e14; color: #fd7e14; border-radius: 0%">APPLY COUPON</button>
+                                        </div>
+                                    </div>
+
+                                    <div style="border-bottom: 1px solid;">
+                                        <div class="p-2 mt-3">
+                                            <div class="p-2 h6"><span class="p-2 h6" style="background-color: #f3c097;">APAYFEST</span> </div>
+                                            <p style="font-size: small;"><span class="fs-6 mt-2 " style="font-weight: 700;">Get up to ₹300 cashback using Amazon Pay Balance </span> <br>Up to ₹300 cashback on Amazon Pay Balance transactions above ₹299</p>
+                                            <button class="btn p-2" data-bs-dismiss="offcanvas" aria-label="Close" style="border: 1px solid #fd7e14; color: #fd7e14; border-radius: 0%">APPLY COUPON</button>
+                                        </div>
+                                    </div>
+
+                                    <div style="border-bottom: 1px solid;">
+                                        <div class="p-2 mt-3">
+                                            <div class="p-2 h6"><span class="p-2 h6" style="background-color: #f3c097;">SIMPL30</span> </div>
+                                            <p style="font-size: small;"><span class="fs-6 mt-2 " style="font-weight: 700;">Get flat ₹30 discount using Simpl </span> <br> Flat ₹30 discount on orders above ₹300 </p>
+                                            <button class="btn p-2" data-bs-dismiss="offcanvas" aria-label="Close" style="border: 1px solid #fd7e14; color: #fd7e14; border-radius: 0%">APPLY COUPON</button>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+    
+                    <div id="payment">
+                        <table class="table table-borderless f">
+                            <thead class="table table-borderless">
+                                <tr><th colspan="2">Bill Details</th></tr>
+                                <tr>
+                                    <td>Item Total</td>
+                                    <td id="totalAmount">0</td>
+                                </tr>
+                                <tr>
+                                    <td>Delivery Fee | 2.1 kms</td>
+                                    <td><span style="text-decoration: line-through; font-weight: 100;"> ₹24</span> <span>₹0.4</span></td>
+                                </tr>
+                            </thead>
+                            <tbody class="border-top">
+                                <tr>
+                                    <td>Delivery Tip
+                                    <td class="text-danger">Add tip</td>
+                                </tr>
+                                <tr>
+                                    <td>Platform fee</td>
+                                    <td>3</td>
+                                </tr>
+                                <tr>
+                                    <td>GST and Restaurant Charges</td>
+                                    <td>53.49</td>
+                                </tr>
+                            </tbody>
+                            <tfoot style="border-top: 2px solid black; font-weight: bold;">
+                                <tr>
+                                    <td>To Pay</td>
+                                    <td id="finalAmount">0</td>
+                                </tr>
+                            </tfoot>
+    
+                        </table>
+    
+                        <div class="p-3 border border-success text-success" style="background-color: rgb(204, 229, 204);">
+                            Savings of <span id="discount"></span>
+                        </div>
+    
+                    </div>
+    
+                    <div id="oderSuccess">
+    
+                    </div>
                 </div>
 
-                <div id="coupons">
+                <div id="address" class="p-1 col-md-4">
+                    <div style="background-color: white;" class="border p-3">
+                        <h6 class="m-2 fw-bold">Delivery address <i class="fa-solid fa-circle-check"></i></h6>
+                        <p class="p-2">
+                            <strong>Work</strong> <br>
 
+                            <span class="fw-light" id="addressSpan">l651, Jeevakona, Tirupati, Andhra Pradesh 517507, India</span> <br>
+
+                            <strong>22 MINS</strong>
+                        </p>
+                    </div>
+
+                    <div class="p-3 border mt-4" style="background-color: white;">
+                        <h6>Choose payment method</h6>
+
+                        <div class="p-3 mt-3 btn w-100 bg-success text-center text-light fw-bold">PROCEED TO PAY</div>
+                    </div>
                 </div>
 
-                <div id="payment">
-
-                </div>
-
-                <div id="oderSuccess">
-
-                </div>
-            </div>
+            </div> 
 
         </div>
-        
-        
 
     </div>
 
     <script>
 
         function displayCart(){
+
+            var mobile_number = localStorage.getItem("customerMobile")
+
+            fetch("http://localhost:3000/customers?mobile="+mobile_number)
+            .then(res => res.json())
+            .then((data) => {
+                if(data[0].cart.length != 0){
+                    document.getElementById("emptyCartDiv").style.display = "none"
+                }
+                data[0].cart.map((item) => {
+                    var div = document.createElement("div")
+                    div.className = "d-flex gap-2 m-2 fw-bold"
+
+                    var image = document.createElement("img")
+                    image.style.height = "80px"
+                    image.src = item.pic
+
+                    var about = document.createElement("div")
+                    about.innerText = item.about.split("\n\n")[0]
+
+                    div.append(image,about)
+
+                    var totalAmount = document.getElementById("totalAmount")
+                    totalAmount.innerText = Number(totalAmount.innerText) + Number(item.about.split("\n\n")[1].split(" ")[1])
+
+                    var finalAmount = document.getElementById("finalAmount")
+                    finalAmount.innerText = Number(finalAmount.innerText) + Number(item.about.split("\n\n")[1].split(" ")[1]) + 56.49
+
+                    document.getElementById("cartItems").append(div)
+                })
+            })
             
         }
 
