@@ -34,43 +34,19 @@
                 <div class="d-flex justify-content-between bg-light">
                     
                     <div class=" p-3">
-                        <div>
-                            <img src="images/Swiggy_logo.png" alt="logo" style="max-width: 60px; float: left;" id="logo">  
-                            <button type="button" class="btn d-flex mx-auto" data-bs-toggle="offcanvas" data-bs-target="#left">
-                                Other &nbsp; <i class="fa-solid fa-chevron-down" style="color:#fd7e14"></i>
-                            </button>
-                        </div>
-                        
-                    <!-- for userdetails off canvass on left side  -->
-                        
-                        <div class="offcanvas offcanvas-start" tabindex="-1" id="left" aria-labelledby="left">
-                            <div class="offcanvas-header">
-                                <h5 class="offcanvas-title" id="offcanvasExampleLabel">Details</h5>
-                                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                            </div>
-                            <div class="offcanvas-body">
-                                <div class="navbar-nav">
-                                    <a class="nav-link" href="#">Username: <span id="usernameSpan"></span></a>
-                                    <a class="nav-link" href="#">Address: <span id="addressSpan"></span></a>
-                                    <a class="nav-link" href="#">Mobile: <span id="mobileSpan"></span></a>
-                                    <a class="nav-link" href="#">E-mail: <span id="emailSpan"></span></a>
-                                    <a class="nav-link" href="#"><button class="btn btn-danger" onclick="logout()">Logout</button></a>
-                                    <a class="nav-link" href="#">@about Swiggy</a>
-                                    <a class="nav-link Disabled d-none" href="#"><span id="idSpan"></span></a>
-                                </div>
-                            </div>
-                        </div>                        
+                        <a href="customerDashboard.html"><img src="images/Swiggy_logo.png" alt="logo" style="max-width: 60px; float: left;" id="logo"></a>
+                        <span class="fw-bolder">Search</span>
                     </div>
-
+                        
                     <div class="pt-3">
 
-                        <div class="d-md-none">
+                        <div class="d-sm-none">
                             <button type="button" class="btn" data-bs-toggle="offcanvas" data-bs-target="#right">
                                 <i class="fa-solid fa-bars"></i>
                             </button>
                         </div>
                         
-                        <div class="offcanvas-md offcanvas-end" tabindex="-1" id="right" aria-labelledby="offcanvasExampleLabel">
+                        <div class="offcanvas-sm offcanvas-end" tabindex="-1" id="right" aria-labelledby="offcanvasExampleLabel">
                             <div class="offcanvas-header">
                                 <h5 class="offcanvas-title" id="offcanvasExampleLabel">Details</h5>
                                 <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" data-bs-target="#right" aria-label="Close"></button>
@@ -78,9 +54,7 @@
                             <div class="offcanvas-body">
                                 <div class="">
                                     <a href="search.html"><button style="color: #fd7e14;" class="btn"><i class="fa-solid fa-search"></i> &nbsp; Search</button></a>
-                                    <a href="#"><button class="btn"><i class="fa-solid fa-percent"></i> &nbsp; Offers</button></a>
                                     <a href="support.html"><button class="btn"><i class="fa-solid fa-life-ring"></i> &nbsp; Help</button></a>
-                                    <a href="customerLogin.html"><button class="btn"><i class="fa-solid fa-user"></i> &nbsp; SignIn</button></a>
                                     <a href="cart.html"><button class="btn"><i class="fa-solid fa-cart-shopping"></i> &nbsp; Cart</button></a>
                                 </div>
                             </div>

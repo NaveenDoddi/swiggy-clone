@@ -68,7 +68,7 @@
                         <div>
                             <img src="images/Swiggy_logo.png" alt="logo" style="max-width: 60px; float: left;" id="logo">  
                             <button type="button" class="btn d-flex mx-auto" data-bs-toggle="offcanvas" data-bs-target="#left">
-                                Other<i class="fa-solid fa-chevron-down" style="color:#fd7e14"></i>
+                                <span id="usernameSpan1">Other</span><i class="fa-solid fa-chevron-down" style="color:#fd7e14"></i>
                             </button>
                         </div>
                         
@@ -80,14 +80,29 @@
                                 <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                             </div>
                             <div class="offcanvas-body">
-                                <div onclick="getLocation()" id="location">Get you current location</div>
-                                <div class="navbar-nav">
-                                    <a class="nav-link" href="#">Username: <span id="usernameSpan"></span></a>
-                                    <a class="nav-link" href="#">Mobile: <span id="mobileSpan"></span></a>
-                                    <a class="nav-link" href="#">E-mail: <span id="emailSpan"></span></a>
-                                    <a class="nav-link" href="#"><button class="btn btn-danger" onclick="logout()">Logout</button></a>
-                                    <a class="nav-link" href="#">@about Swiggy</a>
-                                    <a class="nav-link Disabled d-none" href="#"><span id="idSpan"></span></a>
+                                <div class="navbar-nav mt-4">
+                                    <table class="table table-borderless nav-link">
+                                        <tr>
+                                            <td>Username:</td>
+                                            <td><span id="usernameSpan"></span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Mobile:</td>
+                                            <td><span id="mobileSpan"></span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>E-mail:</td>
+                                            <td><span id="emailSpan"></span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>@about Swiggy</td>
+                                            <td class="d-none"><span id="idSpan"></span></td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2" class="text-end"><button class="btn btn-danger" onclick="logout()">Logout</button></td>
+                                        </tr>
+
+                                    </table>
                                 </div>
                             </div>
                         </div>                        
@@ -123,9 +138,14 @@
 
             </nav>
         </div>
-        <div class="body mt-4 p-4">
+        <div class="body p-4">
             <div>
+<!-- getLocation div -->
+                <div onclick="getLocation()" class="mb-4 btn fw-bold">
+                    <span id="location">Get you current location </span> <i class="fa-solid fa-location-dot"></i>
+                </div>
 
+<!-- mind itmes div -->
                 <div>
                     <div id="mindDiv">
                         <div class="d-flex justify-content-between">
@@ -171,7 +191,7 @@
                     </div>
                 </div>
 
-                <!-- carousels -->
+<!-- carousels -->
                 <div class=" d-flex justify-content-center mt-5 row">
                     <div id="carouselExampleRide" class="carousel slide col col-md-8" data-bs-ride="true">
                         <div class="carousel-indicators">
@@ -210,7 +230,7 @@
 
                 </div>
                 
-                <!-- top restaurants scroll div -->
+<!-- top restaurants scroll div -->
         
                 <div class="mt-5" id="Toprest">
         
@@ -327,7 +347,7 @@
                 </div>
             </div>
 
-            <!-- credit cards show -->
+<!-- credit cards show -->
             <div id="offers" class="container bg-light text-dark mt-4">
 
                 <div class="offersDiv">
@@ -356,7 +376,7 @@
         
             </div>
 
-            <!-- new items added -->
+<!-- new items added -->
 
             <div>
                 <div class="fw-bolder fs-5 m-2 mt-4 text-center">For You</div>
@@ -387,7 +407,7 @@
 
         </div>
 
-        <!-- city divs -->
+<!-- city divs -->
         
         <div class="footer1 m-2" id="footer1">
             <div class="fw-bolder fs-5 m-2">Best Places to Eat Across Cities</div>
@@ -615,6 +635,7 @@
             .then(res => res.json())
             .then(data => {
                 document.getElementById("usernameSpan").innerText = data[0].username 
+                document.getElementById("usernameSpan1").innerText = data[0].username 
                 document.getElementById("mobileSpan").innerText = data[0].mobile 
                 document.getElementById("emailSpan").innerText = data[0].email 
                 document.getElementById("idSpan").innerText = data[0].id
@@ -693,6 +714,8 @@
             }
 
             console.log(item)
+
+
             
             // fetch("http://localhost:3000/customers?mobile="+mobile_number)
             // .then(res => res.json())
@@ -701,14 +724,13 @@
             //     console.log(data[0].cart)
             // })
 
-            fetch("http://localhost:3000/customers?mobile="+mobile_number,{
+            fetch("http://localhost:3000/customers/1", {
                 method: "PATCH",
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify( {cart : [item] } ),
             })
 
         }
-
 
         function scrolltoLeft(element) {
             var div = element.parentElement.parentElement.parentElement.getElementsByTagName("div")[3]
@@ -734,6 +756,25 @@
             document.getElementById("footer1Hidden").className = "d-none"
         }
 
+        function getLocation(){
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition);
+            }
+
+            function showPosition(position) {
+                var lat = position.coords.latitude
+                var long = position.coords.longitude
+
+                fetch("https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=13.6542284&longitude=79.4591269&localityLanguage=en")
+                .then(res => res.json())
+                .then((data) => {
+                    console.log(data.city)
+                    document.getElementById("location").innerText = data.city
+
+                })
+            }
+            
+        }
 
         const contents = document.getElementsByClassName('content');
         let currentIndex = 0;

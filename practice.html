@@ -31,14 +31,18 @@
             //     'X-RapidAPI-Host': 'map-places.p.rapidapi.com'
             //   }
             // }
-            const url = 'https://trueway-places.p.rapidapi.com/FindPlacesNearby?location='+lat+'%2C'+long+'&type=cafe&radius=500&language=en';
-            const options = {
-              method: 'GET',
-              headers: {
-                'X-RapidAPI-Key': 'f90cbe6df8msh64ea992d6e80c97p1168e5jsn5b36b9b19652',
-                'X-RapidAPI-Host': 'trueway-places.p.rapidapi.com'
-              }
-            };
+            fetch("https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=15.1220&longitude=77.6347&localityLanguage=en")
+            // fetch("https://maps.googleapis.com/maps/api/geocode/json?latlng="+lat+","+long+"&key=AIzaSyCoTosTVnHXSQ8lsx2OaV_rqZ2MpkiMA7M")
+            .then(res => res.json())
+            .then((data) => console.log(data))
+            // const url = 'https://trueway-places.p.rapidapi.com/FindPlacesNearby?location='+lat+'%2C'+long+'&type=cafe&radius=500&language=en';
+            // const options = {
+            //   method: 'GET',
+            //   headers: {
+            //     'X-RapidAPI-Key': 'f90cbe6df8msh64ea992d6e80c97p1168e5jsn5b36b9b19652',
+            //     'X-RapidAPI-Host': 'trueway-places.p.rapidapi.com'
+            //   }
+            // };
             // fetch(url,options)
             // .then(res => res.json())
             // .then(data => console.log(data))
