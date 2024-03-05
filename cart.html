@@ -95,7 +95,7 @@
                         
                         <div class="text-center w-100 mb-4" style="border-style: dotted;">
                             <button type="button" class="btn btn-lg w-100" data-bs-toggle="offcanvas" data-bs-target="#coupon">
-                                <img src="images/offerslogo1.png" alt="" style="height: 30px;">&nbsp; Apply Coupon
+                                <img src="images/offerslogo1.png" alt="" style="height: 30px;">&nbsp; <span id="applyCouponBtn">Apply Coupon</span> 
                             </button>
                         </div>
 
@@ -111,7 +111,7 @@
                                         <div class="p-2 mt-3">
                                             <div class="p-2 h6"><span class="p-2 h6" style="background-color: #f3c097;">SWIGGYIT</span> </div>
                                             <p style="font-size: small;"><span class="fs-6 mt-2 " style="font-weight: 700;">20% off on select items </span> <br>Use code SWIGGYIT & get 20% off on orders above ₹179. Applicable on select items. Maximum discount: ₹50</p>
-                                            <button class="btn p-2" data-bs-dismiss="offcanvas" aria-label="Close" style="border: 1px solid #fd7e14; color: #fd7e14; border-radius: 0%">APPLY COUPON</button>
+                                            <button class="btn p-2" data-bs-dismiss="offcanvas" aria-label="Close" style="border: 1px solid #fd7e14; color: #fd7e14; border-radius: 0%" onclick="applyCoupon(this)">APPLY COUPON</button>
                                         </div>
                                     </div>
 
@@ -119,7 +119,7 @@
                                         <div class="p-2 mt-3">
                                             <div class="p-2 h6"><span class="p-2 h6" style="background-color: #f3c097;">APAYFEST</span> </div>
                                             <p style="font-size: small;"><span class="fs-6 mt-2 " style="font-weight: 700;">Get up to ₹300 cashback using Amazon Pay Balance </span> <br>Up to ₹300 cashback on Amazon Pay Balance transactions above ₹299</p>
-                                            <button class="btn p-2" data-bs-dismiss="offcanvas" aria-label="Close" style="border: 1px solid #fd7e14; color: #fd7e14; border-radius: 0%">APPLY COUPON</button>
+                                            <button class="btn p-2" data-bs-dismiss="offcanvas" aria-label="Close" style="border: 1px solid #fd7e14; color: #fd7e14; border-radius: 0%" onclick="applyCoupon(this)">APPLY COUPON</button>
                                         </div>
                                     </div>
 
@@ -127,7 +127,15 @@
                                         <div class="p-2 mt-3">
                                             <div class="p-2 h6"><span class="p-2 h6" style="background-color: #f3c097;">SIMPL30</span> </div>
                                             <p style="font-size: small;"><span class="fs-6 mt-2 " style="font-weight: 700;">Get flat ₹30 discount using Simpl </span> <br> Flat ₹30 discount on orders above ₹300 </p>
-                                            <button class="btn p-2" data-bs-dismiss="offcanvas" aria-label="Close" style="border: 1px solid #fd7e14; color: #fd7e14; border-radius: 0%">APPLY COUPON</button>
+                                            <button class="btn p-2" data-bs-dismiss="offcanvas" aria-label="Close" style="border: 1px solid #fd7e14; color: #fd7e14; border-radius: 0%" onclick="applyCoupon(this)">APPLY COUPON</button>
+                                        </div>
+                                    </div>
+
+                                    <div style="border-bottom: 1px solid;">
+                                        <div class="p-2 mt-3">
+                                            <div class="p-2 h6"><span class="p-2 h6" style="background-color: #f3c097;">SIMPL30</span></div>
+                                            <p style="font-size: small;"><span class="fs-6 mt-2 " style="font-weight: 700;">Get flat ₹30 discount using Simpl </span> <br> Flat ₹30 discount on orders above ₹300 </p>
+                                            <button class="btn p-2" data-bs-dismiss="offcanvas" aria-label="Close" style="border: 1px solid #fd7e14; color: #fd7e14; border-radius: 0%" onclick="applyCoupon(this)">APPLY COUPON</button>
                                         </div>
                                     </div>
                                     
@@ -174,7 +182,7 @@
                         </table>
     
                         <div class="p-3 border border-success text-success" style="background-color: rgb(204, 229, 204);">
-                            Savings of <span id="discount"></span>
+                            Savings of <span id="discountAmount"></span>
                         </div>
     
                     </div>
@@ -198,8 +206,25 @@
 
                     <div class="p-3 border mt-4" style="background-color: white;">
                         <h6>Choose payment method</h6>
+                        <div class="p-3 mt-3 btn w-100 bg-success text-center text-light fw-bold" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="payment()">PROCEED TO PAY</div>
+                    </div>
 
-                        <div class="p-3 mt-3 btn w-100 bg-success text-center text-light fw-bold">PROCEED TO PAY</div>
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                          <div class="modal-content" style="background-color: rgb(204, 229, 204);">
+                            <div class="modal-header">
+                              <h1 class="modal-title fs-5" id="exampleModalLabel">Order Placed Successfully</h1>
+                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body text-center">
+                              <img src="images/done.gif" style="height: 150px; border-radius: 50%;" alt="">
+                              <h6 class="text-start">Our devivary patner reaches your location in 22 mins</h6>
+                            </div>
+                            <div class="modal-footer">
+                              <a href="customerDashboard.html"><button type="button" class="btn btn-success">Continue</button></a>
+                            </div>
+                          </div>
+                        </div>
                     </div>
                 </div>
 
@@ -246,6 +271,29 @@
             
         }
 
+        function applyCoupon(element){
+            var coupon = element.parentElement.getElementsByTagName("span")[0].innerText
+            document.getElementById("applyCouponBtn").innerText = "Coupon applied: " + coupon
+
+            var discount = 0
+            if(coupon == "SWIGGYIT"){
+                discount = 20
+            } else if(coupon == "APAYFEST"){
+                discount = 10
+            }else if(coupon == "SIMPL30"){
+                discount = 30
+            }
+
+            var finalAmount = Number(document.getElementById("finalAmount").innerText)
+            var savings = ((discount/100)*finalAmount).toFixed(2)
+            document.getElementById("discountAmount").innerText = savings
+
+            document.getElementById("finalAmount").innerText = (finalAmount - savings).toFixed(2)
+        }
+
+        function payment(){
+
+        }
     </script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
