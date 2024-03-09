@@ -198,7 +198,7 @@
                         <p class="p-2">
                             <strong>Work</strong> <br>
 
-                            <span class="fw-light" id="addressSpan">l651, Jeevakona, Tirupati, Andhra Pradesh 517507, India</span> <br>
+                            <span class="fw-light" id="addressSpan"></span> <br>
 
                             <strong>22 MINS</strong>
                         </p>
@@ -230,6 +230,7 @@
             </div> 
 
         </div>
+        <audio src="orderCompletedSound.mp3"></audio>
 
     </div>
 
@@ -242,9 +243,12 @@
             fetch("http://localhost:3000/customers?mobile="+mobile_number)
             .then(res => res.json())
             .then((data) => {
+
                 if(data[0].cart.length != 0){
                     document.getElementById("emptyCartDiv").style.display = "none"
                 }
+
+                document.getElementById("addressSpan").innerText = data[0].address
                 data[0].cart.map((item) => {
                     var div = document.createElement("div")
                     div.className = "d-flex gap-2 m-2 fw-bold"
@@ -257,6 +261,14 @@
                     var about = document.createElement("div")
                     about.innerText = item.about.split("\n\n")[0]
 
+                    var removeBtn = document.createElement("button")
+                    var fa = document.createElement("i")
+                    fa.className = "fa-solid fa-circle-minus text-danger"
+                    removeBtn.append(fa)
+                    removeBtn.className = "btn btn-sm"
+                    removeBtn.addEventListener("click", removeItem)
+                    about.append(document.createElement("br"),removeBtn)
+
                     div.append(image,about)
 
                     var totalAmount = document.getElementById("totalAmount")
@@ -268,6 +280,8 @@
                     document.getElementById("cartItems").append(div)
                 })
             })
+
+            
             
         }
 
@@ -291,7 +305,14 @@
             document.getElementById("finalAmount").innerText = (finalAmount - savings).toFixed(2)
         }
 
+        function removeItem(element){
+
+            console.log(element.currentTarget.parentElement.innerText)
+
+        }
+
         function payment(){
+            document.getElementsByTagName("audio")[0].play()
 
         }
     </script>

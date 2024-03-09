@@ -80,7 +80,7 @@
                                 <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                             </div>
                             <div class="offcanvas-body">
-                                <div class="navbar-nav mt-4">
+                                <div class="navbar-nav mt-2">
                                     <table class="table table-borderless nav-link">
                                         <tr>
                                             <td>Username:</td>
@@ -99,7 +99,7 @@
                                             <td class="d-none"><span id="idSpan"></span></td>
                                         </tr>
                                         <tr>
-                                            <td colspan="2" class="text-end"><button class="btn btn-danger" onclick="logout()">Logout</button></td>
+                                            <td colspan="2" class="text-end"><button class="btn btn-danger" onclick="logOut()">Logout</button></td>
                                         </tr>
 
                                     </table>
@@ -127,7 +127,15 @@
                                     <a href="#offers"><button class="btn"><i class="fa-solid fa-percent"></i> &nbsp;Offers</button></a>
                                     <a href="support.html"><button class="btn"><i class="fa-solid fa-life-ring"></i> &nbsp;Help</button></a>
                                     <a href="customerLogin.html" id="signInOption"><button class="btn"><i class="fa-solid fa-user"></i> &nbsp;SignIn</button></a>
-                                    <a href="cart.html"><button class="btn"><i class="fa-solid fa-cart-shopping"></i> &nbsp;Cart</button></a>
+                                    <a href="cart.html">
+                                        <button type="button" class="btn position-relative">
+                                            <i class="fa-solid fa-cart-shopping"></i> &nbsp;Cart
+                                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-success" id="cartBadge">
+                                              +
+                                            </span>
+                                        </button>
+                                    </a>
+                                    
                                 </div>
                             </div>
                         </div>
@@ -547,6 +555,17 @@
 
         </div>
 
+
+        <div class="toast-container position-fixed bottom-0 end-0 p-3">
+          <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-body bg-success d-flex justify-content-between p-1" >
+              <span class=" fw-bold pt-1">1 Item added to Cart &#129321;</span>
+              <a href="cart.html"><button class="btn btn-sm text-light">View <i class="fa-solid fa-cart-shopping"></i></button></a>
+            </div>
+            
+          </div>
+        </div>
+
     </div>
 
 
@@ -560,8 +579,6 @@
                 1: {id: '7122C99C3552DA62DDE04E60107AFE08', name: 'The Gallery Cafe', address: 'H. No, 8-2-465, Road No 4, Green Valley, Banjara Hills, Hyderabad, Telangana 500034, India', phone_number: '+919030616161', location:{}},
                 2: {id: '3D39D20CB1DADACA9BA3326877ECFEDB', name: 'Exotic Blooming Teas', address: 'Exotic Blooming Teas, Syndicate Bank, Rd Number 7,…Banjara Hills, Hyderabad, Telangana 500034, India', phone_number: '+918897416197', website: 'http://www.exoticbloomingtea.com/'},
             }
-
-            document.getElementById("location").innerText = Object.values(data)[0].address
 
             if(document.getElementById("restsNearbyMe").innerHTML === " "){
                 Object.values(data).map((item)=>{
@@ -691,6 +708,7 @@
 
                 var addButton = document.createElement("button")
                 addButton.className = "btn btn-success btn-sm"
+                addButton.id="liveToastBtn"
                 addButton.innerText = "Add +"
                 addButton.addEventListener("click", addtoCart)
                 cardBody.append(addButton)
@@ -705,6 +723,7 @@
             })
         }
 
+
         function addtoCart(element){
             var mobile_number = localStorage.getItem("customerMobile")
 
@@ -713,14 +732,12 @@
                 about : element.currentTarget.parentNode.innerText
             }
 
-            console.log(item)
-
             fetch("http://localhost:3000/customers?mobile="+mobile_number)
             .then(res => res.json())
             .then((data)=> {
                 var updatedCart = data[0].cart
                 updatedCart.push(item)
-                console.log(updatedCart)
+                document.getElementById("cartBadge").innerText = updatedCart.length
 
                 var id = data[0].id
                 fetch("http://localhost:3000/customers/"+id, {
@@ -731,7 +748,8 @@
                 
             })
 
-            
+            const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample)
+            toastBootstrap.show()
 
         }
 
@@ -779,6 +797,11 @@
             
         }
 
+        function logOut(){
+            localStorage.removeItem("customerMobile")
+            window.location.href = "customerLogin.html"
+
+        }
         const contents = document.getElementsByClassName('content');
         let currentIndex = 0;
       
@@ -790,6 +813,15 @@
       
         // Rotate the content every 3 seconds
         setInterval(rotateContent, 3000);
+
+        const toastLiveExample = document.getElementById('liveToast')
+
+        if (toastTrigger) {
+          const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample)
+          toastTrigger.addEventListener('click', () => {
+            toastBootstrap.show()
+          })
+        }
     </script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>

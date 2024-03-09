@@ -162,6 +162,14 @@
       </div>
       
     </div>
+
+    <div style="min-height: 120px;">
+      <div class="collapse collapse-horizontal" id="collapseWidthExample">
+        <div class="card card-body" style="width: 300px;">
+          This is some placeholder content for a horizontal collapse. It's hidden by default and shown when triggered.
+        </div>
+      </div>
+    </div>
     
     <script>
 
@@ -243,13 +251,23 @@
             cardDetails.className = "card-text"
 
             var star = document.createElement("i")
-            star.className = "fa-solid fa-circle text-success"
+            star.className = "fa-solid fa-star text-success"
 
             var nameTag = document.createElement("h6")
             nameTag.className = "cardNameTag fs-4 fw-bold"
             nameTag.innerText = item.dishName 
             nameTag.append(star)
             cardDetails.append(nameTag)
+
+            var moreBtn = document.createElement("button")
+            moreBtn.innerText = "⋮"
+            moreBtn.className = "btn"
+            moreBtn.setAttribute("data-bs-toggle","collapse")
+            moreBtn.setAttribute("data-bs-target","#collapseWidthExample")
+            moreBtn.setAttribute("aria-expanded","false")
+            moreBtn.setAttribute("aria-controls","collapseWidthExample")
+            
+            cardDetails.append(moreBtn)
 
             var priceTag = document.createElement("div")
             priceTag.className = "fs-6 fw-normal"
@@ -269,6 +287,21 @@
 
           })
         })
+      }
+
+      function createDropDowns(){
+
+        var div = document.createElement("div")
+        div.className = "dropdown"
+        
+        var moreBtn = document.createElement("button")
+        moreBtn.innerText = "⋮"
+        moreBtn.className = "btn"
+        moreBtn.setAttribute("data-bs-toggle","dropdown")
+        moreBtn.setAttribute("aria-expanded","false")
+        
+        
+
       }
 
       function logout(){
