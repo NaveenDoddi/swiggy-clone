@@ -64,10 +64,11 @@
             fetch("http://localhost:3000/Restaurants?email="+username)
             .then(response => response.json())
             .then((data)=> {
+                console.log(atob(data[0].password))
  
                 try {
                     if(username == data[0].email){
-                        if(password == data[0].password){
+                        if(password == atob(data[0].password)){
                             console.log(data)
                             localStorage.setItem("restaurantMail", data[0].email)
                             window.location.href = "restaurantDashboard.html"

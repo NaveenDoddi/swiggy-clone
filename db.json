@@ -44,6 +44,15 @@
       "username": "naveene",
       "password": "123456",
       "id": 12
+    },
+    {
+      "restaurant": "urii2341",
+      "address": "karakambadi",
+      "mobile": "8444913494",
+      "email": "uri9@gmail.com",
+      "username": "uriiiii",
+      "password": "MTIzNDU2",
+      "id": 13
     }
   ],
   "items": [

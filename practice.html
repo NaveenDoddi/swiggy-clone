@@ -7,16 +7,24 @@
 </head>
 <body>
     <p id="p"></p>
+    <input type="text" id="input">
     <button onclick="getLocation()">click</button>
     <script>
         var x = document.getElementById("p")
         function getLocation() {
-          if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(showPosition);
+
+          var password = btoa(document.getElementById('input').value)
+
+
+          var de = atob(password)
+          console.log(password,de)
+
+          // if (navigator.geolocation) {
+          //   navigator.geolocation.getCurrentPosition(showPosition);
             
-          } else { 
-            x.innerHTML = "Geolocation is not supported by this browser.";
-          }
+          // } else { 
+          //   x.innerHTML = "Geolocation is not supported by this browser.";
+          // }
         }
 
 
