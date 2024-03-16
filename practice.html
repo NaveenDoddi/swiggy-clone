@@ -31,29 +31,68 @@
             //     'X-RapidAPI-Host': 'map-places.p.rapidapi.com'
             //   }
             // }
-            fetch("https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=15.1220&longitude=77.6347&localityLanguage=en")
-            // fetch("https://maps.googleapis.com/maps/api/geocode/json?latlng="+lat+","+long+"&key=AIzaSyCoTosTVnHXSQ8lsx2OaV_rqZ2MpkiMA7M")
-            .then(res => res.json())
-            .then((data) => console.log(data))
-            // const url = 'https://trueway-places.p.rapidapi.com/FindPlacesNearby?location='+lat+'%2C'+long+'&type=cafe&radius=500&language=en';
-            // const options = {
-            //   method: 'GET',
-            //   headers: {
-            //     'X-RapidAPI-Key': 'f90cbe6df8msh64ea992d6e80c97p1168e5jsn5b36b9b19652',
-            //     'X-RapidAPI-Host': 'trueway-places.p.rapidapi.com'
-            //   }
-            // };
-            // fetch(url,options)
+            // fetch("https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=15.1220&longitude=77.6347&localityLanguage=en")
+            // // fetch("https://maps.googleapis.com/maps/api/geocode/json?latlng="+lat+","+long+"&key=AIzaSyCoTosTVnHXSQ8lsx2OaV_rqZ2MpkiMA7M")
             // .then(res => res.json())
-            // .then(data => console.log(data))
+            // .then((data) => console.log(data))
+            const url = 'https://trueway-places.p.rapidapi.com/FindPlacesNearby?location='+lat+'%2C'+long+'&type=cafe&radius=500&language=en';
+            const options = {
+              method: 'GET',
+              headers: {
+                'X-RapidAPI-Key': 'f90cbe6df8msh64ea992d6e80c97p1168e5jsn5b36b9b19652',
+                'X-RapidAPI-Host': 'trueway-places.p.rapidapi.com'
+              }
+            };
+            fetch(url,options)
+            .then(res => res.json())
+            .then(data => console.log(data))
             console.log("s")
             x.innerHTML = "Latitude: " + position.coords.latitude + 
             "<br>Longitude: " + position.coords.longitude;
         }
-
         
-
         
+        const { MongoClient } = require('mongodb');
+
+        // Connection URI for MongoDB Atlas
+        const uri = 'mongodb+srv://<username>:<password>@<cluster-address>/<dbname>';
+        
+        // Database Name
+        const dbName = 'mydatabase';
+        
+        // Create a new MongoClient
+        const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+        
+        async function main() {
+          try {
+            // Connect the client to the server
+            await client.connect();
+            console.log('Connected to MongoDB Atlas');
+          
+            // Use the specified database
+            const db = client.db(dbName);
+          
+            // Example: Insert a document
+            const collection = db.collection('mycollection');
+            const document = { name: 'Jane', age: 25 };
+            const result = await collection.insertOne(document);
+            console.log('Inserted document with id:', result.insertedId);
+          
+            // Example: Query documents
+            const query = { name: 'Jane' };
+            const foundDocument = await collection.findOne(query);
+            console.log('Found document:', foundDocument);
+          } catch (error) {
+            console.error('Error:', error);
+          } finally {
+            // Close the connection
+            await client.close();
+            console.log('Connection closed');
+          }
+        }
+
+        main();
+
     </script>
 </body>
 

@@ -230,6 +230,7 @@
             </div> 
 
         </div>
+        <span id="customerID" class="d-none"></span>
         <audio src="orderCompletedSound.mp3"></audio>
 
     </div>
@@ -247,6 +248,7 @@
                 if(data[0].cart.length != 0){
                     document.getElementById("emptyCartDiv").style.display = "none"
                 }
+                document.getElementById("customerID").innerText = data[0].id
 
                 document.getElementById("addressSpan").innerText = data[0].address
                 data[0].cart.map((item) => {
@@ -254,12 +256,13 @@
                     div.className = "d-flex gap-2 m-2 fw-bold"
 
                     var image = document.createElement("img")
-                    image.style.height = "80px"
-                    image.style.width = "100px"
+                    image.style.height = "100px"
+                    image.style.width = "120px"
                     image.src = item.image
 
                     var about = document.createElement("div")
                     about.innerText = item.about.split("\n\n")[0]
+                    about.append(document.createElement("br"),item.about.split("\n\n")[1].split("\n")[0])
 
                     var removeBtn = document.createElement("button")
                     var fa = document.createElement("i")
@@ -281,8 +284,6 @@
                 })
             })
 
-            
-            
         }
 
         function applyCoupon(element){
@@ -306,12 +307,49 @@
         }
 
         function removeItem(element){
+            var mobile_number = localStorage.getItem("customerMobile")
 
-            console.log(element.currentTarget.parentElement.innerText)
+            var item = element.currentTarget.parentElement.innerText.split("\n")[1]
+
+            fetch("http://localhost:3000/customers?mobile="+mobile_number)
+            .then(res => res.json())
+            .then((data) => {
+
+                // Object.values(data[0].cart).map((i)=> (i.about.split("\n")[1] == item) ? (data[0].cart.splice(i,1)) : "")
+                var cart = data[0].cart
+
+                const itemIndex = Object.values(cart).map((i)=> (i.about.split("\n")[1] == item))
+                if (itemIndex != -1) {
+                    cart.splice(itemIndex, 1);
+                }
+
+                var id = data[0].id
+                fetch("http://localhost:3000/customers/"+id, {
+                    method: "PATCH",
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify( {cart : cart } ),
+                })
+
+            })
+
+            setTimeout(() => {
+                window.location.reload()
+                
+            }, 100);
+
+            console.log(element.currentTarget.parentElement.innerText.split("\n")[1])
 
         }
 
         function payment(){
+            var customerID = document.getElementById("customerID").innerText
+            
+            fetch("http://localhost:3000/customers/"+customerID, {
+                method: "PATCH",
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify( {cart : [] } ),
+            })
+
             document.getElementsByTagName("audio")[0].play()
 
         }

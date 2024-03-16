@@ -95,6 +95,10 @@
                                             <td><span id="emailSpan"></span></td>
                                         </tr>
                                         <tr>
+                                            <td>Address:</td>
+                                            <td><span id="addressSpan"></span></td>
+                                        </tr>
+                                        <tr>
                                             <td>@about Swiggy</td>
                                             <td class="d-none"><span id="idSpan"></span></td>
                                         </tr>
@@ -123,13 +127,13 @@
                             </div>
                             <div class="offcanvas-body">
                                 <div class="">
-                                    <a href="search.html"><button class="btn"><i class="fa-solid fa-search"></i> &nbsp;Search</button></a>
-                                    <a href="#offers"><button class="btn"><i class="fa-solid fa-percent"></i> &nbsp;Offers</button></a>
-                                    <a href="support.html"><button class="btn"><i class="fa-solid fa-life-ring"></i> &nbsp;Help</button></a>
+                                    <a href="search.html"><button class="btn"><i class="fa-solid fa-search"></i> Search</button></a>
+                                    <a href="#offers"><button class="btn"><i class="fa-solid fa-percent"></i> Offers</button></a>
+                                    <a href="support.html"><button class="btn"><i class="fa-solid fa-life-ring"></i> Help</button></a>
                                     <a href="customerLogin.html" id="signInOption"><button class="btn"><i class="fa-solid fa-user"></i> &nbsp;SignIn</button></a>
                                     <a href="cart.html">
                                         <button type="button" class="btn position-relative">
-                                            <i class="fa-solid fa-cart-shopping"></i> &nbsp;Cart
+                                            <i class="fa-solid fa-cart-shopping"></i> Cart
                                             <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-success" id="cartBadge">
                                               +
                                             </span>
@@ -210,29 +214,28 @@
                             <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="4" aria-label="Slide 5"></button>
                         </div>
                         <div class="carousel-inner" >
-                            <div class="carousel-item active">
-                                <img src="images/cara1.webp" class="d-block w-100 w-md-50" alt="...">
-                              </div>
-                              <div class="carousel-item">
-                                <img src="images/cara3.jpg" class="d-block w-100" alt="...">
-                              </div>
-                              <div class="carousel-item">
-                                <img src="images/cara2.png" class="d-block w-100" alt="...">
-                              </div>
-                              <div class="carousel-item">
-                                <img src="images/cara2.avif" class="d-block w-100" alt="...">
-                              </div>
-                              <div class="carousel-item">
-                                <img src="images/cara4.jpg" class="d-block w-100" alt="...">
+                            <div class="carousel-item active" data-bs-interval="2000">
+                              <img src="images/cara1.webp" class="d-block w-100" alt="...">
+                            </div>
+                            <div class="carousel-item" data-bs-interval="2000">
+                              <img src="images/cara3.jpg" class="d-block w-100" alt="...">
+                            </div>
+                            <div class="carousel-item" data-bs-interval="2000">
+                              <img src="images/cara2.png" class="d-block w-100" alt="...">
+                            </div>
+                            <div class="carousel-item" data-bs-interval="2000">
+                              <img src="images/cara2.avif" class="d-block w-100" alt="...">
+                            </div>
+                            <div class="carousel-item" data-bs-interval="2000">
+                              <img src="images/cara4.jpg" class="d-block w-100" alt="...">
                             </div>
                         </div>
+
                         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleRide" data-bs-slide="prev">
                           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                          <span class="visually-hidden">Previous</span>
                         </button>
                         <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleRide" data-bs-slide="next">
                           <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                          <span class="visually-hidden">Next</span>
                         </button>
                     </div>
 
@@ -573,72 +576,96 @@
 
     <script>
 
+        document.getElementsByClassName("carousel-control-next")[0].click()
+
         function restsNearbyMe(){
-            const data = {
-                0: {id: '6D65ED574E567164792CC7B73A7F27CB', name: 'Coffee to Cocktails Bar', address: 'Lobby Level, Hyatt Place, Rd Number 1, Zahara Naga…Banjara Hills, Hyderabad, Telangana 500034, India', phone_number: '+914067801234', website: 'https://hyderabadbanjarahills.place.hyatt.com/en/h…ils-bar.html?src=gbl_lcl_hyzh_coffee_to_cocktails',},
-                1: {id: '7122C99C3552DA62DDE04E60107AFE08', name: 'The Gallery Cafe', address: 'H. No, 8-2-465, Road No 4, Green Valley, Banjara Hills, Hyderabad, Telangana 500034, India', phone_number: '+919030616161', location:{}},
-                2: {id: '3D39D20CB1DADACA9BA3326877ECFEDB', name: 'Exotic Blooming Teas', address: 'Exotic Blooming Teas, Syndicate Bank, Rd Number 7,…Banjara Hills, Hyderabad, Telangana 500034, India', phone_number: '+918897416197', website: 'http://www.exoticbloomingtea.com/'},
-            }
-
             if(document.getElementById("restsNearbyMe").innerHTML === " "){
-                Object.values(data).map((item)=>{
+                if (navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition(showPosition);
+                }
+
+                function showPosition(position) {
+                    var lat = position.coords.latitude
+                    var long = position.coords.longitude
+
+                    const url = 'https://trueway-places.p.rapidapi.com/FindPlacesNearby?location='+lat+'%2C'+long+'&type=cafe&radius=500&language=en';
+                    const options = {
+                      method: 'GET',
+                      headers: {
+                        'X-RapidAPI-Key': 'f90cbe6df8msh64ea992d6e80c97p1168e5jsn5b36b9b19652',
+                        'X-RapidAPI-Host': 'trueway-places.p.rapidapi.com'
+                      }
+                    };
+
+                    fetch(url,options)
+                    .then(res => res.json())
+                    .then(data => {
+                    
+                        Object.values(data).map((items)=>{
+                            items.map((item)=>{
+                                var div = document.createElement("div")
+                                div.className = " col col-12 col-md-6"
+                                
+                                var table = document.createElement("table")
+                                table.className = "table bg-light text-dark p-1"
+                                
+                                
+                                var tableHead = document.createElement("tr")
+                                var td = document.createElement("th")
+                                td.innerText = item.name
+                                td.className = "text-warning"
+                                tableHead.append(td)
+                                table.append(tableHead)
+                                
+                                var address = document.createElement("tr")
+                                var td = document.createElement("td")
+                                td.style.fontSize = "small"
+                                td.innerText = item.address 
+                                
+                                address.append(td)
+                                table.append(address)
+                                
+                                var phone_number = document.createElement("tr")
+                                var td = document.createElement("td")
+                                
+                                
+                                var star = document.createElement("i")
+                                star.className = "fa-solid fa-phone fa-shake text-success"
+                                td.append(star)
+                                
+                                
+                                var span = document.createElement("span")
+                                span.innerText = item.phone_number
+                                span.className = "bg-light"
+                                
+                                td.append(span)
+                                
+                                phone_number.append(td)
+                                
+                                table.append(phone_number)
+                                
+                                div.append(table)
+                                document.getElementById("restsNearbyMe").append(div)
+                                
+
+                            })
+                            
+                        
+                        })
+                    
+                    })
+                    
+
+                }
+
                 
-                var div = document.createElement("div")
-                div.className = " col col-12 col-md-6"
-                                
-                var table = document.createElement("table")
-                table.className = "table bg-light text-dark p-1"
-                                
-                                
-                var tableHead = document.createElement("tr")
-                var td = document.createElement("th")
-                td.innerText = item.name
-                td.className = "text-warning"
-                tableHead.append(td)
-                table.append(tableHead)
-                                
-                var address = document.createElement("tr")
-                var td = document.createElement("td")
-                td.style.fontSize = "small"
-                td.innerText = item.address 
-                                
-                address.append(td)
-                table.append(address)
-                                
-                var phone_number = document.createElement("tr")
-                var td = document.createElement("td")
-                                
-                                
-                var star = document.createElement("i")
-                star.className = "fa-solid fa-phone fa-shake text-success"
-                td.append(star)
-                                
-                                
-                var span = document.createElement("span")
-                span.innerText = item.phone_number
-                span.className = "bg-light"
-                                
-                td.append(span)
-                                
-                phone_number.append(td)
-                                
-                table.append(phone_number)
-                                
-                div.append(table)
-                document.getElementById("restsNearbyMe").append(div)
-                                
-                                
-                })
-
             }
-            
             document.getElementById("restsNearbyMe").className = "row"
-
             document.getElementById("restsNearbyMeBtns").className = "d-none"
             document.getElementById("showLess").className = "d-flex justify-content-end "
+            
 
-
-        }
+        }   
 
         function displayItems(){
 
@@ -655,7 +682,14 @@
                 document.getElementById("usernameSpan1").innerText = data[0].username 
                 document.getElementById("mobileSpan").innerText = data[0].mobile 
                 document.getElementById("emailSpan").innerText = data[0].email 
+                document.getElementById("addressSpan").innerText = data[0].address
                 document.getElementById("idSpan").innerText = data[0].id
+
+                if(data[0].cart.length != 0){
+                    document.getElementById("cartBadge").innerText = data[0].cart.length
+
+                }
+
             })
                 
             fetch("http://localhost:3000/items")

@@ -205,6 +205,9 @@
         </div>
       </div>
       
+
+
+      <span id="currentItemIdSpan" class="d-none"></span>
     </div>
 
     
@@ -230,8 +233,10 @@
         .then(response => {
           if (response.ok) {
               alert("New Item added successfully")
+              window.location.reload()
           }
         }) 
+
       }
 
       function uploadImageforRegistration(){
@@ -296,20 +301,21 @@
             nameTag.append(star)
             cardDetails.append(nameTag)
 
+            var moreDiv1 = document.createElement("div")
+            moreDiv1.className = "dropstart"
+
             var moreBtn = document.createElement("button")
             moreBtn.innerText = "⋮"
-            moreBtn.className = "btn"
-            moreBtn.setAttribute("data-bs-toggle","collapse")
-            moreBtn.setAttribute("data-bs-target","#collapseExample"+item.id)
+            moreBtn.className = "btn text-end"
+            moreBtn.addEventListener("click", settingItemId)
+            moreBtn.setAttribute("data-bs-toggle","dropdown")
             moreBtn.setAttribute("aria-expanded","false")
-            moreBtn.setAttribute("aria-controls","collapseExample")
 
             var moreDiv = document.createElement("div")
-            moreDiv.className = "collapse"
-            moreDiv.setAttribute("id", "collapseExample"+item.id)
+            moreDiv.className = "dropdown-menu"
 
             var editBtn = document.createElement("button")
-            editBtn.className = "btn btn-sm"
+            editBtn.className = "btn btn-sm dropdown-item"
             editBtn.innerText = "Edit"
             editBtn.setAttribute("data-bs-toggle","modal")
             editBtn.setAttribute("data-bs-target","#editModal")
@@ -317,16 +323,15 @@
             editBtn.addEventListener("click", Edit)
 
             var delBtn = document.createElement("button")
-            delBtn.className = "btn btn-sm"
+            delBtn.className = "btn btn-sm dropdown-item"
             delBtn.innerText = "Remove"
             delBtn.addEventListener("click", Del)
 
-
             moreDiv.append(editBtn, delBtn)
 
-            moreBtn.append(moreDiv)
+            moreDiv1.append(moreBtn, moreDiv)
             
-            cardDetails.append(moreBtn,)
+            // cardDetails.append(moreBtn)
 
             var priceTag = document.createElement("div")
             priceTag.className = "fs-6 fw-normal"
@@ -335,8 +340,16 @@
             cardDetails.append(priceTag)
 
             var descriptionTag = document.createElement("div")
-            descriptionTag.className = "fs-6 fw-normal"
+            descriptionTag.className = "fs-6 fw-normal d-flex justify-content-between"
             descriptionTag.innerText = item.Description
+
+            var itemIdSpan = document.createElement("span")
+            itemIdSpan.innerText = item.id
+            item.id = "itemIdSpan"
+            itemIdSpan.className = "d-none"
+
+            descriptionTag.append(itemIdSpan , moreDiv1)
+
             cardDetails.append(descriptionTag)
             
             cardBody.append(cardDetails)
@@ -349,19 +362,69 @@
       }
 
       function Edit(Element){
-        var element = Element.target.parentElement.parentElement.parentElement.parentElement.parentElement
-        document.getElementById("photo1").src = element.getElementsByTagName("img")[0]
-        document.getElementById("name1").value = element.getElementsByClassName("caedNameTag")[0].innerText
-        console.log(element)
+        var element = Element.target.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement
+        
+        document.getElementById("photo1").src = element.getElementsByTagName("img")[0].src
+        document.getElementById("name1").value = element.getElementsByClassName("cardNameTag")[0].innerText
+        document.getElementById("Price1").value = element.getElementsByClassName("fs-6")[0].innerText.split(" ")[1].split("/")[0]
+        document.getElementById("Discription1").value = element.getElementsByClassName("fs-6")[1].innerText.split("⋮")[0]
+        
+      }
 
+      function update(){
 
+        var id = document.getElementById("currentItemIdSpan").innerText
+
+        const newItem = {
+          restaurant: document.getElementById("restaurantName").innerText,
+          email: document.getElementById("emailSpan").innerHTML,
+
+          dishName: document.getElementById("name1").value.toLowerCase(),
+          Price: document.getElementById("Price1").value,
+          Description: document.getElementById("Discription1").value,
+          pic: document.getElementById('photo1').src
+        }
+        
+        fetch("http://localhost:3000/items/"+id,{
+          method: "PATCH",
+          body: JSON.stringify(newItem),
+          headers: {'Content-Type': 'application/json'},   
+        })
+
+        .then(response => {
+          if (response.ok) {
+              alert("New Item added successfully")
+              window.location.reload()
+
+          }
+        })
+        
       }
       function Del(){
+        var id = document.getElementById("currentItemIdSpan").innerText
+
+        fetch("http://localhost:3000/items/"+id,{
+          method: "DELETE",
+             
+        })
+        .then(response => {
+          if (response.ok) {
+            alert("item Removed")
+            window.location.reload()
+
+          }
+        })
 
       }
+      function settingItemId(Element){
+        var element = Element.target.parentElement.parentElement
+
+        document.getElementById("currentItemIdSpan").innerText = element.getElementsByClassName("d-none")[0].innerText
+
+      }
+
       function logout(){
         localStorage.removeItem("restaurantMail")
-        console.log("lsdkf")
         window.location.href = "restaurantLogin.html"
       }
 
