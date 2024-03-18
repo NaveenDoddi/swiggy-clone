@@ -278,7 +278,7 @@
                     totalAmount.innerText = Number(totalAmount.innerText) + Number(item.about.split("\n\n")[1].split(" ")[1])
 
                     var finalAmount = document.getElementById("finalAmount")
-                    finalAmount.innerText = Number(finalAmount.innerText) + Number(item.about.split("\n\n")[1].split(" ")[1]) + 56.49
+                    finalAmount.innerText = (Number(finalAmount.innerText) + Number(item.about.split("\n\n")[1].split(" ")[1]) + 56.49).toFixed(2)
 
                     document.getElementById("cartItems").append(div)
                 })
