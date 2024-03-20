@@ -58,7 +58,7 @@
         function run(){
             var input = document.getElementById("inputdata").value
 
-            fetch("http://localhost:3000/Customers?mobile="+input)
+            fetch("http://localhost:3000/customers?mobile="+input)
             .then(response => response.json())
             .then((data)=> {
  

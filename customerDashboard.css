@@ -6,7 +6,6 @@
     width: 100%;
 }
 
-
 #mindItems, #topResItems{
     overflow: auto;
     scroll-behavior: smooth;
@@ -42,14 +41,14 @@
     white-space: nowrap;
     text-overflow: ellipsis;
 }
-.card img:hover {
+#dishItemsnew .card img:hover {
    transform: scale(0.9);
 }
 #logo:hover{
     transform: scale(1.2);
 }
 
-.card img, #logo{
+#dishItemsnew .card img, #logo{
   transition: transform 0.3s ease-in-out;
 }
 
@@ -64,4 +63,50 @@
 
 #restsNearbyMe th, #restsNearbyMe td{
     padding: 10px;
+}
+
+#topResItems .card-img-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.8); 
+    padding: 1rem;
+    transition: opacity 1s, transform 0.5s ease-in-out;
+    transform: translateY(100%); 
+   
+}
+#topResItems .card{
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+
+}
+  
+#topResItems .card:hover .card-img-overlay {
+    transform: translateY(35%);
+    border-radius: 0px;
+}
+
+.footer td {
+    position: relative;
+    display: inline-block;
+    vertical-align: top
+}
+
+.footer td:after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: auto;
+    right: 0;
+    width: 0;
+    height: 1px;
+    transition: ease all .35s;
+    background: currentColor
+}
+
+.footer td:hover:after {
+    left: 0;
+    right: auto;
+    width: 100%
 }
