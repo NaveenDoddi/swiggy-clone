@@ -315,13 +315,12 @@
             .then(res => res.json())
             .then((data) => {
 
-                // Object.values(data[0].cart).map((i)=> (i.about.split("\n")[1] == item) ? (data[0].cart.splice(i,1)) : "")
                 var cart = data[0].cart
-
-                const itemIndex = Object.values(cart).map((i)=> (i.about.split("\n")[1] == item))
-                if (itemIndex != -1) {
-                    cart.splice(itemIndex, 1);
+            
+                for(let i = 0; i<Object.values(cart).length; i++){
+                    Object.values(cart)[i].about.split("\n")[1] == item ? cart.splice(i,1):""
                 }
+                // Object.values(cart).forEach((i)=> i.about.split("\n")[1] == item ? cart.splice(i,1):"")
 
                 var id = data[0].id
                 fetch("http://localhost:3000/customers/"+id, {

@@ -1,70 +1,468 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=
-  , initial-scale=1.0">
-  <title>Document</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/accd26a21f.js" crossorigin="anonymous"></script><!-- icons -->
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <title>Document</title>
 </head>
 <body>
 
   <style>
 
-#profile_pic {
-    display: flex;
-    align-content: center;
-    align-items: center;
-    justify-content: center;
-    width: 200px;
-    height: 200px;
-    margin: auto;
-    background-color:  #3d5875;
-    background-image: linear-gradient(19deg,  #3d5875 0%,  #91bbe8 100%);
-    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
-    box-shadow: 15px 15px 50px rgba(0, 0, 0, 0.2);
-    animation: morphing 10s infinite;
-    overflow: hidden;
+body{
+  padding-top:20px;
 }
 
-#profile_pic:hover {
-    animation-play-state: paused;
+.img-fluid {
+    max-width: 100%;
+    height: auto;
 }
 
-@keyframes morphing {
-    0% {
-        border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
-        box-shadow: 15px 15px 50px rgba(0, 0, 0, 0.2);
-    }
-    25% { 
-        border-radius: 58% 42% 75% 25% / 76% 46% 54% 24%;
-    }
-    50% {
-        border-radius: 50% 50% 33% 67% / 55% 27% 73% 45%;
-        box-shadow: -10px -5px 50px rgba(0, 0, 0, 0.2);
-    }
-    75% {
-        border-radius: 33% 67% 58% 42% / 63% 68% 32% 37%;
-    }
+.card {
+    margin-bottom: 30px;
+}
+
+.overflow-hidden {
+    overflow: hidden!important;
+}
+
+
+.linear-gradient {
+    background-image: linear-gradient(#50b2fc,#f44c66);
+}
+
+.bg-light-info {
+    --bs-bg-opacity: 1;
+    background-color: rgba(235,243,254,1)!important;
+}
+
+.shadow-none {
+    box-shadow: none!important;
+}
+
+.overflow-hidden {
+    overflow: hidden!important;
+}
+
+.border {
+    border: 1px solid #ebf1f6 !important;
+}
+
+a {
+    text-decoration: none;
+}
+
+.user-profile-tab .nav-item .nav-link.active {
+    color: #5d87ff;
+    border-bottom: 2px solid #5d87ff;
+}
+
+.mb-9 {
+    margin-bottom: 20px!important;
+}
+
+.card, .bg-light {
+    box-shadow: 0 20px 27px 0 rgb(0 0 0 / 5%);
+}
+
+
+.ms-7 {
+    margin-left: 30px!important;
+}
+
+.reposCard{
+    color: white;
+    border-radius: 5px;
+    -webkit-box-shadow: 0 1px 2.94px 0.06px rgba(4,26,55,0.16);
+    box-shadow: 0 1px 2.94px 0.06px rgba(4,26,55,0.16);
+    border: none;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    background: linear-gradient(45deg,#4099ff,#73b4ff);
+}
+
+.reposCard:hover {
+    transform: scale(1.05);
+    box-shadow: 10px 10px 50px rgba(4,26,55,0.16);
+
+}
+
+.reposCard span {
+    float: right;
 }
 
   </style>
   
+  <div class="container">
+    <div class="card overflow-hidden">
+      <div class="card-body p-0">
+        <img src="https://www.bootdey.com/image/1352x300/6495ED/000000" id="background_pic" alt="" class="img-fluid">
+        <div class="row align-items-center">
+          <div class="col-lg-4 order-lg-1 order-2">
+            <div class="d-flex align-items-center justify-content-around m-4">
+              <div class="text-center">
+                <i class="fa fa-file fs-6 d-block mb-2"></i>
+                <h4 class="mb-0 fw-semibold lh-1" id="reposNum">938</h4>
+                <p class="mb-0 fs-4">Repos</p>
+              </div>
+              <div class="text-center">
+                <i class="fa fa-users fs-6 d-block mb-2"></i>
+                <h4 class="mb-0 fw-semibold lh-1" id="followersNum">3,586</h4>
+                <p class="mb-0 fs-4">Followers</p>
+              </div>
+              <div class="text-center">
+                <i class="fa fa-check fs-6 d-block mb-2"></i>
+                <h4 class="mb-0 fw-semibold lh-1" id="followingNum">2,659</h4>
+                <p class="mb-0 fs-4">Following</p>
+              </div>
+            </div>
+          </div>
 
-  <div class="col-xs-12 col-sm-12 col-md-4 col-lg-3 mb-2" id="profile_pic">
-    <img src="C:\Users\Doddi Naveen\Desktop\files\portFolio\images\dp5.jpg" alt="" style="height: 250px; width: 250px;">
+          <div class="col-lg-4 mt-n3 order-lg-2 order-1">
+            <div class="mt-n5">
+              <div class="d-flex align-items-center justify-content-center mb-2">
+                <div class="linear-gradient d-flex align-items-center justify-content-center rounded-circle" style="width: 110px; height: 110px;" ;="">
+                  <div class="border border-4 border-white d-flex align-items-center justify-content-center rounded-circle overflow-hidden" style="width: 100px; height: 100px;" ;="">
+                    <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="" id="profile_pic" class="w-100 h-100">
+                  </div>
+                </div>
+              </div>
+              <div class="text-center">
+                <h5 class="fs-5 mb-0 fw-semibold" id="user_name">Mathew Anderson</h5>
+                <p class="mb-0 fs-4">Devloper</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <ul class="nav nav-tabs user-profile-tab justify-content-end mt-2 bg-light-info rounded-2" id="pills-tab" role="tablist">
+          <li class="nav-item" role="presentation">
+            <a class="nav-link position-relative d-flex align-items-center justify-content-center fs-3 py-6" id="pills-Reposetries-tab" data-bs-toggle="pill" data-bs-target="#pills-Reposetries" type="button" role="tab" aria-controls="pills-Reposetries" aria-selected="true">
+              <i class="fa fa-file me-2 fs-6"></i>
+              <span class="d-none d-sm-block">&nbsp; Reposetries</span> 
+            </a>
+          </li>
+          <li class="nav-item" role="presentation">
+            <a class="nav-link position-relative d-flex align-items-center justify-content-center fs-3 py-6" id="pills-Followers-tab" data-bs-toggle="pill" data-bs-target="#pills-Followers" type="button" role="tab" aria-controls="pills-Followers" aria-selected="false" tabindex="-1">
+              <i class="fa-solid fa-users me-2 fs-6"></i>
+              <span class="d-none d-sm-block">&nbsp; Followers</span> 
+            </a>
+          </li>
+          <li class="nav-item" role="presentation">
+            <a class="nav-link position-relative d-flex align-items-center justify-content-center fs-3 py-6" id="pills-Following-tab" data-bs-toggle="pill" data-bs-target="#pills-Following" type="button" role="tab" aria-controls="pills-Following" aria-selected="false" tabindex="-1">
+              <i class="fa fa-check me-2 fs-6"></i>
+              <span class="d-none d-sm-block">&nbsp; Following</span> 
+            </a>
+          </li>
+          <li class="nav-item" role="presentation">
+            <a class="nav-link active position-relative d-flex align-items-center justify-content-center fs-3 py-6" id="pills-Profile-tab" data-bs-toggle="pill" data-bs-target="#pills-Profile" type="button" role="tab" aria-controls="pills-Profile" aria-selected="false" tabindex="-1">
+              <i class="fa fa-user me-2 fs-6"></i>
+              <span class="d-none d-sm-block">&nbsp; Profile</span> 
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="tab-content" id="pills-tabContent">
+
+      <!-- Reposetries tab -->
+      
+      <div class="tab-pane fade" id="pills-Reposetries" role="tabpanel" aria-labelledby="pills-Reposetries-tab" tabindex="0">
+        
+        <div class="d-sm-flex align-items-center justify-content-between mt-3 mb-4">
+          <h3 class="mb-3 mb-sm-0 fw-semibold d-flex align-items-center">Reposetries <span class="badge text-bg-secondary fs-2 rounded-4 py-1 px-2 ms-2" id="reposBNum">1</span></h3>
+          <form class="position-relative">
+            <input type="text" class="form-control search-chat py-2 ps-5" id="text-srh" placeholder="Search Friends">
+            <i class="ti ti-search position-absolute top-50 start-0 translate-middle-y text-dark ms-3"></i>
+          </form>
+        </div>
+      
+        <div class="row" id="appendReposetries">
+          
+        </div>
+
+      </div>
+      
+      <!-- Followers tab -->
+      <div class="tab-pane fade" id="pills-Followers" role="tabpanel" aria-labelledby="pills-Followers-tab" tabindex="0">
+        
+        <div class="d-sm-flex align-items-center justify-content-between mt-3 mb-4">
+          <h3 class="mb-3 mb-sm-0 fw-semibold d-flex align-items-center">Followers <span class="badge text-bg-secondary fs-2 rounded-4 py-1 px-2 ms-2" id="followersBNum">1</span></h3>
+          <form class="position-relative">
+            <input type="text" class="form-control search-chat py-2 ps-5" id="text-srh" placeholder="Search Followers">
+            <i class="ti ti-search position-absolute top-50 start-0 translate-middle-y text-dark ms-3"></i>
+          </form>
+        </div>
+
+        <div class="row" id="appendFollowers">
+
+        </div>
+      </div>
+
+      <!-- Following tab -->
+      <div class="tab-pane fade" id="pills-Following" role="tabpanel" aria-labelledby="pills-Following-tab" tabindex="0">
+        
+        <div class="d-sm-flex align-items-center justify-content-between mt-3 mb-4">
+          <h3 class="mb-3 mb-sm-0 fw-semibold d-flex align-items-center">Following <span class="badge text-bg-secondary fs-2 rounded-4 py-1 px-2 ms-2" id="followingBNum">1</span></h3>
+          <form class="position-relative">
+            <input type="text" class="form-control search-chat py-2 ps-5" id="text-srh" placeholder="Search Following">
+            <i class="ti ti-search position-absolute top-50 start-0 translate-middle-y text-dark ms-3"></i>
+          </form>
+        </div>
+      
+        <div class="row" id="appendFollowing">
+
+        </div>
+        
+      </div>
+
+      <!-- Profile tab -->
+      <div class="tab-pane fade show active" id="pills-Profile" role="tabpanel" aria-labelledby="pills-Profile-tab" tabindex="0">
+        
+        <div class="d-sm-flex align-items-center justify-content-between mt-3 mb-4">
+          <h3 class="mb-3 mb-sm-0 fw-semibold d-flex align-items-center">Profile</h3>
+        </div>
+      
+        <div class="row" id="appendProfile">
+          <table class="table fw-semibold">
+            <tr>
+              <td>Full Name</td>
+              <td id="Full_name">name</td>
+            </tr>
+            <tr>
+              <td>Bio</td>
+              <td id="bio">Information Technology | passed out 2024 | fullStack devloper</td>
+            </tr>
+            <tr>
+              <td>Email</td>
+              <td id="email">email</td>
+            </tr>
+            <tr>
+              <td>Phone</td>
+              <td id="twitter_username">twitter_username</td>
+            </tr>
+            <tr>
+              <td>Location</td>
+              <td id="location">location</td>
+            </tr>
+            <tr>
+              <td>Started Github on</td>
+              <td id="created_at">created_at</td>
+            </tr>
+          </table>
+
+        </div>
+
+      </div>
+     
+    </div>
   </div>
 
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script> 
+  <script>
 
-  <!-- <script>
-    var newItem = "udapte"
-    fetch("https://naveendoddi.github.io/trailDatabase/db.json",{
-      method:"POST",
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify(newItem),
-    })
-    .then(res => res.json())
-    .then((data)=> console.log(data))
+    function profile(){
+      fetch("https://api.github.com/users/naveendoddi")
+      .then(response => response.json())
+      .then((data)=> {
+
+        document.getElementById("Full_name").innerText = data.name
+        document.getElementById("bio").innerText = data.bio
+        document.getElementById("email").innerText = data.email
+        document.getElementById("twitter_username").innerText = data.twitter_username
+        document.getElementById("location").innerText = data.location
+        document.getElementById("created_at").innerText = data.created_at.split("T")[0]
+
+        document.getElementById("user_name").innerText = data.login
+        document.getElementById("profile_pic").src = data.avatar_url
+        document.getElementById("reposNum").innerText = data.public_repos
+
+        document.getElementById("followingNum").innerText = data.following
+
+        document.getElementById("followersNum").innerText = data.followers
+
+      })
+
+
+    }
+    // profile()
+
+    function Repos(){
+
+      fetch("https://api.github.com/users/naveendoddi/repos")
+      .then(response => response.json())
+      .then((data)=> {
+
+        document.getElementById("reposBNum").innerText = data.length
+
+        data.map((repo)=> {
+
+          var div1 = document.createElement("div")
+          div1.className = "col-sm-6 col-lg-4"
+
+          var div2 = document.createElement("div")
+          div2.className = "card reposCard"
+
+          var div3 = document.createElement("div")
+          div3.className = "card-body"
+
+          var h6 = document.createElement("h6")
+          h6.innerText = repo.default_branch
+          var span = document.createElement("span")
+          span.innerText = repo.language
+          h6.append(span)
+
+          var h2 = document.createElement("h2")
+          h2.innerText = repo.name
+          h2.className = "text-center m-4"
+
+          var p1 = document.createElement("p")
+          p1.innerText = "created_at:"
+          p1.style.fontSize = "15px"
+          p1.className = "mb-2"
+          var span = document.createElement("span")
+          span.innerText = repo.created_at.split("T")[0]
+          p1.append(span)
+
+          var p2 = document.createElement("p")
+          p2.innerText = "updated_at:"
+          p2.style.fontSize = "15px"
+          var span = document.createElement("span")
+          span.innerText = repo.pushed_at.split("T")[0]
+          p2.append(span)
+
+
+          var div4 = document.createElement("div")
+          div4.className = "btn-group d-flex justify-content-center"
+
+          var a1 = document.createElement("a")
+          a1.href = "https://"+repo.owner.login+".github.io/"+repo.name
+          a1.target = "_blank"
+          var btn1 = document.createElement("button")
+          btn1.className = "btn btn-sm btn-outline-light"
+          var i1 = document.createElement("i") 
+          i1.className = "fa-solid fa-eye"
+          btn1.append(i1)
+          a1.append(btn1)
+
+
+          var a2 = document.createElement("a")
+          a2.href = repo.html_url
+          a2.target = "_blank"
+          var btn2 = document.createElement("button")
+          btn2.className = "btn btn-sm btn-light"
+          var i2 = document.createElement("i") 
+          i2.className = "fa-solid fa-code"
+          btn2.append(i2)
+          a2.append(btn2)
+
+          div4.append(a1, " ", a2)
+
+
+          div3.append(h6, h2, p1, p2, div4)
+
+          div2.append(div3)
+          div1.append(div2)
+
+          document.getElementById("appendReposetries").append(div1)
+
+          })
+
+      })
+
+    }
+
+    function Followers(){
+      fetch("https://api.github.com/users/naveendoddi/followers")
+      .then(response => response.json())
+      .then((data)=> {
+
+        document.getElementById("followersBNum").innerText = data.length
+
+          data.map((user)=> {
+
+            var div1 = document.createElement("div")
+            div1.className = "col-sm-6 col-lg-4"
+
+            var div2 = document.createElement("div")
+            div2.className = "card hover-img"
+
+            var div3 = document.createElement("div")
+            div3.className = "card-body p-4 text-center border-bottom"
+
+            var image = document.createElement("img")
+            image.src = user.avatar_url
+            image.className = "rounded-circle mb-3"
+            image.setAttribute("width","80")
+            image.setAttribute("height","80")
+
+            var h5 = document.createElement("h5")
+            h5.className = "fw-semibold mb-0"
+            h5.innerText = user.login
+
+            div3.append(image, h5)
+
+            div2.append(div3)
+            div1.append(div2)
+
+            document.getElementById("appendFollowers").append(div1)
+
+          })
+      })
+
+    }
+
+
+    function Following(){
+      fetch("https://api.github.com/users/naveendoddi/following")
+      .then(response => response.json())
+      .then((data)=> {
+
+        document.getElementById("followingBNum").innerText = data.length
+
+          data.map((user)=> {
+
+            var div1 = document.createElement("div")
+            div1.className = "col-sm-6 col-lg-4"
+
+            var div2 = document.createElement("div")
+            div2.className = "card hover-img"
+
+            var div3 = document.createElement("div")
+            div3.className = "card-body p-4 text-center border-bottom"
+
+            var image = document.createElement("img")
+            image.src = user.avatar_url
+            image.className = "rounded-circle mb-3"
+            image.setAttribute("width","80")
+            image.setAttribute("height","80")
+
+            var h5 = document.createElement("h5")
+            h5.className = "fw-semibold mb-0"
+            h5.innerText = user.login
+
+            div3.append(image, h5)
+
+            div2.append(div3)
+            div1.append(div2)
+
+            document.getElementById("appendFollowing").append(div1)
+
+          })
+      })
+
+    }
+    // Following()
+    // Followers()
+    // Repos()
+
+    
   </script>
-   -->
+  
 </body>
 </html>

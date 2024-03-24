@@ -55,7 +55,14 @@
                                 <div class="">
                                     <a href="search.html"><button style="color: #fd7e14;" class="btn"><i class="fa-solid fa-search"></i> &nbsp; Search</button></a>
                                     <a href="support.html"><button class="btn"><i class="fa-solid fa-life-ring"></i> &nbsp; Help</button></a>
-                                    <a href="cart.html"><button class="btn"><i class="fa-solid fa-cart-shopping"></i> &nbsp; Cart</button></a>
+                                    <a href="cart.html">
+                                        <button type="button" class="btn position-relative">
+                                            <i class="fa-solid fa-cart-shopping"></i> Cart
+                                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-success" id="cartBadge">
+                                              +
+                                            </span>
+                                        </button>
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -120,6 +127,17 @@
                 </div>
             </div>
         </div>
+
+
+        <div class="toast-container position-fixed bottom-0 end-0 p-3">
+            <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+              <div class="toast-body bg-success d-flex justify-content-between p-1" >
+                <span class=" fw-bold pt-1">1 Item added to Cart &#129321;</span>
+                <a href="cart.html"><button class="btn btn-sm text-light">View <i class="fa-solid fa-cart-shopping"></i></button></a>
+              </div>
+              
+            </div>
+        </div>
         
         
 
@@ -168,7 +186,7 @@
                 cardDetails.append(itemName)
 
                 var itemPrice = document.createElement("p")
-                itemPrice.innerText = "Price: " + item.Price + "/-"
+                itemPrice.innerText = "Price: " + item.Price + " /-"
                 itemPrice.append(document.createElement("br"))
 
                 var itemDes = document.createElement("span")
@@ -194,10 +212,42 @@
             })            
         }
 
-
         
         function addtoCart(element){
-            console.log(element.currentTarget.parentNode.parentNode)
+            var mobile_number = localStorage.getItem("customerMobile")
+
+            const item = {
+                image : element.currentTarget.parentNode.parentNode.childNodes[0].src,
+                about : element.currentTarget.parentNode.innerText
+            }
+
+            fetch("http://localhost:3000/customers?mobile="+mobile_number)
+            .then(res => res.json())
+            .then((data)=> {
+                var updatedCart = data[0].cart
+                updatedCart.push(item)
+                document.getElementById("cartBadge").innerText = updatedCart.length
+
+                var id = data[0].id
+                fetch("http://localhost:3000/customers/"+id, {
+                    method: "PATCH",
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify( {cart : updatedCart } ),
+                })
+                
+            })
+
+            const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample)
+            toastBootstrap.show()
+        }
+
+        const toastLiveExample = document.getElementById('liveToast')
+
+        if (toastTrigger) {
+          const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample)
+          toastTrigger.addEventListener('click', () => {
+            toastBootstrap.show()
+          })
         }
 
 
