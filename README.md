@@ -6,16 +6,16 @@ This is a project of swiggy online food order
 * Both customer and Restraurant pages
 * Both pages have their registration and login pages
 * Customer page
-    ** home => displays the food items uploaded by the restraurants, you can also add items to your cart.
-    ** search => get the food items based in the customer input
-    ** support => all the basic questions 
-    ** cart => displays the food items from the cart, apply coupons and complete the order.
+    ** home => displays the food items uploaded by the restraurants, you can also add items to your cart.  
+    ** search => get the food items based in the customer input.    
+    ** support => all the basic questions.    
+    ** cart => displays the food items from the cart, apply coupons and complete the order.  
 
 * Restraurant page 
-    ** home => new food items can be add, and edit and remove items 
-        *** add
-        *** edit
-        *** remove
+    ** home => new food items can be add, and edit and remove items   
+        *** add  
+        *** edit  
+        *** remove  
 
 
 ## Getting Started
@@ -29,7 +29,7 @@ This is a project of swiggy online food order
 
 ### Installing
 
-* You need to install json-server using command => npm i json-server
+* You need to install json-server using command => ``` npm i json-server ```
 
 * if any problem in installation
 * [json-server](https://chrisdevcode.hashnode.dev/how-to-create-and-deploy-a-json-server)
