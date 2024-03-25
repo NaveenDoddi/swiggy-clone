@@ -4,13 +4,13 @@
 
 Order Food Online from India's Best Food Delivery Service | Swiggy  
 
-* This project consist of both customer and Restraurant pages
+* This project consists of both __Customer__ and __Restraurant__ pages
 * Both pages have their registration and login pages
 * Customer page    
-    * home -> displays the food items uploaded by the restraurants, you can also add items to your cart.  
-    * search -> get the food items based in the customer input.    
-    * support -> all the basic questions.    
-    * cart -> displays the food items from the cart, apply coupons and complete the order.  
+    * home -> displays food items uploaded by the restraurants, you can also add items to your cart.  
+    * search -> get the food items based on the customer input.    
+    * support -> consists all basic questions.    
+    * cart -> displays food items from the cart, apply coupons and complete the order.  
 
 * Restraurant page  
     * home => new food items can be add, and edit and remove items   
@@ -57,7 +57,7 @@ command to run if program contains helper info
 Contributors names and contact info
 
 Naveen Doddi
-ex. [@naveeendoddi](https://twitter.com/naveeendoddi)
+[@naveeendoddi](https://twitter.com/naveeendoddi)
 
 ## Version History
 
