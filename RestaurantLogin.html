@@ -61,7 +61,7 @@
             var username = document.getElementById("email").value
             var password = document.getElementById("password").value
 
-            fetch("http://localhost:3000/Restaurants?email="+username)
+            fetch("http://localhost:3000/restaurants?email="+username)
             .then(response => response.json())
             .then((data)=> {
                 console.log(atob(data[0].password))

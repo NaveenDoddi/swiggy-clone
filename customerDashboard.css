@@ -22,13 +22,13 @@
 }
 
 #mindItems div img{
-    max-width: 140px;
+    max-width: 130px;
 }
 #mindItems::-webkit-scrollbar, #topResItems::-webkit-scrollbar {
     display: none;
 }
 
-#Toprest button , #mindDiv button{
+#Toprest button, #mindDiv button{
     background-color: rgb(223, 220, 220);
 }
 
@@ -109,4 +109,47 @@
     left: 0;
     right: auto;
     width: 100%
+}
+
+.offersDiv {
+    width: auto;
+    height: 150px;
+    position: relative;
+    overflow: hidden;    
+    font-weight: 500;
+}
+
+.content {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translateY(100%);
+    /* text-align: center; */
+    transition: transform 1s ease-in-out;
+}
+.content.active {
+    transform: translateY(10%);
+}
+
+.carousel-item{
+    text-align: center;
+}
+
+.carousel-item img{
+    height: 200px;
+}
+.footer1Items{
+    padding: 5px;
+    border: 1px solid lightgray;
+    border-radius: 10px;
+    text-align: center;
+    width: 110px;
+
+    transition: box-shadow .3s;
+}
+
+.footer1Items:hover {
+    box-shadow: 0 0 11px #fd7e14;
 }
