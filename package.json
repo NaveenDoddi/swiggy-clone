@@ -7,7 +7,7 @@
     "nodemon": "^3.1.0"
   },
   "scripts": {
-    "start": "node index.js",
+    "start": "json-server --watch db.json",
     "dev": "nodemon index.js"
   },
   "name": "swiggy",
