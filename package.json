@@ -1,13 +1,14 @@
 {
   "dependencies": {
     "cors": "^2.8.5",
-    "json-server": "^1.0.0-alpha.23"
+    "json-server": "^1.0.0-alpha.23",
+    "mongodb": "^6.5.0"
   },
   "devDependencies": {
     "nodemon": "^3.1.0"
   },
   "scripts": {
-    "start": "json-server --watch db.json",
+    "start": "node index.js",
     "dev": "nodemon index.js"
   },
   "name": "swiggy",

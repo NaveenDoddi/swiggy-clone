@@ -21,9 +21,25 @@
     text-decoration: none;
 }
 
-#mindItems div img{
-    max-width: 130px;
+#mindItems img{
+    max-width: 120px;
 }
+
+@media only screen and (max-width: 768px) {
+    
+    #mindItems img{
+        max-width: 100px;
+    }
+    
+}
+@media only screen and (max-width: 576px) {
+    
+    #mindItems img{
+        max-width: 80px;
+    }
+    
+}
+
 #mindItems::-webkit-scrollbar, #topResItems::-webkit-scrollbar {
     display: none;
 }
