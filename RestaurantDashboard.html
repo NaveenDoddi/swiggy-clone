@@ -217,23 +217,23 @@
         const newItem = {
           restaurant: document.getElementById("restaurantName").innerText,
           email: document.getElementById("emailSpan").innerHTML,
-
           dishName: document.getElementById("name").value.toLowerCase(),
-          Price: document.getElementById("Price").value,
-          Description: document.getElementById("Discription").value,
+          price: document.getElementById("Price").value,
+          discription: document.getElementById("Discription").value,
           pic: document.getElementById('photo').src
         }
         
-        fetch("http://localhost:3000/items",{
+        fetch("http://localhost:3000/postItem",{
           method: "POST",
+          headers: {'Content-Type': 'application/json'},  
           body: JSON.stringify(newItem),
-          headers: {'Content-Type': 'application/json'},   
+           
         })
 
         .then(response => {
           if (response.ok) {
               alert("New Item added successfully")
-              window.location.reload()
+              window.location.reload()              
           }
         }) 
 
@@ -258,21 +258,22 @@
       }
 
       function displayItems(){
-        var userMail = localStorage.getItem("restaurantMail")
+        var mail = localStorage.getItem("restaurantMail")
 
-        fetch("http://localhost:3000/restaurants?email="+userMail)
+        fetch("http://localhost:3000/restaurant/"+mail)
         .then(res => res.json())
         .then(data => {
 
-          document.getElementById("restaurantName").innerText = data[0].restaurant 
-          document.getElementById("usernameSpan").innerText = data[0].username 
-          document.getElementById("addressSpan").innerText = data[0].address 
-          document.getElementById("mobileSpan").innerText = data[0].mobile 
-          document.getElementById("emailSpan").innerText = data[0].email 
-          document.getElementById("idSpan").innerText = data[0].id
+          document.getElementById("restaurantName").innerText = data.name 
+          document.getElementById("usernameSpan").innerText = data.username 
+          document.getElementById("addressSpan").innerText = data.address 
+          document.getElementById("mobileSpan").innerText = data.mobile 
+          document.getElementById("emailSpan").innerText = data.email 
+          document.getElementById("idSpan").innerText = data._id
+          
         })
 
-        fetch("http://localhost:3000/items?email="+userMail)
+        fetch("http://localhost:3000/items/"+mail)
         .then(res => res.json())
         .then(data => {
 
@@ -335,16 +336,16 @@
 
             var priceTag = document.createElement("div")
             priceTag.className = "fs-6 fw-normal"
-            priceTag.innerText = "Price: " + item.Price + '/-'
+            priceTag.innerText = "Price: " + item.price + '/-'
 
             cardDetails.append(priceTag)
 
             var descriptionTag = document.createElement("div")
             descriptionTag.className = "fs-6 fw-normal d-flex justify-content-between"
-            descriptionTag.innerText = item.Description
+            descriptionTag.innerText = item.discription
 
             var itemIdSpan = document.createElement("span")
-            itemIdSpan.innerText = item.id
+            itemIdSpan.innerText = item._id
             item.id = "itemIdSpan"
             itemIdSpan.className = "d-none"
 
@@ -362,6 +363,7 @@
       }
 
       function Edit(Element){
+        
         var element = Element.target.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement
         
         document.getElementById("photo1").src = element.getElementsByTagName("img")[0].src
@@ -402,10 +404,10 @@
       }
       function Del(){
         var id = document.getElementById("currentItemIdSpan").innerText
+        console.log(id)
 
-        fetch("http://localhost:3000/items/"+id,{
+        fetch("http://localhost:3000/delItems/"+id,{
           method: "DELETE",
-             
         })
         .then(response => {
           if (response.ok) {

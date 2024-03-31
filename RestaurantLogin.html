@@ -59,25 +59,26 @@
     </div>
     <script>
         function run(){
-            var username = document.getElementById("email").value
+            console.log("run")
+            var mail = document.getElementById("email").value
             var password = document.getElementById("password").value
 
-            fetch("http://localhost:3000/restaurants?email="+username)
+            fetch("http://localhost:3000/restaurant/"+mail)
             .then(response => response.json())
+
             .then((data)=> {
-                console.log(data)
-                console.log(atob(data[0].password))
  
                 try {
-                    if(username == data[0].email){
-                        if(password == atob(data[0].password)){
-                            console.log(data)
-                            localStorage.setItem("restaurantMail", data[0].email)
+                    if(mail == data.email){
+                        if(password == atob(data.password)){
+                            localStorage.setItem("restaurantMail", data.email)
                             window.location.href = "RestaurantDashboard.html"
                         }else{
                             window.alert("check password")
 
                         }
+                    }else{
+                        window.alert("user not found")
                     }
                 } catch (error) {
                     window.alert("user not found")

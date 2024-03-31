@@ -83,38 +83,34 @@
             if(form.checkValidity()){
                 const newHotel = {
             
-                    restaurant: document.getElementById('restaurant').value,
-                    address: document.getElementById('address').value,
-                    mobile:document.getElementById('mobile').value,
-                    email: document.getElementById('email').value,
-                    username: document.getElementById('name').value,
-                    password:  btoa(document.getElementById('password').value),
+                    "name": document.getElementById('restaurant').value,
+                    "address": document.getElementById('address').value,
+                    "mobile":document.getElementById('mobile').value,
+                    "email": document.getElementById('email').value,
+                    "username": document.getElementById('name').value,
+                    "password":  btoa(document.getElementById('password').value),
 
                 }
 
-                fetch("http://localhost:3000/restaurants?email="+newHotel.email)
-                .then(response => response.json())
-                .then((data) => {
-                    if(data.length != 0){
-                        alert("Email is already used, Try new one..!")
-                    }else{
-                        fetch("http://localhost:3000/restaurants",{
-                            method: "POST",
-                            body: JSON.stringify(newHotel),
-                            headers: {'Content-Type': 'application/json'},
-                        })
-                        .then(response => {
-                            if (response.ok) {
-                                window.location = "RestaurantDashboard.html"
-                                // alert("You are signed-up successfully")
-                                localStorage.setItem("restaurantMail", newHotel.email)
-
-                            }
-                        })  
-
-                    }
+                fetch("http://localhost:3000/postRestaurant",{
+                    method: "POST",
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify(newHotel),
                 })
-                
+
+                .then(response => {
+                    if (response.ok) {
+                        window.location.href = "RestaurantDashboard.html"
+                        localStorage.setItem("restaurantMail", newHotel.email)
+
+                        console.log("Success")
+                        
+                    }else{
+                        alert('Mail/Username already exists. Please choose a different mail/username.');
+                    }
+
+                })
+         
             }else{
                 window.alert("invalid form")
             }

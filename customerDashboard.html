@@ -626,24 +626,24 @@
                 document.getElementById("signInOption").style.display = "none"
             }
 
-            fetch("http://localhost:3000/customers?mobile="+mobile_number)
+            fetch("http://localhost:3000/customers/"+mobile_number)
             .then(res => res.json())
             .then(data => {
-                document.getElementById("usernameSpan").innerText = data[0].username 
-                document.getElementById("usernameSpan1").innerText = data[0].username 
-                document.getElementById("mobileSpan").innerText = data[0].mobile 
-                document.getElementById("emailSpan").innerText = data[0].email 
-                document.getElementById("addressSpan").innerText = data[0].address
-                document.getElementById("idSpan").innerText = data[0].id
+                document.getElementById("usernameSpan").innerText = data.username 
+                document.getElementById("usernameSpan1").innerText = data.username 
+                document.getElementById("mobileSpan").innerText = data.mobile 
+                document.getElementById("emailSpan").innerText = data.email 
+                document.getElementById("addressSpan").innerText = data.address
+                document.getElementById("idSpan").innerText = data.id
 
-                if(data[0].cart.length != 0){
-                    document.getElementById("cartBadge").innerText = data[0].cart.length
+                // if(data.cart.length != 0){
+                //     document.getElementById("cartBadge").innerText = data[0].cart.length
 
-                }
+                // }
 
             })
                 
-            fetch("http://localhost:3000/items")
+            fetch("http://localhost:3000/getAllItems")
             .then(res => res.json())
             .then(data => {
               data.map((item)=>{
@@ -681,11 +681,11 @@
                 cardDetails.append(itemName)
             
                 var itemPrice = document.createElement("p")
-                itemPrice.innerText = "Price: " + item.Price + " /-"
+                itemPrice.innerText = "price: " + item.price + " /-"
                 itemPrice.append(document.createElement("br"))
 
                 var itemDes = document.createElement("span")
-                itemDes.innerText = item.Description
+                itemDes.innerText = item.discription
                 itemDes.style.fontSize = "small"
                 itemPrice.append(itemDes)
                 cardDetails.append(itemPrice)
@@ -711,31 +711,35 @@
 
 
         function addtoCart(element){
+            
             var mobile_number = localStorage.getItem("customerMobile")
 
+            var about = element.currentTarget.parentNode.innerText.split("\n\n")
+            
             const item = {
+                restaurant:  about[0].split("\n")[0],
+                mobile: mobile_number,
+                dishName : about[0].split("\n")[1],
+                price : about[1].split(" ")[1],
+                discription : about[1].split("\n")[1],
                 image : element.currentTarget.parentNode.parentNode.childNodes[0].src,
-                about : element.currentTarget.parentNode.innerText
             }
+            console.log(item)
 
-            fetch("http://localhost:3000/customers?mobile="+mobile_number)
-            .then(res => res.json())
-            .then((data)=> {
-                var updatedCart = data[0].cart
-                updatedCart.push(item)
-                document.getElementById("cartBadge").innerText = updatedCart.length
-
-                var id = data[0].id
-                fetch("http://localhost:3000/customers/"+id, {
-                    method: "PATCH",
-                    headers: {'Content-Type': 'application/json'},
-                    body: JSON.stringify( {cart : updatedCart } ),
-                })
+            fetch("http://localhost:3000/postCart",{
+              method: "POST",
+              headers: {'Content-Type': 'application/json'},  
+              body: JSON.stringify(item),
                 
             })
-
-            const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample)
-            toastBootstrap.show()
+            .then(response => {
+                console.log(response.status)
+              if (response.ok) {
+                const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample)
+                toastBootstrap.show()     
+              }
+            }) 
+            
 
         }
 
