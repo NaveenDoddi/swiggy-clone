@@ -404,7 +404,6 @@
       }
       function Del(){
         var id = document.getElementById("currentItemIdSpan").innerText
-        console.log(id)
 
         fetch("http://localhost:3000/delItems/"+id,{
           method: "DELETE",

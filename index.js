@@ -71,7 +71,7 @@ app.get("/getCartItems/:mobile", async (req, res)=>{ // display all items on cus
   try{
     const mobile = req.params.mobile;
 
-    const allData = await cartItems.find( mobile );
+    const allData = await cartItems.find( {mobile} );
     return res.status(200).json(allData);
 
   }catch(err){
@@ -174,6 +174,25 @@ app.delete("/delItems/:id", async (req, res)=>{ // delete items form the restrau
   try{
       await items.findByIdAndDelete(req.params.id)
       res.status(200).json({ message: "Item removed successfully" });
+  }catch(err){
+    res.status(400);
+  }
+})
+
+app.delete("/delCartItems/:id", async (req, res)=>{ // delete items form the cart page
+  try{
+      await cartItems.findByIdAndDelete(req.params.id)
+      res.status(200).json({ message: "Item removed successfully" });
+  }catch(err){
+    res.status(400);
+  }
+})
+
+app.delete("/cartEmpty/:mobile", async (req, res)=>{ // delete items form the cart page
+  var mobile = req.params.mobile
+  try{
+      await cartItems.deleteMany({mobile})
+      res.status(200).json({ message: "Items removed successfully.... cart empty" });
   }catch(err){
     res.status(400);
   }

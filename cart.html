@@ -241,18 +241,34 @@
 
             var mobile_number = localStorage.getItem("customerMobile")
 
+            fetch("http://localhost:3000/customers/"+mobile_number)
+            .then(res => res.json())
+            .then(data => {
+                document.getElementById("addressSpan").innerText = data.address
+            })
+
             fetch("http://localhost:3000/getCartItems/"+mobile_number)
             .then(res => res.json())
             .then((data) => {
 
-                if(data[0].cart.length != 0){
+                if(data.length != 0){
                     document.getElementById("emptyCartDiv").style.display = "none"
-                }
-                document.getElementById("customerID").innerText = data._id
-
-                document.getElementById("addressSpan").innerText = data.address
+                }   
                 
-                data[0].cart.map((item) => {
+                data.map((item) => {
+
+                    var nameTag = document.createElement("div")
+                    nameTag.className = "fs-6"
+                    nameTag.innerText = item.dishName
+
+                    var restaurantTag = document.createElement("div")
+                    restaurantTag.className = "fs-6 fw-normal fs-6"
+                    restaurantTag.innerText = item.restaurant
+
+                    var priceTag = document.createElement("div")
+                    priceTag.className = "fs-6 fw-normal fs-6"
+                    priceTag.innerText = "Price: " + item.price + '/-'
+
                     var div = document.createElement("div")
                     div.className = "d-flex gap-2 m-2 fw-bold"
 
@@ -262,8 +278,6 @@
                     image.src = item.image
 
                     var about = document.createElement("div")
-                    about.innerText = item.about.split("\n\n")[0]
-                    about.append(document.createElement("br"),item.about.split("\n\n")[1].split("\n")[0])
 
                     var removeBtn = document.createElement("button")
                     var fa = document.createElement("i")
@@ -271,15 +285,20 @@
                     removeBtn.append(fa)
                     removeBtn.className = "btn btn-sm"
                     removeBtn.addEventListener("click", removeItem)
-                    about.append(document.createElement("br"),removeBtn)
 
-                    div.append(image,about)
+                    var id = document.createElement("span")
+                    id.innerText = item._id
+                    id.className = "d-none"
+
+
+                    about.append(nameTag, restaurantTag, priceTag, removeBtn)
+                    div.append(image,about, id)
 
                     var totalAmount = document.getElementById("totalAmount")
-                    totalAmount.innerText = Number(totalAmount.innerText) + Number(item.about.split("\n\n")[1].split(" ")[1])
+                    totalAmount.innerText = Number(totalAmount.innerText) + Number(item.price)
 
                     var finalAmount = document.getElementById("finalAmount")
-                    finalAmount.innerText = (Number(finalAmount.innerText) + Number(item.about.split("\n\n")[1].split(" ")[1]) + 56.49).toFixed(2)
+                    finalAmount.innerText = (Number(finalAmount.innerText) + Number(item.price) + 56.49).toFixed(2)
 
                     document.getElementById("cartItems").append(div)
                 })
@@ -311,43 +330,31 @@
             var mobile_number = localStorage.getItem("customerMobile")
 
             var item = element.currentTarget.parentElement.innerText.split("\n")[1]
+            var id = element.currentTarget.parentElement.parentElement.getElementsByTagName("span")[0].innerText
 
-            fetch("http://localhost:3000/customers?mobile="+mobile_number)
-            .then(res => res.json())
-            .then((data) => {
-
-                var cart = data[0].cart
-            
-                for(let i = 0; i<Object.values(cart).length; i++){
-                    Object.values(cart)[i].about.split("\n")[1] == item ? cart.splice(i,1):""
-                }
-                // Object.values(cart).forEach((i)=> i.about.split("\n")[1] == item ? cart.splice(i,1):"")
-
-                var id = data[0].id
-                fetch("http://localhost:3000/customers/"+id, {
-                    method: "PATCH",
-                    headers: {'Content-Type': 'application/json'},
-                    body: JSON.stringify( {cart : cart } ),
-                })
-
+            fetch("http://localhost:3000/delCartItems/"+id,{
+                method: "DELETE",
             })
-
-            setTimeout(() => {
-                window.location.reload()
-                
-            }, 100);
-
-            console.log(element.currentTarget.parentElement.innerText.split("\n")[1])
+            .then(response => {
+                if (response.ok) {
+                    window.location.reload()
+                }
+            })
 
         }
 
         function payment(){
-            var customerID = document.getElementById("customerID").innerText
+
+            var mobile_number = localStorage.getItem("customerMobile")
             
-            fetch("http://localhost:3000/customers/"+customerID, {
-                method: "PATCH",
-                headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify( {cart : [] } ),
+            fetch("http://localhost:3000/cartEmpty/"+mobile_number, {
+                method: "DELETE",
+                
+            })
+            .then(response => {
+                if (response.ok) {
+                    console.log("cart empty")
+                }
             })
 
             document.getElementsByTagName("audio")[0].play()

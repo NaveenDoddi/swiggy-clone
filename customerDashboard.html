@@ -712,7 +712,7 @@
 
         function addtoCart(element){
             
-            var mobile_number = localStorage.getItem("customerMobile")
+            var mobile_number = Number(localStorage.getItem("customerMobile"))
 
             var about = element.currentTarget.parentNode.innerText.split("\n\n")
             
