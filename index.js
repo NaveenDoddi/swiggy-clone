@@ -50,7 +50,7 @@ app.post("/postItem", async (req, res)=>{ // add item used in restraurant page
   try{
       const newData = new items({ restaurant, email, dishName, price, discription, pic });
       await newData.save();
-      res.status(201).json({ message: "Item registered successfully" });
+      res.status(200).json({ message: "Item registered successfully" });
   }catch(err){
     res.status(400);
   }
@@ -141,6 +141,23 @@ app.get("/items/:email", async (req, res)=>{ // display items based on the mail 
   }
 })
 
+app.get("/searchItems/:dishName", async (req, res)=>{ // display items based on the mail for restraurants
+  try{
+      const dishName = req.params.dishName;
+
+      const user = await items.find({ dishName });
+
+      if (!user) {
+        return res.status(404).json({ error: 'items not found' });
+      }
+
+      res.json(user);
+      
+  }catch(err){
+    return res.status(400);
+  }
+})
+
 
 app.post('/updateDocument', async (req, res) => {
   var id = req.params.id
@@ -197,6 +214,24 @@ app.delete("/cartEmpty/:mobile", async (req, res)=>{ // delete items form the ca
     res.status(400);
   }
 })
+
+app.patch("/updateItem/:id", async (req, res) => {
+  const restaurantId = req.params.id;
+  const updates = req.body;
+
+  try {
+    const updatedRestaurant = await items.findByIdAndUpdate(restaurantId, updates, { new: true });
+
+    if (!updatedRestaurant) {
+      return res.status(404).json({ error: 'Restaurant not found' });
+    }
+
+    res.status(200).json(updatedRestaurant);
+  } catch (error) {
+    console.error('Error:', error);
+    res.status(500).json({ error: 'Server error' });
+  }
+});
 
 
 app.listen(3000, ()=> console.log("server is running..."))

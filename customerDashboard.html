@@ -724,7 +724,6 @@
                 discription : about[1].split("\n")[1],
                 image : element.currentTarget.parentNode.parentNode.childNodes[0].src,
             }
-            console.log(item)
 
             fetch("http://localhost:3000/postCart",{
               method: "POST",

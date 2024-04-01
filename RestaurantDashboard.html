@@ -229,11 +229,10 @@
           body: JSON.stringify(newItem),
            
         })
-
         .then(response => {
           if (response.ok) {
               alert("New Item added successfully")
-              window.location.reload()              
+              window.location.reload()           
           }
         }) 
 
@@ -258,9 +257,9 @@
       }
 
       function displayItems(){
-        var mail = localStorage.getItem("restaurantMail")
+        var email = localStorage.getItem("restaurantMail")
 
-        fetch("http://localhost:3000/restaurant/"+mail)
+        fetch("http://localhost:3000/restaurant/"+email)
         .then(res => res.json())
         .then(data => {
 
@@ -273,7 +272,7 @@
           
         })
 
-        fetch("http://localhost:3000/items/"+mail)
+        fetch("http://localhost:3000/items/"+email)
         .then(res => res.json())
         .then(data => {
 
@@ -382,22 +381,25 @@
           email: document.getElementById("emailSpan").innerHTML,
 
           dishName: document.getElementById("name1").value.toLowerCase(),
-          Price: document.getElementById("Price1").value,
-          Description: document.getElementById("Discription1").value,
+          price: document.getElementById("Price1").value,
+          discription: document.getElementById("Discription1").value,
           pic: document.getElementById('photo1').src
         }
         
-        fetch("http://localhost:3000/items/"+id,{
+        fetch("http://localhost:3000/updateItem/"+id,{
           method: "PATCH",
           body: JSON.stringify(newItem),
           headers: {'Content-Type': 'application/json'},   
         })
 
         .then(response => {
+          console.log(response)
           if (response.ok) {
-              alert("New Item added successfully")
+              alert("Item updated successfully")
               window.location.reload()
 
+          }else{
+            
           }
         })
         
