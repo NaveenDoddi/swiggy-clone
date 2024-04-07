@@ -6,9 +6,18 @@ const restaurants = require("./modelRestraurant");
 const customers = require("./modelCustomer");
 const cartItems = require("./modelCartItem");
 const app = express();
+const path = require('path');
+
 
 app.use(cors()); 
 app.use(express.json())
+
+app.use(express.static(path.join(__dirname, 'public')));
+
+// Serve index.html for the root URL
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
 
 const url = "mongodb+srv://naveendoddi:zQTrjUrwyKXeIEZ2@swiggy.jbdpwef.mongodb.net/swiggy?retryWrites=true&w=majority&appName=swiggy";
 
@@ -159,32 +168,32 @@ app.get("/searchItems/:dishName", async (req, res)=>{ // display items based on 
 })
 
 
-app.post('/updateDocument', async (req, res) => {
-  var id = req.params.id
-      try {
-          // Assuming swiggy is your MongoDB model
-          const updateResult = await swiggy.updateOne({ sale : "on"}, { $push: { tags: "newItem" } });
-          console.log('Updated documents =>', updateResult);
-          // Send JSON response with the update result
-          res.json({ success: true, message: 'New item added to the array successfully', data: updateResult });
-      } catch (error) {
-          console.error('Error updating documents:', error);
-          // Send JSON response with error message
-          res.status(500).json({ success: false, message: 'An error occurred while updating documents' });
-      }
+// app.post('/updateDocument', async (req, res) => {
+//   var id = req.params.id
+//       try {
+//           // Assuming swiggy is your MongoDB model
+//           const updateResult = await swiggy.updateOne({ sale : "on"}, { $push: { tags: "newItem" } });
+//           console.log('Updated documents =>', updateResult);
+//           // Send JSON response with the update result
+//           res.json({ success: true, message: 'New item added to the array successfully', data: updateResult });
+//       } catch (error) {
+//           console.error('Error updating documents:', error);
+//           // Send JSON response with error message
+//           res.status(500).json({ success: false, message: 'An error occurred while updating documents' });
+//       }
   
-});
+// });
 
 
 
-app.post('/updateOne', async (req, res) => {
-  var updateData = req.body
-  const updateResult = await swiggy.updateOne(
-      { _id: ObjectId("6606a5d539d08bbbcb04bb09"), brandname: "samsung2.Oa", price: 299 }, // Filter: Find the document by its _id and other specific criteria
-      { $push: { tags: "newTag" } } // Update: Push "newTag" into the tags array
-  )
-  console.log('Updated documents =>', updateResult);
-});
+// app.post('/updateOne', async (req, res) => {
+//   var updateData = req.body
+//   const updateResult = await swiggy.updateOne(
+//       { _id: ObjectId("6606a5d539d08bbbcb04bb09"), brandname: "samsung2.Oa", price: 299 }, // Filter: Find the document by its _id and other specific criteria
+//       { $push: { tags: "newTag" } } // Update: Push "newTag" into the tags array
+//   )
+//   console.log('Updated documents =>', updateResult);
+// });
 
 
 app.delete("/delItems/:id", async (req, res)=>{ // delete items form the restraurant page
