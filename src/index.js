@@ -21,7 +21,7 @@ app.get('/', (req, res) => {
 
 const url = "mongodb+srv://naveendoddi:zQTrjUrwyKXeIEZ2@swiggy.jbdpwef.mongodb.net/swiggy?retryWrites=true&w=majority&appName=swiggy";
 
-mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true }).then(
+mongoose.connect(url).then(
     ()=> console.log("DB connected...", mongoose.connection.name)
 ).catch(err => console.log(err))
 
