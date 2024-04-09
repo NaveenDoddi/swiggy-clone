@@ -40,7 +40,7 @@
     </style>
 </head>
 
-<body onload="displayItems()">
+<body onload="displayItems(), displayDetails()">
     <div id="header">
       <nav class="bg-body-tertiary">
         <div class="d-flex justify-content-between bg-light">
@@ -232,7 +232,10 @@
         .then(response => {
           if (response.ok) {
               alert("New Item added successfully")
-              window.location.reload()           
+              displayItems()           
+          }else{
+            alert("photo size is too large.... try another photo...")
+
           }
         }) 
 
@@ -256,7 +259,7 @@
         }
       }
 
-      function displayItems(){
+      function displayDetails(){
         var email = localStorage.getItem("restaurantMail")
 
         fetch("http://localhost:3000/restaurant/"+email)
@@ -271,6 +274,10 @@
           document.getElementById("idSpan").innerText = data._id
           
         })
+      }
+
+      function displayItems(){
+        var email = localStorage.getItem("restaurantMail")
 
         fetch("http://localhost:3000/items/"+email)
         .then(res => res.json())
@@ -396,7 +403,7 @@
           console.log(response)
           if (response.ok) {
               alert("Item updated successfully")
-              window.location.reload()
+              displayItems()
 
           }else{
             
@@ -413,8 +420,7 @@
         .then(response => {
           if (response.ok) {
             alert("item Removed")
-            window.location.reload()
-
+            displayItems()
           }
         })
 
