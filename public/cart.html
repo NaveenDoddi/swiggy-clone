@@ -28,6 +28,7 @@
     </style>
 </head>
 <body onload="displayCart()" class="bg-body-tertiary">
+    
     <div class="m-2 ">
         <div>
             <nav class="bg-body-tertiary">
@@ -50,7 +51,7 @@
                         
                         <div class="offcanvas-sm offcanvas-end" tabindex="-1" id="right" aria-labelledby="offcanvasExampleLabel">
                             <div class="offcanvas-header">
-                                <h5 class="offcanvas-title" id="offcanvasExampleLabel">Details</h5>
+                                <h5 class="offcanvas-title" id="offcanvasExampleLabel"></h5>
                                 <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" data-bs-target="#right" aria-label="Close"></button>
                             </div>
                             <div class="offcanvas-body">
@@ -198,7 +199,7 @@
 
                     <div class="p-3 border mt-4" style="background-color: white;">
                         <h6>Choose payment method</h6>
-                        <div class="p-3 mt-3 btn w-100 bg-success text-center text-light fw-bold" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="payment()">PROCEED TO PAY</div>
+                        <div class="p-3 mt-3 btn w-100 bg-success text-center text-light fw-bold" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="completeOrder()">PROCEED TO PAY</div>
                     </div>
 
                     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -228,7 +229,7 @@
     </div>
 
     <script>
-
+        
         function displayCart(){
 
             var mobile_number = localStorage.getItem("customerMobile")
@@ -250,16 +251,16 @@
                 data.map((item) => {
 
                     var nameTag = document.createElement("div")
-                    nameTag.className = "fs-6"
+                    nameTag.className = "fs-6 nameTag"
                     nameTag.innerText = item.dishName
 
                     var restaurantTag = document.createElement("div")
-                    restaurantTag.className = "fs-6 fw-normal fs-6"
+                    restaurantTag.className = "fs-6 fw-normal fs-6 restaurantTag"
                     restaurantTag.innerText = item.restaurant
 
                     var priceTag = document.createElement("div")
-                    priceTag.className = "fs-6 fw-normal fs-6"
-                    priceTag.innerText = "Price: " + item.price + '/-'
+                    priceTag.className = "fs-6 fw-normal fs-6 priceTag"
+                    priceTag.innerText = "Price: " + item.price + ' /-'
 
                     var div = document.createElement("div")
                     div.className = "d-flex gap-2 m-2 fw-bold"
@@ -270,6 +271,7 @@
                     image.src = item.image
 
                     var about = document.createElement("div")
+                    about.className = "cartItemDetails"
 
                     var removeBtn = document.createElement("button")
                     var fa = document.createElement("i")
@@ -321,6 +323,9 @@
         function removeItem(element){
             var mobile_number = localStorage.getItem("customerMobile")
 
+            
+            var element1 = element.currentTarget.parentElement.parentElement
+            
             var item = element.currentTarget.parentElement.innerText.split("\n")[1]
             var id = element.currentTarget.parentElement.parentElement.getElementsByTagName("span")[0].innerText
 
@@ -329,15 +334,47 @@
             })
             .then(response => {
                 if (response.ok) {
-                    window.location.reload()
+                    element1.className = "d-none"
                 }
             })
+
+        }
+
+        async function completeOrder(){
+            var mobile_number = localStorage.getItem("customerMobile")
+
+            var cartItems = document.getElementsByClassName("cartItemDetails")
+
+            var order = []
+
+            for(let i = 0 ; i < cartItems.length; i++){
+                var text =  cartItems[i].innerText
+                var name = text.split('\n')[0]
+                var res = text.split('\n')[1]
+                var price = text.split('\n')[2].split(' ')[1]
+                order.push(name +", "+ res +", "+ price)
+            }
+
+            await fetch("http://localhost:3000/orderItem/"+mobile_number,{
+                method: "POST",
+                headers: {'Content-Type': 'application/json'},  
+                body: JSON.stringify( { newOrder : order } ),
+            })
+            .then(response => {
+                console.log(response.status)
+              if (response.ok) {
+                payment()   
+              }
+            }) 
+
 
         }
 
         function payment(){
 
             var mobile_number = localStorage.getItem("customerMobile")
+
+            // orders()
             
             fetch("http://localhost:3000/cartEmpty/"+mobile_number, {
                 method: "DELETE",

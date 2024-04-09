@@ -52,6 +52,14 @@
                                             <td><span id="addressSpan"></span></td>
                                         </tr>
                                         <tr>
+                                            <td colspan="2">Previous Orders</td>
+                                            
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2"><span id="ordersSpan"></span></td>
+                                            
+                                        </tr>
+                                        <tr>
                                             <td>@about Swiggy</td>
                                             <td class="d-none"><span id="idSpan"></span></td>
                                         </tr>
@@ -629,12 +637,34 @@
             fetch("http://localhost:3000/customers/"+mobile_number)
             .then(res => res.json())
             .then(data => {
+
                 document.getElementById("usernameSpan").innerText = data.username 
                 document.getElementById("usernameSpan1").innerText = data.username 
                 document.getElementById("mobileSpan").innerText = data.mobile 
                 document.getElementById("emailSpan").innerText = data.email 
                 document.getElementById("addressSpan").innerText = data.address
+
+                var div = document.createElement("dl")
+                data.orders.map((order)=>{
+                    var div1 = document.createElement("dt")
+                    div1.style.paddingLeft = "20px"
+                    div1.innerText = "*"
+                    div.append(div1)
+
+                    order.map((item)=>{
+                        var div2 = document.createElement("dd")
+                        div2.style.paddingLeft = "40px"
+                        div2.innerText = "- " + item
+                        
+                        
+                        div.append(div2)
+                    })
+
+                    
+                })
+                document.getElementById("ordersSpan").append(div)
                 document.getElementById("idSpan").innerText = data.id
+
 
                 // if(data.cart.length != 0){
                 //     document.getElementById("cartBadge").innerText = data[0].cart.length
