@@ -223,7 +223,7 @@
           pic: document.getElementById('photo').src
         }
         
-        fetch("http://localhost:3000/postItem",{
+        fetch("https://jwfjp2-3000.csb.app/postItem",{
           method: "POST",
           headers: {'Content-Type': 'application/json'},  
           body: JSON.stringify(newItem),
@@ -259,7 +259,7 @@
       function displayItems(){
         var email = localStorage.getItem("restaurantMail")
 
-        fetch("http://localhost:3000/restaurant/"+email)
+        fetch("https://jwfjp2-3000.csb.app//restaurant/"+email)
         .then(res => res.json())
         .then(data => {
 
@@ -272,7 +272,7 @@
           
         })
 
-        fetch("http://localhost:3000/items/"+email)
+        fetch("https://jwfjp2-3000.csb.app//items/"+email)
         .then(res => res.json())
         .then(data => {
 
@@ -428,7 +428,7 @@
 
       function logout(){
         localStorage.removeItem("restaurantMail")
-        window.location.href = "restaurantLogin.html"
+        window.location.href = "RestaurantLogin.html"
       }
 
 
