@@ -70,7 +70,11 @@
 
         <div class="body m-md-5 mt-3">
 
-            <div id="emptyCartDiv">
+            <div class=" text-center"  id="loader">
+                <span class="spinner-border text-green" role="status"></span>
+            </div>
+
+            <div id="emptyCartDiv" style="display: none;">
                 <div class="text-center">
 
                     <img src="./images/emptyCart.png" alt="" style=" width: 40%;">
@@ -244,9 +248,9 @@
             .then(res => res.json())
             .then((data) => {
 
-                if(data.length != 0){
-                    document.getElementById("emptyCartDiv").style.display = "none"
-                }   
+                if(data.length == 0){
+                    document.getElementById("emptyCartDiv").style.display = "block"
+                }
                 
                 data.map((item) => {
 
@@ -296,11 +300,14 @@
 
                     document.getElementById("cartItems").append(div)
                 })
+
+                document.getElementById("loader").style.display = "none"
             })
 
         }
 
         function applyCoupon(element){
+
             var coupon = element.parentElement.getElementsByTagName("span")[0].innerText
             document.getElementById("applyCouponBtn").innerText = "Coupon applied: " + coupon
 
@@ -322,7 +329,6 @@
 
         function removeItem(element){
             var mobile_number = localStorage.getItem("customerMobile")
-
             
             var element1 = element.currentTarget.parentElement.parentElement
             

@@ -21,7 +21,7 @@
                         <div>
                             <img src="images/Swiggy_logo.png" alt="logo" style="max-width: 60px; float: left;" id="logo">  
                             <button type="button" class="btn d-flex mx-auto" data-bs-toggle="offcanvas" data-bs-target="#left">
-                                <span id="usernameSpan1">Other</span><i class="fa-solid fa-chevron-down" style="color:#fd7e14"></i>
+                                <span id="usernameSpan1">Sign in</span><i class="fa-solid fa-chevron-down" style="color:#fd7e14"></i>
                             </button>
                         </div>
                         
@@ -34,7 +34,27 @@
                             </div>
                             <div class="offcanvas-body">
                                 <div class="navbar-nav mt-2">
+
+                                    <table class="table table-borderless nav-link" id="signInOption">                    
+                                        <tr>
+                                            <td class="w-50"><a href="customerLogin.html"><button class="w-100 btn btn-light">SIGN IN</button></a></td>
+                                            <td class="w-50"><a href="customerRestration.html"><button class="w-100 btn btn-light">SIGN UP</button></a></td>
+                                            <td>
+                                                <a href="RestaurantDashboard.html">
+                                                    <button type="button" class="btn btn-light position-relative">
+                                                        Restaurant
+                                                        <span class="position-absolute top-0 start-80 translate-middle badge rounded-pill bg-danger">
+                                                            NEW
+                                                        </span>
+                                                    </button>
+                                                </a>
+                                            </td>
+                                        </tr>
+
+                                    </table>
+
                                     <table class="table table-borderless nav-link">
+                                        
                                         <tr>
                                             <td>Username:</td>
                                             <td><span id="usernameSpan"></span></td>
@@ -52,21 +72,18 @@
                                             <td><span id="addressSpan"></span></td>
                                         </tr>
                                         <tr>
-                                            <td colspan="2">Previous Orders</td>
-                                            
+                                            <td colspan="2"> <strong> Previous Orders</strong></td>
                                         </tr>
                                         <tr>
                                             <td colspan="2"><span id="ordersSpan"></span></td>
-                                            
                                         </tr>
                                         <tr>
-                                            <td>@about Swiggy</td>
+                                            <td colspan="2">@about Swiggy</td>
+                                        </tr>
+                                        <tr>
                                             <td class="d-none"><span id="idSpan"></span></td>
+                                            <td class="text-end"><button class="btn btn-sm btn-danger" onclick="logOut()">Logout</button></td>
                                         </tr>
-                                        <tr>
-                                            <td colspan="2" class="text-end"><button class="btn btn-danger" onclick="logOut()">Logout</button></td>
-                                        </tr>
-
                                     </table>
                                 </div>
                             </div>
@@ -91,7 +108,6 @@
                                     <a href="search.html"><button class="btn"><i class="fa-solid fa-search"></i> Search</button></a>
                                     <a href="#offers"><button class="btn"><i class="fa-solid fa-percent"></i> Offers</button></a>
                                     <a href="support.html"><button class="btn"><i class="fa-solid fa-life-ring"></i> Help</button></a>
-                                    <a href="customerLogin.html" id="signInOption"><button class="btn"><i class="fa-solid fa-user"></i> &nbsp;SignIn</button></a>
                                     <a href="cart.html">
                                         <button type="button" class="btn position-relative">
                                             <i class="fa-solid fa-cart-shopping"></i> Cart
@@ -352,6 +368,11 @@
 
             <div>
                 <div class="fw-bolder fs-5 m-2 mt-4 text-center">Items for You</div>
+
+                <div class="text-center"  id="loader">
+                    <span class="spinner-border text-green" role="status"></span>
+                  </div>
+
                 <div class="row m-2 mt-2 d-flex justify-content-start" id="dishItemsnew">
 
                 </div>
@@ -623,7 +644,6 @@
             document.getElementById("restsNearbyMeBtns").className = "d-none"
             document.getElementById("showLess").className = "d-flex justify-content-end "
             
-
         }   
 
         function displayItems(){
@@ -638,14 +658,16 @@
             .then(res => res.json())
             .then(data => {
 
-                document.getElementById("usernameSpan").innerText = data.username 
-                document.getElementById("usernameSpan1").innerText = data.username 
+                document.getElementById("usernameSpan").innerText = data.username.toUpperCase()  
+                document.getElementById("usernameSpan1").innerText = data.username
                 document.getElementById("mobileSpan").innerText = data.mobile 
                 document.getElementById("emailSpan").innerText = data.email 
                 document.getElementById("addressSpan").innerText = data.address
 
                 var div = document.createElement("dl")
+
                 data.orders.map((order)=>{
+
                     var div1 = document.createElement("dt")
                     div1.style.paddingLeft = "20px"
                     div1.innerText = "*"
@@ -665,16 +687,15 @@
                 document.getElementById("ordersSpan").append(div)
                 document.getElementById("idSpan").innerText = data.id
 
-
-                // if(data.cart.length != 0){
-                //     document.getElementById("cartBadge").innerText = data[0].cart.length
-
-                // }
-
             })
                 
             fetch("http://localhost:3000/getAllItems")
-            .then(res => res.json())
+            .then(res => {
+                if(res.ok){
+                    document.getElementById("loader").style.display = "none"
+                }
+                return res.json()
+            })
             .then(data => {
               data.map((item)=>{
                 
@@ -733,9 +754,10 @@
                 div.append(cardDiv)
                 document.getElementById("dishItemsnew").append(div)
         
-            })
+              })
             
             })
+
             getLocation()
         }
 
@@ -822,6 +844,7 @@
             localStorage.removeItem("customerMobile")
             window.location.href = "customerLogin.html"
         }
+
         const contents = document.getElementsByClassName('content');
         let currentIndex = 0;
       
@@ -842,9 +865,9 @@
             toastBootstrap.show()
           })
         }
+
+
     </script>
-
-
 
 
 </body>

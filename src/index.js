@@ -63,7 +63,7 @@ app.post("/postItem", async (req, res)=>{ // add item used in restraurant page
   try{
       const newData = new items({ restaurant, email, dishName, price, discription, pic });
       await newData.save();
-      res.status(200).json({ message: "Item registered successfully" });
+      res.status(200).json({ message: "Item registered successfully" , data: newData });
   }catch(err){
     res.status(400);
   }
@@ -90,8 +90,6 @@ app.post('/orderItem/:mobile', async (req, res) => {
       { mobile: mobile_number },
       { $push : { orders: newOrder } }
     );
-
-    console.log('Updated documents =>', updateResult);
 
     res.json({ success: true, message: 'New item added to the array successfully', data: updateResult });
   } catch (error) {
@@ -232,18 +230,19 @@ app.delete("/cartEmpty/:mobile", async (req, res)=>{ // delete items form the ca
   }
 })
 
-app.patch("/updateItem/:id", async (req, res) => {
-  const restaurantId = req.params.id;
-  const updates = req.body;
+app.put("/updateItem/:id", async (req, res) => {
+  const itemId = req.params.id;
+  const updateData = req.body;
 
   try {
-    const updatedRestaurant = await items.findByIdAndUpdate(restaurantId, updates, { new: true });
+    const updatedRestaurant = await items.updateOne({ _id: itemId }, { $set: updateData });
 
     if (!updatedRestaurant) {
-      return res.status(404).json({ error: 'Restaurant not found' });
+      return res.status(404).json({ error: 'Item not found' });
     }
 
     res.status(200).json(updatedRestaurant);
+    
   } catch (error) {
     console.error('Error:', error);
     res.status(500).json({ error: 'Server error' });

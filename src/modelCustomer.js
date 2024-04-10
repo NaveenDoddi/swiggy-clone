@@ -5,7 +5,7 @@ const customer = mongoose.Schema({
     username: { type: String, required: true, unique: true},
     email: {type: String, required: true},
     mobile: {type: Number, required: true, unique: true},
-    address: {type: Array},
+    address: {type: String},
     orders: {type : Array}
 })
 
