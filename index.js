@@ -2,10 +2,10 @@ const express = require("express");
 const cors = require('cors');
 const mongoose= require('mongoose');
 
-const items = require("./modelItem");
-const restaurants = require("./modelRestraurant");
-const customers = require("./modelCustomer");
-const cartItems = require("./modelCartItem");
+const items = require("./src/modelItem");
+const restaurants = require("./src/modelRestraurant");
+const customers = require("./src/modelCustomer");
+const cartItems = require("./src/modelCartItem");
 
 const app = express();
 const path = require('path');
