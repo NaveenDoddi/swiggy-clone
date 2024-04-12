@@ -227,6 +227,16 @@
             </div> 
 
         </div>
+
+        <div class="toast-container position-fixed bottom-0 end-0 p-3">
+            <div id="editToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+              <div class="toast-body bg-warning d-flex justify-content-center p-1" id="toast-body">
+                <span class=" fw-bold pt-1">Item Removed from Cart ⛔</span>
+              </div>
+              
+            </div>
+        </div>
+
         <span id="customerID" class="d-none"></span>
         <audio src="orderCompletedSound.mp3"></audio>
 
@@ -340,6 +350,8 @@
             })
             .then(response => {
                 if (response.ok) {
+                    const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample)
+                    toastBootstrap.show()
                     element1.className = "d-none"
                 }
             })
@@ -394,6 +406,20 @@
 
             document.getElementsByTagName("audio")[0].play()
 
+        }
+
+
+        const toastLiveExample = document.getElementById('editToast');
+        try {
+          const toastTrigger = document.getElementById('editTrigger');
+          if (toastTrigger) {
+            const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample);
+            toastTrigger.addEventListener('click', () => {
+              toastBootstrap.show();
+            });
+          }
+        } catch (error) {
+          console.error('An error occurred:', error);
         }
 
     </script>

@@ -543,8 +543,8 @@
 
         <div class="toast-container position-fixed bottom-0 end-0 p-3">
           <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
-            <div class="toast-body bg-success d-flex justify-content-between p-1" >
-              <span class=" fw-bold pt-1">1 Item added to Cart &#129321;</span>
+            <div class="toast-body bg-success d-flex justify-content-between p-1" id="toast-body">
+              <span class="fw-bold pt-1" id="toast-text">1 Item added to Cart &#129321;</span>
               <a href="cart.html"><button class="btn btn-sm text-light">View <i class="fa-solid fa-cart-shopping"></i></button></a>
             </div>
             
@@ -766,31 +766,44 @@
             
             var mobile_number = Number(localStorage.getItem("customerMobile"))
 
-            var about = element.currentTarget.parentNode.innerText.split("\n\n")
-            
-            const item = {
-                restaurant:  about[0].split("\n")[0],
-                mobile: mobile_number,
-                dishName : about[0].split("\n")[1],
-                price : about[1].split(" ")[1],
-                discription : about[1].split("\n")[1],
-                image : element.currentTarget.parentNode.parentNode.childNodes[0].src,
-            }
+            if(mobile_number){
 
-            fetch("http://localhost:3000/postCart",{
-              method: "POST",
-              headers: {'Content-Type': 'application/json'},  
-              body: JSON.stringify(item),
-                
-            })
-            .then(response => {
-                console.log(response.status)
-              if (response.ok) {
                 const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample)
-                toastBootstrap.show()     
-              }
-            }) 
+                document.getElementById('toast-body').className = "toast-body bg-warning d-flex justify-content-between p-1"
+                updateToastText('Adding Item to cart...⏳')
+                toastBootstrap.show()  
+
+                var about = element.currentTarget.parentNode.innerText.split("\n\n")
             
+                const item = {
+                    restaurant:  about[0].split("\n")[0],
+                    mobile: mobile_number,
+                    dishName : about[0].split("\n")[1],
+                    price : about[1].split(" ")[1],
+                    discription : about[1].split("\n")[1],
+                    image : element.currentTarget.parentNode.parentNode.childNodes[0].src,
+                }
+
+                fetch("http://localhost:3000/postCart",{
+                  method: "POST",
+                  headers: {'Content-Type': 'application/json'},  
+                  body: JSON.stringify(item),
+
+                })
+                .then(response => {
+                    console.log(response.status)
+                  if (response.ok) {
+                    const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample)
+                    document.getElementById('toast-body').className = "toast-body bg-success d-flex justify-content-between p-1"
+
+                    updateToastText('1 Item added to Cart ✅')
+                    toastBootstrap.show()     
+                  }
+                }) 
+
+            }else{
+                alert("you need SWIGGY account to ADD ITEM")
+            }
 
         }
 
@@ -864,6 +877,10 @@
           toastTrigger.addEventListener('click', () => {
             toastBootstrap.show()
           })
+        }
+
+        function updateToastText(newText) {
+          document.getElementById("toast-text").innerText = newText
         }
 
 

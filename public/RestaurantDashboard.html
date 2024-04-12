@@ -252,18 +252,8 @@
       
       <div class="toast-container position-fixed bottom-0 end-0 p-3">
         <div id="editToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
-          <div class="toast-body bg-success d-flex justify-content-between p-1" >
-            <span class=" fw-bold pt-1">Item updated successfully &#129321;</span>
-          </div>
-          
-        </div>
-      </div>
-
-
-      <div class="toast-container position-fixed bottom-0 end-0 p-3">
-        <div id="delToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
-          <div class="toast-body bg-success d-flex justify-content-between p-1" >
-            <span class=" fw-bold pt-1">Item updated successfully &#129321;</span>
+          <div class="toast-body bg-success d-flex justify-content-between p-1" id="toast-body">
+            <span class=" fw-bold pt-1">Item updated successfully ✅</span>
           </div>
           
         </div>
@@ -492,6 +482,8 @@
               document.getElementById("editModalCloseBtn").click()
               
               const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample)
+              updateToastText("Item is Updated Successfully ✅")
+              changeToastColor("toast-body bg-success d-flex justify-content-between p-1")
               toastBootstrap.show()  
 
               document.getElementById(id).className = "d-none"
@@ -516,10 +508,11 @@
             
             document.getElementById(id).className = "d-none" 
             
-            const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample1)
-            toastTrigger.addEventListener('click', () => {
-              toastBootstrap.show()
-            })
+            const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample)
+            
+            changeToastColor('toast-body bg-danger d-flex justify-content-between p-1'); 
+            updateToastText("Item is Removed Successfully ⛔")
+            toastBootstrap.show() 
 
           }
         })
@@ -541,7 +534,6 @@
 
 
       const toastLiveExample = document.getElementById('editToast');
-      const toastLiveExample1 = document.getElementById('delToast');
 
       try {
         const toastTrigger = document.getElementById('editTrigger');
@@ -551,19 +543,20 @@
             toastBootstrap.show();
           });
         }
-      
-        const toastTrigger1 = document.getElementById('delTrigger');
-        if (toastTrigger1) {
-          const toastBootstrap1 = bootstrap.Toast.getOrCreateInstance(toastLiveExample1);
-          toastTrigger1.addEventListener('click', () => {
-            toastBootstrap1.show();
-          });
-        }
+
       } catch (error) {
         console.error('An error occurred:', error);
       }
 
-    
+      function updateToastText(newText) {
+          const toastBody = toastLiveExample.querySelector('.toast-body');
+          toastBody.textContent = newText;
+      }
+      
+      function changeToastColor(colorClass) {
+        document.getElementById("toast-body").className = colorClass
+      }
+
 
 
     </script>
