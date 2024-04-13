@@ -654,7 +654,7 @@
                 document.getElementById("signInOption").style.display = "none"
             }
 
-            fetch("http://localhost:3000/customers/"+mobile_number)
+            fetch("https://wpwvqh-3000.csb.app/customers/"+mobile_number)
             .then(res => res.json())
             .then(data => {
 
@@ -689,7 +689,7 @@
 
             })
                 
-            fetch("http://localhost:3000/getAllItems")
+            fetch("https://wpwvqh-3000.csb.app/getAllItems")
             .then(res => {
                 if(res.ok){
                     document.getElementById("loader").style.display = "none"
@@ -784,7 +784,7 @@
                     image : element.currentTarget.parentNode.parentNode.childNodes[0].src,
                 }
 
-                fetch("http://localhost:3000/postCart",{
+                fetch("https://wpwvqh-3000.csb.app/postCart",{
                   method: "POST",
                   headers: {'Content-Type': 'application/json'},  
                   body: JSON.stringify(item),

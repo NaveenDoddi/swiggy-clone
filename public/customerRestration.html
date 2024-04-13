@@ -80,7 +80,7 @@
                 }
                 console.log(user)
 
-                fetch("http://localhost:3000/postCustomer",{
+                fetch("https://wpwvqh-3000.csb.app/postCustomer",{
                     method: "POST",
                     body: JSON.stringify(user),
                     headers: {
@@ -93,37 +93,11 @@
                         window.location.href = "index.html"
                     
                     }else{
-                        alert(response.status)
+                        alert(response.status, "Mobile Number allready used... try new one")
                     }
                 }) 
 
-                // fetch("http://localhost:3000/")
-                // .then(response => response.json())
-                // .then((data)=> {
-
-                //     var existance = data.some((element) => element.mobile == person.mobile)
-
-                //     if(existance){
-                //         alert("mobile number is already used, Try new one..!")
-
-                //     }else{
-                //         fetch("http://localhost:3000/Customers",{
-                //             method: "POST",
-                //             body: JSON.stringify(person),
-                //             headers: {
-                //                 'Content-Type': 'application/json'},
-                //         })
-                //         .then(response => {
-                //             if (response.ok) {
-
-                //                 // alert("You are signed-up successfully")
-                //                 localStorage.setItem("customerMobile", person.mobile)
-                //                 window.location.href = "home.html"
-                            
-                //             }
-                //         }) 
-                //     }
-                // })
+                
             }else{
                 window.alert("invalid form")
             }
