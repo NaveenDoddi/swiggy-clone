@@ -278,7 +278,7 @@
 
         }
         
-        fetch("https://wpwvqh-3000.csb.app/postItem",{
+        fetch("http://localhost:3000/postItem",{
           method: "POST",
           headers: {'Content-Type': 'application/json'},  
           body: JSON.stringify(newItem),
@@ -322,7 +322,7 @@
         if(email){
             document.getElementById("signInOption").style.display = "none";
 
-            fetch("https://wpwvqh-3000.csb.app/restaurant/"+email)
+            fetch("http://localhost:3000/restaurant/"+email)
             .then(res => res.json())
             .then(data => {
             
@@ -425,7 +425,7 @@
       function displayItems(){
         var email = localStorage.getItem("restaurantMail")
 
-        fetch("https://wpwvqh-3000.csb.app/items/"+email)
+        fetch("http://localhost:3000/items/"+email)
 
         .then (res => res.json())
 
@@ -470,7 +470,7 @@
 
         }
 
-        fetch("https://wpwvqh-3000.csb.app/updateItem/"+id,{
+        fetch("http://localhost:3000/updateItem/"+id,{
           method: "PUT",
           body: JSON.stringify(newItem),
           headers: {'Content-Type': 'application/json'},   
@@ -500,7 +500,7 @@
       function Del(){
         var id = document.getElementById("currentItemIdSpan").innerText
 
-        fetch("https://wpwvqh-3000.csb.app/delItems/"+id,{
+        fetch("http://localhost:3000/delItems/"+id,{
           method: "DELETE",
         })
         .then(response => {

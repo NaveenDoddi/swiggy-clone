@@ -248,13 +248,13 @@
 
             var mobile_number = localStorage.getItem("customerMobile")
 
-            fetch("https://wpwvqh-3000.csb.app/customers/"+mobile_number)
+            fetch("http://localhost:3000/customers/"+mobile_number)
             .then(res => res.json())
             .then(data => {
                 document.getElementById("addressSpan").innerText = data.address
             })
 
-            fetch("https://wpwvqh-3000.csb.app/getCartItems/"+mobile_number)
+            fetch("http://localhost:3000/getCartItems/"+mobile_number)
             .then(res => res.json())
             .then((data) => {
 
@@ -345,7 +345,7 @@
             var item = element.currentTarget.parentElement.innerText.split("\n")[1]
             var id = element.currentTarget.parentElement.parentElement.getElementsByTagName("span")[0].innerText
 
-            fetch("https://wpwvqh-3000.csb.app/delCartItems/"+id,{
+            fetch("http://localhost:3000/delCartItems/"+id,{
                 method: "DELETE",
             })
             .then(response => {
@@ -373,7 +373,7 @@
                 order.push(name +", "+ res +", "+ price)
             }
 
-            await fetch("https://wpwvqh-3000.csb.app/orderItem/"+mobile_number,{
+            await fetch("http://localhost:3000/orderItem/"+mobile_number,{
                 method: "POST",
                 headers: {'Content-Type': 'application/json'},  
                 body: JSON.stringify( { newOrder : order } ),
@@ -394,7 +394,7 @@
 
             // orders()
             
-            fetch("https://wpwvqh-3000.csb.app/cartEmpty/"+mobile_number, {
+            fetch("http://localhost:3000/cartEmpty/"+mobile_number, {
                 method: "DELETE",
                 
             })

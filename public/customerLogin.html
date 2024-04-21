@@ -58,7 +58,7 @@
         function run(){
             var input = document.getElementById("inputdata").value
 
-            fetch("https://wpwvqh-3000.csb.app/customers/"+input)
+            fetch("http://localhost:3000/customers/"+input)
             .then(response => response.json())
             .then((data)=> {
 

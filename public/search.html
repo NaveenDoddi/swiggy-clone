@@ -148,7 +148,7 @@
             var input = document.getElementById("dishInput").value.toLowerCase()
 
             console.log(input)
-            fetch("https://wpwvqh-3000.csb.app/searchItems/"+input)
+            fetch("http://localhost:3000/searchItems/"+input)
             .then(res => res.json())
             .then(data => {
               data.map((item)=>{
@@ -225,7 +225,7 @@
                 image : element.currentTarget.parentNode.parentNode.childNodes[0].src,
             }
 
-            fetch("https://wpwvqh-3000.csb.app/postCart",{
+            fetch("http://localhost:3000/postCart",{
               method: "POST",
               headers: {'Content-Type': 'application/json'},  
               body: JSON.stringify(item),

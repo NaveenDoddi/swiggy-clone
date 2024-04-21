@@ -63,7 +63,7 @@
             var mail = document.getElementById("email").value
             var password = document.getElementById("password").value
 
-            fetch("https://wpwvqh-3000.csb.app/restaurant/"+mail)
+            fetch("http://localhost:3000/restaurant/"+mail)
             .then(response => response.json())
 
             .then((data)=> {
