@@ -57,13 +57,12 @@
     <script>
         function run(){
             var input = document.getElementById("inputdata").value
-
             
             fetch("http://localhost:3000/customers/"+input)
             .then(response => response.json())
             .then((data)=> {
 
-                
+
                 if(data.error == "User not found"){
                     window.alert("data.error")
                 }else{
