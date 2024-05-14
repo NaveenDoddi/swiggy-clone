@@ -655,7 +655,7 @@
                 document.getElementById("signInOption").style.display = "none"
             }
 
-            fetch("http://localhost:3000/customers/"+mobile_number)
+            fetch("https://swiggy-clone-pi-one.vercel.app/customers/"+mobile_number)
             .then(res => res.json())
             .then(data => {
 
@@ -690,7 +690,7 @@
 
             })
                 
-            fetch("http://localhost:3000/getAllItems")
+            fetch("https://swiggy-clone-pi-one.vercel.app/getAllItems")
             .then(res => {
                 if(res.ok){
                     document.getElementById("loader").style.display = "none"
