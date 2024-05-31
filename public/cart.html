@@ -353,6 +353,9 @@
                     const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample)
                     toastBootstrap.show()
                     element1.className = "d-none"
+                    setTimeout(() => {
+                        window.location.reload()
+                    }, 1000);
                 }
             })
 
