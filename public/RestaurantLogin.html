@@ -34,7 +34,7 @@
         <div style="height: 80vh; width: 40vh ;" class="d-flex flex-column justify-content-center">
             <div class="d-flex justify-content-between gap-3 mb-5">
                 <div>
-                    <h2 class="h2"> Login Restaurant</h2>
+                    <h2 class="h2"> Login Restaurant </h2>
                     <p><small><span>or</span><a href="RestaurantRestration.html"> create an account</a></small></p>
                 </div>
                 <div>
@@ -54,18 +54,14 @@
             
         </div>
 
-        
-        
     </div>
     <script>
         function run(){
-            console.log("run")
             var mail = document.getElementById("email").value
             var password = document.getElementById("password").value
 
             fetch("http://localhost:3000/restaurant/"+mail)
             .then(response => response.json())
-
             .then((data)=> {
  
                 try {
@@ -83,7 +79,6 @@
                 } catch (error) {
                     window.alert("user not found")
                 }
-            
             })
         }
     </script>

@@ -191,8 +191,6 @@ app.get("/searchItems/:dishName", async (req, res)=>{ // display items based on 
 })
 
 
-
-
 app.post('/updateOne', async (req, res) => {
   var updateData = req.body
   const updateResult = await swiggy.updateOne(
