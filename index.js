@@ -1,5 +1,6 @@
 const express = require("express");
 const cors = require('cors');
+require('dotenv').config();
 const mongoose= require('mongoose');
 
 const items = require("./src/modelItem");
@@ -19,12 +20,16 @@ app.use(express.static(path.join('public')));
 
 // Serve index.html for the root URL
 app.get('/', (req, res) => {
-    res.sendFile(path.join('public', 'index.html'));
+    res.sendFile(path.join('public', 'index.html'))
 });
 
-const url = "mongodb+srv://naveendoddi:zQTrjUrwyKXeIEZ2@swiggy.jbdpwef.mongodb.net/swiggy?retryWrites=true&w=majority&appName=swiggy";
+const url = process.env.MONGODB_URI
+console.log(url)
 
-mongoose.connect(url).then(
+mongoose.connect(url,{
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+}).then(
     ()=> console.log("DB connected...", mongoose.connection.name)
 ).catch(err => console.log(err))
 
@@ -249,8 +254,8 @@ app.put("/updateItem/:id", async (req, res) => {
   }
 });
 
-
-const server = app.listen(3000, ()=>{
+const port = process.env.port
+const server = app.listen(port, ()=>{
   // const host = server.address().address;
   // const port = server.address().port;
   // global.serverUrl = `http://${host}:${port}/`;
