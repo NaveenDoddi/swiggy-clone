@@ -12,11 +12,9 @@
     "nodemon": "^3.1.0"
   },
   "scripts": {
-    "deploy": "gh-pages -d public",
     "start": "node index.js",
     "dev": "nodemon index.js"
   },
-  "homepage": "https://naveendoddi.github.io/swiggy-clone",
   "name": "swiggy",
   "version": "1.0.0",
   "main": "src/index.js",
