@@ -23,7 +23,7 @@ app.get('/', (req, res) => {
     res.sendFile(path.join('public', 'index.html'))
 });
 
-const url = process.env.MONGODB_URI
+const url = "mongodb+srv://naveendoddi:zQTrjUrwyKXeIEZ2@swiggy.jbdpwef.mongodb.net/swiggy?retryWrites=true&w=majority&appName=swiggy"
 console.log(url)
 
 mongoose.connect(url,{
