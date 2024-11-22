@@ -1,2 +1,3 @@
-web: node index.jst
+web: node index.js
+
 
