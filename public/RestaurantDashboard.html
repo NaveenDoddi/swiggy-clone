@@ -234,7 +234,7 @@
       </div>
     </div>
 
-    <!-- for edit popup div -->
+    <!-- for item edit popup div -->
     <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
@@ -245,15 +245,19 @@
           <div class="modal-body">
             <form>
 
-              <div class="mb-3 text-center" onchange="uploadImageforRegistration()">
+              <div class="mb-3 text-center" onchange="uploadImageforRegistration1()">
                 <div>
                   <img src="" alt="" style="height: 100px; width: auto;" id="photo1">
 
-                  <label for="photoSrc" id="imagelabel" class="col-form-label">Choose Photo</label>
+                  <label for="photoSrc1" id="imagelabel" class="col-form-label">Choose Photo</label>
                   <input class="form-control d-none" id="photoSrc1" type="file" accept="image/*">
                 </div>
               </div>
 
+              <div class="mb-3">
+                <label for="category" class="col-form-label">Category:</label>
+                <input type="text" class="form-control" id="category1">
+              </div>
               <div class="mb-3">
                 <label for="name" class="col-form-label">Name*:</label>
                 <input type="text" class="form-control" id="name1" required>
@@ -331,6 +335,23 @@
     function uploadImageforRegistration() {
       var input = document.getElementById('photoSrc');
       var image = document.getElementById('photo');
+      var file = input.files[0];
+
+      if (file) {
+        image.src = URL.createObjectURL(file);
+        const reader = new FileReader();
+
+        reader.onload = function (e) {
+          const imageDataUri = e.target.result;
+          image.src = imageDataUri
+        };
+
+        reader.readAsDataURL(file);
+      }
+    }
+    function uploadImageforRegistration1() {
+      var input = document.getElementById('photoSrc1');
+      var image = document.getElementById('photo1');
       var file = input.files[0];
 
       if (file) {
@@ -483,8 +504,9 @@
 
       document.getElementById("photo1").src = element.getElementsByTagName("img")[0].src
       document.getElementById("name1").value = element.getElementsByClassName("cardNameTag")[0].innerText
-      document.getElementById("Price1").value = element.getElementsByClassName("fs-6")[0].innerText.split(" ")[1].split("/")[0]
-      document.getElementById("Discription1").value = element.getElementsByClassName("fs-6")[1].innerText.split("⋮")[0]
+      document.getElementById("category1").value = element.getElementsByClassName("fs-6")[0].innerText.split(":")[1]
+      document.getElementById("Price1").value = element.getElementsByClassName("fs-6")[1].innerText.split(" ")[1].split("/")[0]
+      document.getElementById("Discription1").value = element.getElementsByClassName("fs-6")[2].innerText.split("⋮")[0]
 
     }
 
@@ -501,6 +523,7 @@
         price: document.getElementById("Price1").value,
         discription: document.getElementById("Discription1").value,
         pic: document.getElementById('photo1').src,
+        category :document.getElementById("category1").value,
         _id: id
 
       }

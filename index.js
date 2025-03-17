@@ -128,7 +128,6 @@ app.get("/getAllItems", async (req, res)=>{
 })
 
 
-
 // Apply category filter if provided
 app.get("/filterItems", async (req, res) => {
   try {

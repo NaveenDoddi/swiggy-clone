@@ -106,5 +106,401 @@
             "discription": "Creamy Alfredo pasta topped with grilled chicken and parmesan.",
             "pic": "https://tse1.mm.bing.net/th?id=OIP.alfredopasta&pid=Api",
             "category": "Pasta"
+      },
+      {
+            "restaurant": "Yuti Restaurant",
+            "email": "prasadnaveen847@gmail.com",
+            "dishName": "Cold Coffee",
+            "price": 300,
+            "discription": "Chilled coffee blended with milk and ice cream.",
+            "pic": "https://tse1.mm.bing.net/th?id=OIP.coldcoffee&pid=Api",
+            "category": "Beverage"
+      },
+      {
+            "restaurant": "Yuti Restaurant",
+            "email": "prasadnaveen847@gmail.com",
+            "dishName": "Rajma Chawal",
+            "price": 350,
+            "discription": "Red kidney beans cooked in a tomato-based gravy served with rice.",
+            "pic": "https://tse1.mm.bing.net/th?id=OIP.rajmachawal&pid=Api",
+            "category": "Indian Cuisine"
+      },
+      {
+            "restaurant": "Yuti Restaurant",
+            "email": "prasadnaveen847@gmail.com",
+            "dishName": "Spring Rolls",
+            "price": 300,
+            "discription": "Crispy rolls stuffed with vegetables and served with chili sauce.",
+            "pic": "https://tse1.mm.bing.net/th?id=OIP.springrolls&pid=Api",
+            "category": "Indo-Chinese"
+      },
+      {
+            "restaurant": "Spice Villa",
+            "email": "spicevilla@gmail.com",
+            "dishName": "Mutton Rogan Josh",
+            "price": 950,
+            "discription": "Kashmiri-style mutton curry cooked with aromatic spices.",
+            "pic": "https://tse1.mm.bing.net/th?id=OIP.muttonroganjosh&pid=Api",
+            "category": "Indian Cuisine"
+      },
+      {
+            "restaurant": "Spice Villa",
+            "email": "spicevilla@gmail.com",
+            "dishName": "Bhindi Masala",
+            "price": 400,
+            "discription": "Stir-fried okra cooked with onions, tomatoes, and Indian spices.",
+            "pic": "https://tse1.mm.bing.net/th?id=OIP.bhindimasala&pid=Api",
+            "category": "Indian Cuisine"
+      },
+      {
+            "restaurant": "Spice Villa",
+            "email": "spicevilla@gmail.com",
+            "dishName": "Egg Curry",
+            "price": 450,
+            "discription": "Boiled eggs simmered in a rich tomato and onion gravy.",
+            "pic": "https://tse1.mm.bing.net/th?id=OIP.eggcurry&pid=Api",
+            "category": "Indian Cuisine"
+      },
+      {
+            "restaurant": "Sweet Treats",
+            "email": "sweettreats@gmail.com",
+            "dishName": "Gulab Jamun",
+            "price": 300,
+            "discription": "Deep-fried dumplings soaked in sugar syrup.",
+            "pic": "https://tse1.mm.bing.net/th?id=OIP.gulabjamun&pid=Api",
+            "category": "Dessert"
+      },
+      {
+            "restaurant": "Sweet Treats",
+            "email": "sweettreats@gmail.com",
+            "dishName": "Apple Pie",
+            "price": 600,
+            "discription": "Classic apple pie with a flaky golden crust.",
+            "pic": "https://tse1.mm.bing.net/th?id=OIP.applepie&pid=Api",
+            "category": "Dessert"
+      },
+      {
+            "restaurant": "Yuti Restaurant",
+            "email": "prasadnaveen847@gmail.com",
+            "dishName": "Masala Chai",
+            "price": 150,
+            "discription": "Traditional Indian spiced tea with milk and aromatic spices.",
+            "pic": "https://tse1.mm.bing.net/th?id=OIP.masalachai&pid=Api",
+            "category": "Beverage"
+      },
+      {
+            "restaurant": "Yuti Restaurant",
+            "email": "prasadnaveen847@gmail.com",
+            "dishName": "Paneer Butter Masala",
+            "price": 500,
+            "discription": "Creamy tomato-based curry with cottage cheese cubes.",
+            "pic": "https://tse1.mm.bing.net/th?id=OIP.paneerbuttermasala&pid=Api",
+            "category": "Indian Cuisine"
+      },
+      {
+            "restaurant": "Yuti Restaurant",
+            "email": "prasadnaveen847@gmail.com",
+            "dishName": "Veg Manchurian",
+            "price": 400,
+            "discription": "Deep-fried vegetable balls tossed in tangy soy-based sauce.",
+            "pic": "https://tse1.mm.bing.net/th?id=OIP.vegmanchurian&pid=Api",
+            "category": "Indo-Chinese"
+      },
+      {
+            "restaurant": "Spice Villa",
+            "email": "spicevilla@gmail.com",
+            "dishName": "Dal Makhani",
+            "price": 450,
+            "discription": "Slow-cooked black lentils in a creamy butter sauce.",
+            "pic": "https://tse1.mm.bing.net/th?id=OIP.dalmakhani&pid=Api",
+            "category": "Indian Cuisine"
+      },
+      {
+            "restaurant": "Spice Villa",
+            "email": "spicevilla@gmail.com",
+            "dishName": "Fish Tikka",
+            "price": 850,
+            "discription": "Grilled fish fillets marinated with yogurt and spices.",
+            "pic": "https://tse1.mm.bing.net/th?id=OIP.fishtikka&pid=Api",
+            "category": "Indian Cuisine"
+      },
+      {
+            "restaurant": "Spice Villa",
+            "email": "spicevilla@gmail.com",
+            "dishName": "Keema Naan",
+            "price": 350,
+            "discription": "Stuffed Indian bread with spiced minced meat filling.",
+            "pic": "https://tse1.mm.bing.net/th?id=OIP.keemanaan&pid=Api",
+            "category": "Indian Cuisine"
+      },
+      {
+            "restaurant": "Sweet Treats",
+            "email": "sweettreats@gmail.com",
+            "dishName": "Red Velvet Cake",
+            "price": 650,
+            "discription": "Moist red velvet sponge cake with cream cheese frosting.",
+            "pic": "https://tse1.mm.bing.net/th?id=OIP.redvelvetcake&pid=Api",
+            "category": "Dessert"
+      },
+      {
+            "restaurant": "Sweet Treats",
+            "email": "sweettreats@gmail.com",
+            "dishName": "Strawberry Cheesecake",
+            "price": 700,
+            "discription": "Rich cheesecake with a strawberry topping.",
+            "pic": "https://tse1.mm.bing.net/th?id=OIP.strawberrycheesecake&pid=Api",
+            "category": "Dessert"
+      },
+      {
+            "restaurant": "Yuti Restaurant",
+            "email": "prasadnaveen847@gmail.com",
+            "dishName": "Lemon Iced Tea",
+            "price": 250,
+            "discription": "Refreshing iced tea with a tangy lemon twist.",
+            "pic": "https://tse1.mm.bing.net/th?id=OIP.lemonicedtea&pid=Api",
+            "category": "Beverage"
+      },
+      {
+            "restaurant": "Yuti Restaurant",
+            "email": "prasadnaveen847@gmail.com",
+            "dishName": "Chole Bhature",
+            "price": 400,
+            "discription": "Spiced chickpea curry served with deep-fried puffed bread.",
+            "pic": "https://tse1.mm.bing.net/th?id=OIP.cholebhature&pid=Api",
+            "category": "Indian Cuisine"
+      },
+      {
+            "restaurant": "Yuti Restaurant",
+            "email": "prasadnaveen847@gmail.com",
+            "dishName": "Hakka Noodles",
+            "price": 350,
+            "discription": "Stir-fried noodles tossed with vegetables and soy sauce.",
+            "pic": "https://tse1.mm.bing.net/th?id=OIP.hakkanoodles&pid=Api",
+            "category": "Indo-Chinese"
+      },
+      {
+            "restaurant": "Spice Villa",
+            "email": "spicevilla@gmail.com",
+            "dishName": "Butter Chicken",
+            "price": 800,
+            "discription": "Creamy tomato-based chicken curry cooked with butter.",
+            "pic": "https://tse1.mm.bing.net/th?id=OIP.butterchicken&pid=Api",
+            "category": "Indian Cuisine"
+      },
+      {
+            "restaurant": "Spice Villa",
+            "email": "spicevilla@gmail.com",
+            "dishName": "Prawn Masala",
+            "price": 900,
+            "discription": "Juicy prawns cooked in a spicy masala gravy.",
+            "pic": "https://tse1.mm.bing.net/th?id=OIP.prawnmasala&pid=Api",
+            "category": "Indian Cuisine"
+      },
+      {
+            "restaurant": "Sweet Treats",
+            "email": "sweettreats@gmail.com",
+            "dishName": "Tiramisu",
+            "price": 700,
+            "discription": "Classic Italian dessert with layers of coffee-soaked sponge and mascarpone.",
+            "pic": "https://tse1.mm.bing.net/th?id=OIP.tiramisu&pid=Api",
+            "category": "Dessert"
+      },
+      {
+            "restaurant": "Sweet Treats",
+            "email": "sweettreats@gmail.com",
+            "dishName": "Chocolate Mousse",
+            "price": 500,
+            "discription": "Smooth and rich chocolate dessert with a velvety texture.",
+            "pic": "https://tse1.mm.bing.net/th?id=OIP.chocolatemousse&pid=Api",
+            "category": "Dessert"
+      },
+      {
+            "restaurant": "Yuti Restaurant",
+            "email": "prasadnaveen847@gmail.com",
+            "dishName": "Mango Lassi",
+            "price": 300,
+            "discription": "Refreshing mango lassi made with yogurt and fresh mango pulp.",
+            "pic": "https://tse1.mm.bing.net/th?id=OIP.JGLuU4-IEs7BvJ3-2MX3XgHaE8&pid=Api",
+            "category": "Beverage"
+      },
+      {
+            "restaurant": "Yuti Restaurant",
+            "email": "prasadnaveen847@gmail.com",
+            "dishName": "Butter Naan",
+            "price": 150,
+            "discription": "Soft and fluffy Indian bread topped with butter.",
+            "pic": "https://tse1.mm.bing.net/th?id=OIP.butternaan&pid=Api",
+            "category": "Indian Cuisine"
+      },
+      {
+            "restaurant": "Yuti Restaurant",
+            "email": "prasadnaveen847@gmail.com",
+            "dishName": "Paneer Butter Masala",
+            "price": 550,
+            "discription": "Rich and creamy paneer dish cooked in a buttery tomato sauce.",
+            "pic": "https://tse1.mm.bing.net/th?id=OIP.paneerbuttermasala&pid=Api",
+            "category": "Indian Cuisine"
+      },
+      {
+            "restaurant": "Yuti Restaurant",
+            "email": "prasadnaveen847@gmail.com",
+            "dishName": "Masala Dosa",
+            "price": 250,
+            "discription": "Crispy rice crepe filled with spiced potato filling, served with chutney and sambar.",
+            "pic": "https://tse1.mm.bing.net/th?id=OIP.masaladosa&pid=Api",
+            "category": "South Indian"
+      },
+      {
+            "restaurant": "Yuti Restaurant",
+            "email": "prasadnaveen847@gmail.com",
+            "dishName": "Gulab Jamun",
+            "price": 180,
+            "discription": "Soft and juicy deep-fried dumplings soaked in sugar syrup.",
+            "pic": "https://tse1.mm.bing.net/th?id=OIP.gulabjamun&pid=Api",
+            "category": "Dessert"
+      },
+      {
+            "restaurant": "Spice Villa",
+            "email": "spicevilla@gmail.com",
+            "dishName": "Tandoori Chicken",
+            "price": 950,
+            "discription": "Grilled chicken marinated in yogurt and Indian spices.",
+            "pic": "https://tse3.mm.bing.net/th?id=OIP.tandoorichicken&pid=Api",
+            "category": "Indian Cuisine"
+      },
+      {
+            "restaurant": "Spice Villa",
+            "email": "spicevilla@gmail.com",
+            "dishName": "Chicken Biryani",
+            "price": 850,
+            "discription": "Aromatic basmati rice cooked with chicken and exotic spices.",
+            "pic": "https://tse1.mm.bing.net/th?id=OIP.chickenbiryani&pid=Api",
+            "category": "Indian Cuisine"
+      },
+      {
+            "restaurant": "Spice Villa",
+            "email": "spicevilla@gmail.com",
+            "dishName": "Dal Makhani",
+            "price": 500,
+            "discription": "Creamy black lentils cooked with butter and spices.",
+            "pic": "https://tse1.mm.bing.net/th?id=OIP.dalmakhani&pid=Api",
+            "category": "Indian Cuisine"
+      },
+      {
+            "restaurant": "Spice Villa",
+            "email": "spicevilla@gmail.com",
+            "dishName": "Rogan Josh",
+            "price": 780,
+            "discription": "Kashmiri-style slow-cooked lamb curry.",
+            "pic": "https://tse1.mm.bing.net/th?id=OIP.roganjosh&pid=Api",
+            "category": "Indian Cuisine"
+      },
+      {
+            "restaurant": "Spice Villa",
+            "email": "spicevilla@gmail.com",
+            "dishName": "Mutton Korma",
+            "price": 900,
+            "discription": "Tender mutton cooked in a rich and flavorful gravy.",
+            "pic": "https://tse1.mm.bing.net/th?id=OIP.muttonkorma&pid=Api",
+            "category": "Indian Cuisine"
+      },
+      {
+            "restaurant": "Sweet Treats",
+            "email": "sweettreats@gmail.com",
+            "dishName": "Blueberry Pancakes",
+            "price": 400,
+            "discription": "Fluffy pancakes topped with blueberries and syrup.",
+            "pic": "https://tse1.mm.bing.net/th?id=OIP.blueberrypancakes&pid=Api",
+            "category": "Dessert"
+      },
+      {
+            "restaurant": "Sweet Treats",
+            "email": "sweettreats@gmail.com",
+            "dishName": "Chocolate Brownie",
+            "price": 350,
+            "discription": "Rich and fudgy chocolate brownie served with ice cream.",
+            "pic": "https://tse1.mm.bing.net/th?id=OIP.chocolatebrownie&pid=Api",
+            "category": "Dessert"
+      },
+      {
+            "restaurant": "Sweet Treats",
+            "email": "sweettreats@gmail.com",
+            "dishName": "Strawberry Cheesecake",
+            "price": 600,
+            "discription": "Creamy cheesecake topped with fresh strawberries.",
+            "pic": "https://tse1.mm.bing.net/th?id=OIP.strawberrycheesecake&pid=Api",
+            "category": "Dessert"
+      },
+      {
+            "restaurant": "Sweet Treats",
+            "email": "sweettreats@gmail.com",
+            "dishName": "Red Velvet Cake",
+            "price": 550,
+            "discription": "Moist red velvet cake with cream cheese frosting.",
+            "pic": "https://tse1.mm.bing.net/th?id=OIP.redvelvetcake&pid=Api",
+            "category": "Dessert"
+      },
+      {
+            "restaurant": "Sweet Treats",
+            "email": "sweettreats@gmail.com",
+            "dishName": "Fruit Tart",
+            "price": 500,
+            "discription": "Crispy tart filled with custard and topped with fresh fruits.",
+            "pic": "https://tse1.mm.bing.net/th?id=OIP.fruittart&pid=Api",
+            "category": "Dessert"
+      },
+      {
+            "restaurant": "Yuti Restaurant",
+            "email": "prasadnaveen847@gmail.com",
+            "dishName": "Veg Pulao",
+            "price": 450,
+            "discription": "Fragrant basmati rice cooked with mixed vegetables and spices.",
+            "pic": "https://tse1.mm.bing.net/th?id=OIP.vegpulao&pid=Api",
+            "category": "Indian Cuisine"
+      },
+      {
+            "restaurant": "Spice Villa",
+            "email": "spicevilla@gmail.com",
+            "dishName": "Fish Curry",
+            "price": 850,
+            "discription": "Spicy and tangy fish curry made with fresh herbs and spices.",
+            "pic": "https://tse1.mm.bing.net/th?id=OIP.fishcurry&pid=Api",
+            "category": "Indian Cuisine"
+      },
+      {
+            "restaurant": "Sweet Treats",
+            "email": "sweettreats@gmail.com",
+            "dishName": "Carrot Cake",
+            "price": 450,
+            "discription": "Moist carrot cake with a hint of cinnamon and creamy frosting.",
+            "pic": "https://tse1.mm.bing.net/th?id=OIP.carrotcake&pid=Api",
+            "category": "Dessert"
+      },
+      {
+            "restaurant": "Yuti Restaurant",
+            "email": "prasadnaveen847@gmail.com",
+            "dishName": "Samosa",
+            "price": 120,
+            "discription": "Crispy and spicy potato-stuffed pastry, served with chutney.",
+            "pic": "https://tse1.mm.bing.net/th?id=OIP.samosa&pid=Api",
+            "category": "Indian Cuisine"
+      },
+      {
+            "restaurant": "Spice Villa",
+            "email": "spicevilla@gmail.com",
+            "dishName": "Tandoori Chicken",
+            "price": 950,
+            "discription": "Grilled chicken marinated in yogurt and Indian spices.",
+            "pic": "https://tse3.mm.bing.net/th?id=OIP.tandoorichicken&pid=Api",
+            "category": "Indian Cuisine"
+      },
+      {
+            "restaurant": "Sweet Treats",
+            "email": "sweettreats@gmail.com",
+            "dishName": "Blueberry Pancakes",
+            "price": 400,
+            "discription": "Fluffy pancakes topped with blueberries and syrup.",
+            "pic": "https://tse1.mm.bing.net/th?id=OIP.blueberrypancakes&pid=Api",
+            "category": "Dessert"
       }
 ]
