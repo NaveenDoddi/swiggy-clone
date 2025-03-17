@@ -481,7 +481,7 @@
     function displayItems() {
       var email = localStorage.getItem("restaurantMail")
 
-      fetch("http://localhost:3000/items/" + email)
+      fetch("https://swiggy-server-tau.vercel.app/items/" + email)
 
         .then(res => res.json())
 

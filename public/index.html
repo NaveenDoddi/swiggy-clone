@@ -431,14 +431,14 @@
 
                         <!-- Price Range Filter -->
                         <div class="col-md-6">
-                            <label for="minPrice" class="form-label">Min Price (₹): <span id="minPriceValue">100</span>
+                            <label for="minPrice" class="form-label">Min Price (₹): <span id="minPriceValue"></span>
                             </label>
-                            <input type="range" class="form-range" id="minPrice" min="100" max="2000" step="100"
+                            <input type="range" class="form-range" id="minPrice" min="0" max="2000" step="50"
                                 oninput="minPriceValue.innerText = this.value">
 
-                            <label for="maxPrice" class="form-label">Max Price (₹): <span id="maxPriceValue">2000</span>
+                            <label for="maxPrice" class="form-label">Max Price (₹): <span id="maxPriceValue"></span>
                             </label>
-                            <input type="range" class="form-range" id="maxPrice" min="100" max="2000" step="100"
+                            <input type="range" class="form-range" id="maxPrice" min="100" max="2000" step="50"
                                 oninput="maxPriceValue.innerText = this.value">
                         </div>
 
@@ -789,7 +789,7 @@
             let minPrice = document.getElementById('minPrice').value
             let maxPrice = document.getElementById('maxPrice').value
             console.log(category, minPrice, maxPrice)
-            fetch(`http://localhost:3000/filterItems?category=${category}&minPrice=${minPrice}&maxPrice=${maxPrice}`)
+            fetch(`https://swiggy-server-tau.vercel.app/filterItems?category=${category}&minPrice=${minPrice}&maxPrice=${maxPrice}`)
                 .then(response => response.json())
                 .then(data => displayItems(data))
                 .catch(error => console.error("Error fetching items:", error));
@@ -804,7 +804,7 @@
                 document.getElementById("signInOption").style.display = "none"
             }
 
-            fetch("http://localhost:3000/customers/" + mobile_number)
+            fetch("https://swiggy-server-tau.vercel.app/customers/" + mobile_number)
                 .then(res => res.json())
                 .then(data => {
 
@@ -840,7 +840,7 @@
                 })
 
 
-            fetch("http://localhost:3000/getAllItems")
+            fetch("https://swiggy-server-tau.vercel.app/getAllItems")
                 .then(res => {
                     if (res.ok) {
                         document.getElementById("loader").style.display = "none"
@@ -947,7 +947,7 @@
                             image: element.currentTarget.parentNode.parentNode.childNodes[0].src,
                         }
 
-                        fetch("http://localhost:3000/postCart", {
+                        fetch("https://swiggy-server-tau.vercel.app/postCart", {
                             method: "POST",
                             headers: { 'Content-Type': 'application/json' },
                             body: JSON.stringify(item),

@@ -60,7 +60,7 @@
             var mail = document.getElementById("email").value
             var password = document.getElementById("password").value
 
-            fetch("http://localhost:3000/restaurant/"+mail)
+            fetch("https://swiggy-server-tau.vercel.app/restaurant/"+mail)
             .then(response => response.json())
             .then((data)=> {
  

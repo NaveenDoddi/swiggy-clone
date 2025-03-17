@@ -248,13 +248,13 @@
 
             var mobile_number = localStorage.getItem("customerMobile")
 
-            fetch("http://localhost:3000/customers/"+mobile_number)
+            fetch("https://swiggy-server-tau.vercel.app/customers/"+mobile_number)
             .then(res => res.json())
             .then(data => {
                 document.getElementById("addressSpan").innerText = data.address
             })
 
-            fetch("http://localhost:3000/getCartItems/"+mobile_number)
+            fetch("https://swiggy-server-tau.vercel.app/getCartItems/"+mobile_number)
             .then(res => res.json())
             .then((data) => {
 
@@ -345,7 +345,7 @@
             var item = element.currentTarget.parentElement.innerText.split("\n")[1]
             var id = element.currentTarget.parentElement.parentElement.getElementsByTagName("span")[0].innerText
 
-            fetch("http://localhost:3000/delCartItems/"+id,{
+            fetch("https://swiggy-server-tau.vercel.app/delCartItems/"+id,{
                 method: "DELETE",
             })
             .then(response => {
@@ -376,7 +376,7 @@
                 order.push(name +", "+ res +", "+ price)
             }
 
-            await fetch("http://localhost:3000/orderItem/"+mobile_number,{
+            await fetch("https://swiggy-server-tau.vercel.app/orderItem/"+mobile_number,{
                 method: "POST",
                 headers: {'Content-Type': 'application/json'},  
                 body: JSON.stringify( { newOrder : order } ),
@@ -397,7 +397,7 @@
 
             // orders()
             
-            fetch("http://localhost:3000/cartEmpty/"+mobile_number, {
+            fetch("https://swiggy-server-tau.vercel.app/cartEmpty/"+mobile_number, {
                 method: "DELETE",
                 
             })

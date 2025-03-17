@@ -149,7 +149,7 @@
             var input = document.getElementById("dishInput").value.toLowerCase()
 
             console.log(input)
-            fetch("http://localhost:3000/searchItems/"+input)
+            fetch("https://swiggy-server-tau.vercel.app/searchItems/"+input)
             .then(res => res.json())
             .then(data => {
               data.map((item)=>{
@@ -235,7 +235,7 @@
                     image : element.currentTarget.parentNode.parentNode.childNodes[0].src,
                 }
 
-                fetch("http://localhost:3000/postCart",{
+                fetch("https://swiggy-server-tau.vercel.app/postCart",{
                   method: "POST",
                   headers: {'Content-Type': 'application/json'},  
                   body: JSON.stringify(item),
@@ -269,7 +269,7 @@
             //     image : element.currentTarget.parentNode.parentNode.childNodes[0].src,
             // }
 
-            // fetch("http://localhost:3000/postCart",{
+            // fetch("https://swiggy-server-tau.vercel.app/postCart",{
             //   method: "POST",
             //   headers: {'Content-Type': 'application/json'},  
             //   body: JSON.stringify(item),
