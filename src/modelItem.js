@@ -7,7 +7,8 @@ const item = mongoose.Schema({
     dishName: { type: String, required: true},
     price: {type: Number, required: true},
     discription: {type: String},
-    pic: {type: String}
+    pic: {type: String},
+    category: {type: String}
 
 })
 

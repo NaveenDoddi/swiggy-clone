@@ -1,0 +1,110 @@
+[
+      {
+            "restaurant": "Yuti Restaurant",
+            "email": "prasadnaveen847@gmail.com",
+            "dishName": "Margherita Pizza",
+            "price": 950,
+            "discription": "Classic pizza topped with fresh tomatoes, mozzarella cheese, and basil.",
+            "pic": "https://tse3.mm.bing.net/th?id=OIP.gkLQlP6lruIMcyF1KXYcxgHaLJ&pid=Api",
+            "category": "Pizza"
+      },
+      {
+            "restaurant": "Yuti Restaurant",
+            "email": "prasadnaveen847@gmail.com",
+            "dishName": "Cheeseburger",
+            "price": 499,
+            "discription": "Juicy beef patty topped with melted cheese, lettuce, and tomato, served with fries.",
+            "pic": "https://tse2.mm.bing.net/th?id=OIP.9wt_8FaLrxsXsBruerDe9QHaHa&pid=Api",
+            "category": "Burger"
+      },
+      {
+            "restaurant": "Yuti Restaurant",
+            "email": "prasadnaveen847@gmail.com",
+            "dishName": "Caesar Salad",
+            "price": 750,
+            "discription": "Crisp romaine lettuce tossed in Caesar dressing, topped with parmesan cheese and croutons.",
+            "pic": "https://tse3.mm.bing.net/th?id=OIP.8UagT3WWGxruvIOqJTCPeQHaE8&pid=Api",
+            "category": "Salad"
+      },
+      {
+            "restaurant": "Spice Villa",
+            "email": "spicevilla@gmail.com",
+            "dishName": "Hyderabadi Biryani",
+            "price": 1200,
+            "discription": "Authentic Hyderabadi dum biryani with flavorful spices and tender chicken.",
+            "pic": "https://tse1.mm.bing.net/th?id=OIP.biryani&pid=Api",
+            "category": "Biryani"
+      },
+      {
+            "restaurant": "Spice Villa",
+            "email": "spicevilla@gmail.com",
+            "dishName": "Mutton Rogan Josh",
+            "price": 1300,
+            "discription": "Aromatic Kashmiri mutton curry cooked with rich spices.",
+            "pic": "https://tse1.mm.bing.net/th?id=OIP.muttoncurry&pid=Api",
+            "category": "Curries"
+      },
+      {
+            "restaurant": "Sweet Treats",
+            "email": "sweettreats@gmail.com",
+            "dishName": "Chocolate Lava Cake",
+            "price": 550,
+            "discription": "Decadent chocolate cake with a molten lava center.",
+            "pic": "https://tse2.mm.bing.net/th?id=OIP.lavacake&pid=Api",
+            "category": "Dessert"
+      },
+      {
+            "restaurant": "Sweet Treats",
+            "email": "sweettreats@gmail.com",
+            "dishName": "Strawberry Cheesecake",
+            "price": 600,
+            "discription": "Creamy cheesecake topped with fresh strawberry compote.",
+            "pic": "https://tse3.mm.bing.net/th?id=OIP.cheesecake&pid=Api",
+            "category": "Dessert"
+      },
+      {
+            "restaurant": "Yuti Restaurant",
+            "email": "prasadnaveen847@gmail.com",
+            "dishName": "Butter Chicken",
+            "price": 1100,
+            "discription": "Delicious butter chicken cooked in a rich tomato-based gravy.",
+            "pic": "https://tse1.mm.bing.net/th?id=OIP.vAdZxHD7fI_bR2WKoP4YlwHaE7&pid=Api",
+            "category": "Indian Cuisine"
+      },
+      {
+            "restaurant": "Sweet Treats",
+            "email": "sweettreats@gmail.com",
+            "dishName": "Vanilla Ice Cream",
+            "price": 250,
+            "discription": "Classic creamy vanilla ice cream served in a waffle cone.",
+            "pic": "https://tse3.mm.bing.net/th?id=OIP.vanillaicecream&pid=Api",
+            "category": "Ice Cream"
+      },
+      {
+            "restaurant": "Spice Villa",
+            "email": "spicevilla@gmail.com",
+            "dishName": "Paneer Butter Masala",
+            "price": 800,
+            "discription": "Cottage cheese cooked in a creamy tomato-based gravy.",
+            "pic": "https://tse2.mm.bing.net/th?id=OIP.paneerbuttermasala&pid=Api",
+            "category": "Curries"
+      },
+      {
+            "restaurant": "Yuti Restaurant",
+            "email": "prasadnaveen847@gmail.com",
+            "dishName": "Mango Lassi",
+            "price": 300,
+            "discription": "Refreshing mango lassi made with yogurt and fresh mango pulp.",
+            "pic": "https://tse1.mm.bing.net/th?id=OIP.JGLuU4-IEs7BvJ3-2MX3XgHaE8&pid=Api",
+            "category": "Beverage"
+      },
+      {
+            "restaurant": "Golden Spoon",
+            "email": "goldenspoon@gmail.com",
+            "dishName": "Chicken Alfredo Pasta",
+            "price": 900,
+            "discription": "Creamy Alfredo pasta topped with grilled chicken and parmesan.",
+            "pic": "https://tse1.mm.bing.net/th?id=OIP.alfredopasta&pid=Api",
+            "category": "Pasta"
+      }
+]

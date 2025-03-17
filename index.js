@@ -1,7 +1,7 @@
 const express = require("express");
 const cors = require('cors');
 require('dotenv').config();
-const mongoose= require('mongoose');
+const mongoose = require('mongoose');
 
 const items = require("./src/modelItem");
 const restaurants = require("./src/modelRestraurant");
@@ -23,8 +23,7 @@ app.get('/', (req, res) => {
     res.sendFile(path.join('public', 'index.html'))
 });
 
-const url = "mongodb+srv://naveendoddi:zQTrjUrwyKXeIEZ2@swiggy.jbdpwef.mongodb.net/swiggy?retryWrites=true&w=majority&appName=swiggy"
-console.log(url)
+const url = process.env.MONGODB_URI
 
 mongoose.connect(url,{
     useNewUrlParser: true,
@@ -62,8 +61,8 @@ app.post("/postRestaurant", async (req, res) => { // restaurant registration pro
   }
 });
 
-
-app.post("/postItem", async (req, res)=>{ // add item used in restraurant page
+// add item used in restraurant page
+app.post("/postItem", async (req, res)=>{ 
   const { restaurant, email, dishName, price, discription, pic } = req.body;
   try{
       const newData = new items({ restaurant, email, dishName, price, discription, pic });
@@ -74,7 +73,8 @@ app.post("/postItem", async (req, res)=>{ // add item used in restraurant page
   }
 })
 
-app.post("/postCart", async (req, res)=>{ // add item used in restraurant page
+ // add item used in restraurant page
+app.post("/postCart", async (req, res)=>{
   const { restaurant, mobile, dishName, price, image, discription } = req.body;
   try{
       const newData = new cartItems({ restaurant, mobile, dishName, price, image, discription });
@@ -104,7 +104,8 @@ app.post('/orderItem/:mobile', async (req, res) => {
   }
 });
 
-app.get("/getCartItems/:mobile", async (req, res)=>{ // display all items on customer dashboard
+// display all items on customer dashboard
+app.get("/getCartItems/:mobile", async (req, res)=>{ 
   try{
     const mobile = req.params.mobile;
 
@@ -116,7 +117,8 @@ app.get("/getCartItems/:mobile", async (req, res)=>{ // display all items on cus
   }
 })
 
-app.get("/getAllItems", async (req, res)=>{ // display all items on customer dashboard
+// display all items on customer dashboard
+app.get("/getAllItems", async (req, res)=>{ 
   try{
     const allData = await items.find();
     return res.status(200).json(allData);
@@ -124,6 +126,39 @@ app.get("/getAllItems", async (req, res)=>{ // display all items on customer das
     console.log(err)
   }
 })
+
+
+
+// Apply category filter if provided
+app.get("/filterItems", async (req, res) => {
+  try {
+    const { category, minPrice, maxPrice } = req.query;
+
+    // Create a filter object
+    let filter = {};
+
+    if (category) {
+      filter.category = category;
+    }
+
+    if (minPrice && maxPrice) {
+      filter.price = { $gte: parseInt(minPrice), $lte: parseInt(maxPrice) };
+    } else if (minPrice) {
+      filter.price = { $gte: parseInt(minPrice) };
+    } else if (maxPrice) {
+      filter.price = { $lte: parseInt(maxPrice) };
+    }
+
+    // Fetch filtered data from the database
+    const filteredData = await items.find(filter);
+
+    return res.status(200).json(filteredData);
+  } catch (err) {
+    console.log(err);
+    return res.status(500).json({ message: "Internal Server Error" });
+  }
+  
+});
 
 
 app.get("/customers/:mobile", async (req, res)=>{ // login for customer
@@ -178,7 +213,8 @@ app.get("/items/:email", async (req, res)=>{ // display items based on the mail 
   }
 })
 
-app.get("/searchItems/:dishName", async (req, res)=>{ // display items based on the mail for restraurants
+// display items based on the user search
+app.get("/searchItems/:dishName", async (req, res)=>{ 
   try{
       const dishName = req.params.dishName;
 
