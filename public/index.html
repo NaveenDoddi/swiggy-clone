@@ -454,7 +454,7 @@
                             <button class="btn btn-sm btn-success w-100 " onclick="getFilterItems()">Search</button>
                         </div>
                     </div>
-                    
+
 
                 </div>
 
@@ -856,7 +856,7 @@
         }
 
         function displayItems(data) {
-            
+
             document.getElementById("dishItemsnew").innerHTML = ""
 
             data.map((item) => {
@@ -904,6 +904,12 @@
                 itemPrice.innerText = "price: " + item.price + " /-"
                 itemPrice.append(document.createElement("br"))
 
+                var availableTag = document.createElement("div")
+                availableTag.className = "fs-6 fw-normal"
+                availableTag.innerText = `Available: ${item.count ? item.count : "10"}`
+
+                cardDetails.append(availableTag)
+
                 var itemDes = document.createElement("div")
                 itemDes.innerText = item.discription
                 itemDes.style.fontSize = "small"
@@ -930,124 +936,124 @@
 
         function addtoCart(element) {
 
-                    var mobile_number = Number(localStorage.getItem("customerMobile"))
+            var mobile_number = Number(localStorage.getItem("customerMobile"))
 
-                    if (mobile_number) {
+            if (mobile_number) {
 
-                        const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample)
-                        document.getElementById('toast-body').className = "toast-body bg-warning d-flex justify-content-between p-1"
-                        updateToastText('Adding Item to cart...⏳')
-                        toastBootstrap.show()
+                const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample)
+                document.getElementById('toast-body').className = "toast-body bg-warning d-flex justify-content-between p-1"
+                updateToastText('Adding Item to cart...⏳')
+                toastBootstrap.show()
 
-                        var about = element.currentTarget.parentNode.innerText.split("\n\n")
+                var about = element.currentTarget.parentNode.innerText.split("\n\n")
 
-                        const item = {
-                            restaurant: about[0].split("\n")[0],
-                            mobile: mobile_number,
-                            dishName: about[0].split("\n")[1],
-                            price: about[1].split(" ")[1],
-                            discription: about[1].split("\n")[1],
-                            image: element.currentTarget.parentNode.parentNode.childNodes[0].src,
-                        }
-
-                        fetch("https://swiggy-server-tau.vercel.app/postCart", {
-                            method: "POST",
-                            headers: { 'Content-Type': 'application/json' },
-                            body: JSON.stringify(item),
-
-                        })
-                            .then(response => {
-                                console.log(response.status)
-                                if (response.ok) {
-                                    const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample)
-                                    document.getElementById('toast-body').className = "toast-body bg-success d-flex justify-content-between p-1"
-
-                                    updateToastText('1 Item added to Cart ✅')
-                                    toastBootstrap.show()
-                                }
-                            })
-
-                    } else {
-                        alert("you need SWIGGY account to ADD ITEM")
-                    }
-
+                const item = {
+                    restaurant: about[0].split("\n")[0],
+                    mobile: mobile_number,
+                    dishName: about[0].split("\n")[1],
+                    price: about[1].split(" ")[1],
+                    discription: about[1].split("\n")[1],
+                    image: element.currentTarget.parentNode.parentNode.childNodes[0].src,
                 }
+
+                fetch("https://swiggy-server-tau.vercel.app/postCart", {
+                    method: "POST",
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(item),
+
+                })
+                    .then(response => {
+                        console.log(response.status)
+                        if (response.ok) {
+                            const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample)
+                            document.getElementById('toast-body').className = "toast-body bg-success d-flex justify-content-between p-1"
+
+                            updateToastText('1 Item added to Cart ✅')
+                            toastBootstrap.show()
+                        }
+                    })
+
+            } else {
+                alert("you need SWIGGY account to ADD ITEM")
+            }
+
+        }
 
         function scrolltoLeft(element) {
-                    var div = element.parentElement.parentElement.parentElement.getElementsByTagName("div")[3]
-                    div.scrollLeft += 270;
-                }
+            var div = element.parentElement.parentElement.parentElement.getElementsByTagName("div")[3]
+            div.scrollLeft += 270;
+        }
         function scrolltoRight(element) {
-                    element.parentElement.parentElement.parentElement.getElementsByTagName("div")[3].scrollLeft -= 270;
-                }
+            element.parentElement.parentElement.parentElement.getElementsByTagName("div")[3].scrollLeft -= 270;
+        }
 
         function showLess() {
-                    document.getElementById("restsNearbyMeBtns").className = "d-flex"
-                    document.getElementById("showLess").className = "d-none"
-                    document.getElementById("restsNearbyMe").className = "d-none"
-                }
+            document.getElementById("restsNearbyMeBtns").className = "d-flex"
+            document.getElementById("showLess").className = "d-none"
+            document.getElementById("restsNearbyMe").className = "d-none"
+        }
 
         function showfooter1Items() {
-                    document.getElementById("footer1HiddenBtn").style.display = 'none'
-                    document.getElementById("footer1Hidden").className = "gap-1 row d-flex justify-content-center"
-                }
+            document.getElementById("footer1HiddenBtn").style.display = 'none'
+            document.getElementById("footer1Hidden").className = "gap-1 row d-flex justify-content-center"
+        }
 
         function hidefooter1Items() {
-                    document.getElementById("footer1HiddenBtn").style.display = 'block'
-                    document.getElementById("footer1Hidden").className = "d-none"
-                }
+            document.getElementById("footer1HiddenBtn").style.display = 'block'
+            document.getElementById("footer1Hidden").className = "d-none"
+        }
 
         function getLocation() {
-                    if (navigator.geolocation) {
-                        navigator.geolocation.getCurrentPosition(showPosition);
-                    }
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition);
+            }
 
 
-                    function showPosition(position) {
-                        var lat = position.coords.latitude
-                        var long = position.coords.longitude
+            function showPosition(position) {
+                var lat = position.coords.latitude
+                var long = position.coords.longitude
 
-                        fetch("https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=" + lat + "&longitude=" + long + "&localityLanguage=en")
-                            .then(res => res.json())
-                            .then((data) => {
-                                console.log(data.city)
-                                document.getElementById("location").innerText = data.city
-                                document.getElementById("city1").innerText = data.city
+                fetch("https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=" + lat + "&longitude=" + long + "&localityLanguage=en")
+                    .then(res => res.json())
+                    .then((data) => {
+                        console.log(data.city)
+                        document.getElementById("location").innerText = data.city
+                        document.getElementById("city1").innerText = data.city
 
-                            })
-                    }
+                    })
+            }
 
-                }
+        }
 
         function logOut() {
-                    localStorage.removeItem("customerMobile")
-                    window.location.href = "customerLogin.html"
-                }
+            localStorage.removeItem("customerMobile")
+            window.location.href = "customerLogin.html"
+        }
 
         const contents = document.getElementsByClassName('content');
-            let currentIndex = 0;
+        let currentIndex = 0;
 
-            function rotateContent() {
-                contents[currentIndex].classList.remove('active');
-                currentIndex = (currentIndex + 1) % contents.length;
-                contents[currentIndex].classList.add('active');
-            }
+        function rotateContent() {
+            contents[currentIndex].classList.remove('active');
+            currentIndex = (currentIndex + 1) % contents.length;
+            contents[currentIndex].classList.add('active');
+        }
 
-            // Rotate the content every 3 seconds
-            setInterval(rotateContent, 3000);
+        // Rotate the content every 3 seconds
+        setInterval(rotateContent, 3000);
 
-            const toastLiveExample = document.getElementById('liveToast')
+        const toastLiveExample = document.getElementById('liveToast')
 
-            if (toastTrigger) {
-                const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample)
-                toastTrigger.addEventListener('click', () => {
-                    toastBootstrap.show()
-                })
-            }
+        if (toastTrigger) {
+            const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample)
+            toastTrigger.addEventListener('click', () => {
+                toastBootstrap.show()
+            })
+        }
 
-            function updateToastText(newText) {
-                document.getElementById("toast-text").innerText = newText
-            }
+        function updateToastText(newText) {
+            document.getElementById("toast-text").innerText = newText
+        }
 
 
     </script>
