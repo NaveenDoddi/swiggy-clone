@@ -925,7 +925,14 @@
                 addButton.addEventListener("click", addtoCart)
                 cardBody.append(addButton)
 
-                cardDiv.append(cardBody)
+                var itemIdSpan = document.createElement("span")
+                itemIdSpan.innerText = item._id
+                item.id = "itemIdSpan"
+                itemIdSpan.className = "d-none"
+
+
+
+                cardDiv.append(cardBody, itemIdSpan)
 
                 div.append(cardDiv)
                 document.getElementById("dishItemsnew").append(div)
@@ -937,6 +944,9 @@
         function addtoCart(element) {
 
             var mobile_number = Number(localStorage.getItem("customerMobile"))
+            var element1 = element.target.parentElement.parentElement
+
+            var currentId = element1.getElementsByClassName("d-none")[0].innerText
 
             if (mobile_number) {
 
@@ -948,12 +958,8 @@
                 var about = element.currentTarget.parentNode.innerText.split("\n\n")
 
                 const item = {
-                    restaurant: about[0].split("\n")[0],
                     mobile: mobile_number,
-                    dishName: about[0].split("\n")[1],
-                    price: about[1].split(" ")[1],
-                    discription: about[1].split("\n")[1],
-                    image: element.currentTarget.parentNode.parentNode.childNodes[0].src,
+                    itemId: currentId
                 }
 
                 fetch("https://swiggy-server-tau.vercel.app/postCart", {
