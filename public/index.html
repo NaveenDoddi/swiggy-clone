@@ -431,15 +431,11 @@
 
                         <!-- Price Range Filter -->
                         <div class="col-md-6">
-                            <label for="minPrice" class="form-label">Min Price (₹): <span id="minPriceValue"></span>
-                            </label>
-                            <input type="range" class="form-range" id="minPrice" min="0" max="2000" step="50"
-                                oninput="minPriceValue.innerText = this.value">
-
-                            <label for="maxPrice" class="form-label">Max Price (₹): <span id="maxPriceValue"></span>
-                            </label>
-                            <input type="range" class="form-range" id="maxPrice" min="100" max="2000" step="50"
-                                oninput="maxPriceValue.innerText = this.value">
+                            <label for="minPrice" class="form-label">Min Price (₹): <span id="minPriceValue">0</span></label>
+                            <input type="range" class="form-range" id="minPrice" min="0" max="900" step="50" value="0"  oninput="minPriceValue.innerText = this.value">
+                        
+                            <label for="maxPrice" class="form-label">Max Price (₹): <span id="maxPriceValue">300</span></label>
+                            <input type="range" class="form-range" id="maxPrice" min="100" max="1000" step="50" value="300"  oninput="maxPriceValue.innerText = this.value">
                         </div>
 
 
@@ -791,10 +787,11 @@
             let category = document.getElementById('categoryFilter').value
             let minPrice = document.getElementById('minPrice').value
             let maxPrice = document.getElementById('maxPrice').value
+            
             console.log(category, minPrice, maxPrice)
             fetch(`https://swiggy-server-tau.vercel.app/filterItems?category=${category}&minPrice=${minPrice}&maxPrice=${maxPrice}`)
                 .then(response => response.json())
-                .then(data => displayItems(data))
+                .then(data => console.log(data))
                 .catch(error => console.error("Error fetching items:", error));
 
         }
@@ -861,81 +858,86 @@
 
             data.map((item) => {
 
-                var div = document.createElement('div')
-                div.className = "card col col-11 col-sm-6 col-md-4 col-lg-3 bg-light text-dark p-1"
-                div.style.width = "18 rem"
-                var cardDiv = document.createElement("div")
-                cardDiv.className = "cardimage"
-
-                var cardImage = document.createElement("img")
-                cardImage.src = item.pic
-                cardImage.style.height = "170px"
-                cardImage.style.borderRadius = "20px"
-                cardImage.className = "card-img-top"
-                cardImage.loading = "lazy"
-                cardDiv.append(cardImage)
-
-                var cardBody = document.createElement("div")
-                cardBody.className = "card-body"
-
-                var cardDetails = document.createElement("div")
-                cardDetails.className = "card-text"
-
-                var star = document.createElement("i")
-                star.className = "fa-solid fa-star text-warning"
-
-                var restaurantNmae = document.createElement("h6")
-                restaurantNmae.innerText = item.restaurant + " "
-                restaurantNmae.className = "card-title"
-                restaurantNmae.append(star)
-                cardDetails.append(restaurantNmae)
-
-                var itemName = document.createElement("h6")
-                itemName.className = "cardNameTag fs-4 fw-bold"
-                itemName.innerText = item.dishName
-                cardDetails.append(itemName)
-
-                var itemCategery = document.createElement("div")
-                itemCategery.className = "fw-bold"
-                itemCategery.innerText = 'Category: ' + item.category
-                cardDetails.append(itemCategery)
-
-                var itemPrice = document.createElement("p")
-                itemPrice.innerText = "price: " + item.price + " /-"
-                itemPrice.append(document.createElement("br"))
-
-                var availableTag = document.createElement("div")
-                availableTag.className = "fs-6 fw-normal"
-                availableTag.innerText = `Available: ${item.count}`
-
-                cardDetails.append(availableTag)
-
-                var itemDes = document.createElement("div")
-                itemDes.innerText = item.discription
-                itemDes.style.fontSize = "small"
-                itemDes.className = "card-text"
-                itemPrice.append(itemDes)
-                cardDetails.append(itemPrice)
-                cardBody.append(cardDetails)
-
-                var addButton = document.createElement("button")
-                addButton.className = "btn btn-success btn-sm"
-                addButton.id = "liveToastBtn"
-                addButton.innerText = "Add +"
-                addButton.addEventListener("click", addtoCart)
-                cardBody.append(addButton)
-
-                var itemIdSpan = document.createElement("span")
-                itemIdSpan.innerText = item._id
-                item.id = "itemIdSpan"
-                itemIdSpan.className = "d-none"
+                if (item.count > 0) {
 
 
 
-                cardDiv.append(cardBody, itemIdSpan)
+                    var div = document.createElement('div')
+                    div.className = "card col col-11 col-sm-6 col-md-4 col-lg-3 bg-light text-dark p-1"
+                    div.style.width = "18 rem"
+                    var cardDiv = document.createElement("div")
+                    cardDiv.className = "cardimage"
 
-                div.append(cardDiv)
-                document.getElementById("dishItemsnew").append(div)
+                    var cardImage = document.createElement("img")
+                    cardImage.src = item.pic
+                    cardImage.style.height = "170px"
+                    cardImage.style.borderRadius = "20px"
+                    cardImage.className = "card-img-top"
+                    cardImage.loading = "lazy"
+                    cardDiv.append(cardImage)
+
+                    var cardBody = document.createElement("div")
+                    cardBody.className = "card-body"
+
+                    var cardDetails = document.createElement("div")
+                    cardDetails.className = "card-text"
+
+                    var star = document.createElement("i")
+                    star.className = "fa-solid fa-star text-warning"
+
+                    var restaurantNmae = document.createElement("h6")
+                    restaurantNmae.innerText = item.restaurant + " "
+                    restaurantNmae.className = "card-title"
+                    restaurantNmae.append(star)
+                    cardDetails.append(restaurantNmae)
+
+                    var itemName = document.createElement("h6")
+                    itemName.className = "cardNameTag fs-4 fw-bold"
+                    itemName.innerText = item.dishName
+                    cardDetails.append(itemName)
+
+                    var itemCategery = document.createElement("div")
+                    itemCategery.className = "fw-bold"
+                    itemCategery.innerText = 'Category: ' + item.category
+                    cardDetails.append(itemCategery)
+
+                    var itemPrice = document.createElement("p")
+                    itemPrice.innerText = "price: " + item.price + " /-"
+                    itemPrice.append(document.createElement("br"))
+
+                    var availableTag = document.createElement("div")
+                    availableTag.className = "fs-6 fw-normal"
+                    availableTag.innerText = `Available: ${item.count}`
+
+                    cardDetails.append(availableTag)
+
+                    var itemDes = document.createElement("div")
+                    itemDes.innerText = item.discription
+                    itemDes.style.fontSize = "small"
+                    itemDes.className = "card-text"
+                    itemPrice.append(itemDes)
+                    cardDetails.append(itemPrice)
+                    cardBody.append(cardDetails)
+
+                    var addButton = document.createElement("button")
+                    addButton.className = "btn btn-success btn-sm"
+                    addButton.id = "liveToastBtn"
+                    addButton.innerText = "Add +"
+                    addButton.addEventListener("click", addtoCart)
+                    cardBody.append(addButton)
+
+                    var itemIdSpan = document.createElement("span")
+                    itemIdSpan.innerText = item._id
+                    item.id = "itemIdSpan"
+                    itemIdSpan.className = "d-none"
+
+
+
+                    cardDiv.append(cardBody, itemIdSpan)
+
+                    div.append(cardDiv)
+                    document.getElementById("dishItemsnew").append(div)
+                }
 
             })
         }
@@ -947,7 +949,7 @@
             var element2 = element.target.parentElement
 
             var count = element2.getElementsByClassName("fw-normal")[0].innerText.split(":")[1]
-            element2.getElementsByClassName("fw-normal")[0].innerText =  `Available: ${Number(count) - 1}`
+            element2.getElementsByClassName("fw-normal")[0].innerText = `Available: ${Number(count) - 1}`
 
             var element1 = element.target.parentElement.parentElement
 
