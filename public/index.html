@@ -414,7 +414,7 @@
                 <div class="container p-3">
                     <div class="row">
                         <!-- Category Filter -->
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <label for="categoryFilter" class="form-label">Select Category:</label>
                             <select class="form-control" id="categoryFilter">
                                 <option value="">All</option>
@@ -444,14 +444,17 @@
 
 
                         <!-- Search Input -->
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <label for="searchItem" class="form-label">Search Item:</label>
                             <input type="text" class="form-control" id="searchItem" placeholder="Search food item...">
                         </div>
+
+                        <!-- Search Btn -->
+                        <div class="col-12">
+                            <button class="btn btn-sm btn-success w-100 " onclick="getFilterItems()">Search</button>
+                        </div>
                     </div>
-                    <div>
-                        <button class="btn btn-sm" onclick="getFilterItems()">search</button>
-                    </div>
+                    
 
                 </div>
 

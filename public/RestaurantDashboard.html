@@ -190,6 +190,8 @@
 
                   <label for="photoSrc" id="imagelabel" class="col-form-label">Choose Photo</label>
                   <input class="form-control d-none" id="photoSrc" type="file" accept="image/*">
+
+                  <input type="text" id="browserPhotoUrl" placeholder="copy link from browser">
                 </div>
               </div>
 
@@ -201,6 +203,11 @@
               <div class="mb-3">
                 <label for="Price" class="col-form-label">Price*:</label>
                 <input class="form-control" id="Price" required>
+              </div>
+
+              <div class="mb-3">
+                <label for="countItems" class="col-form-label">Available items *:</label>
+                <input class="form-control" id="countItems" value="10">
               </div>
 
               <div class="mb-3">
@@ -251,6 +258,8 @@
 
                   <label for="photoSrc1" id="imagelabel" class="col-form-label">Choose Photo</label>
                   <input class="form-control d-none" id="photoSrc1" type="file" accept="image/*">
+
+                  <input type="text" id="browserPhotoUrl1" placeholder="copy link from browser">
                 </div>
               </div>
 
@@ -258,14 +267,22 @@
                 <label for="category" class="col-form-label">Category:</label>
                 <input type="text" class="form-control" id="category1">
               </div>
+
               <div class="mb-3">
                 <label for="name" class="col-form-label">Name*:</label>
                 <input type="text" class="form-control" id="name1" required>
               </div>
+
               <div class="mb-3">
                 <label for="Price" class="col-form-label">Price*:</label>
                 <input class="form-control" id="Price1" required>
               </div>
+
+              <div class="mb-3">
+                <label for="countItems1" class="col-form-label">Available items *:</label>
+                <input class="form-control" id="countItems1" value="">
+              </div>
+
               <div class="mb-3">
                 <label for="Description" class="col-form-label">Description:</label>
                 <input class="form-control" id="Discription1">
@@ -307,12 +324,13 @@
         dishName: document.getElementById("name").value.toLowerCase(),
         price: document.getElementById("Price").value,
         discription: document.getElementById("Discription").value,
-        pic: document.getElementById('photo').src,
+        pic: document.getElementById("browserPhotoUrl").value ? document.getElementById("browserPhotoUrl").value : document.getElementById('photo').src ,
         category: document.getElementById("category").value,
+        count : document.getElementById('countItems').value
 
       }
 
-      fetch("http://localhost:3000/postItem", {
+      fetch("https://swiggy-server-tau.vercel.app/postItem", {
         method: "POST",
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(newItem),
@@ -373,7 +391,7 @@
       if (email) {
         document.getElementById("signInOption").style.display = "none";
 
-        fetch("http://localhost:3000/restaurant/" + email)
+        fetch("https://swiggy-server-tau.vercel.app/restaurant/" + email)
           .then(res => res.json())
           .then(data => {
 
@@ -459,6 +477,12 @@
 
       cardDetails.append(priceTag)
 
+      var availableTag = document.createElement("div")
+      availableTag.className = "fs-6 fw-normal"
+      availableTag.innerText = `Available: ${item.count ? item.count : "10"}`
+
+      cardDetails.append(availableTag)
+
       var descriptionTag = document.createElement("div")
       descriptionTag.className = "fs-6 fw-normal d-flex justify-content-between"
       descriptionTag.innerText = item.discription
@@ -506,7 +530,8 @@
       document.getElementById("name1").value = element.getElementsByClassName("cardNameTag")[0].innerText
       document.getElementById("category1").value = element.getElementsByClassName("fs-6")[0].innerText.split(":")[1]
       document.getElementById("Price1").value = element.getElementsByClassName("fs-6")[1].innerText.split(" ")[1].split("/")[0]
-      document.getElementById("Discription1").value = element.getElementsByClassName("fs-6")[2].innerText.split("⋮")[0]
+      document.getElementById('countItems1').value = element.getElementsByClassName("fs-6")[2].innerText.split(":")[1]
+      document.getElementById("Discription1").value = element.getElementsByClassName("fs-6")[3].innerText.split("⋮")[0]
 
     }
 
@@ -522,13 +547,14 @@
         dishName: document.getElementById("name1").value.toLowerCase(),
         price: document.getElementById("Price1").value,
         discription: document.getElementById("Discription1").value,
-        pic: document.getElementById('photo1').src,
+        pic: document.getElementById("browserPhotoUrl1").value ? document.getElementById("browserPhotoUrl1").value : document.getElementById('photo1').src  ,
         category :document.getElementById("category1").value,
+        count : document.getElementById('countItems1').value,
         _id: id
 
       }
 
-      fetch("http://localhost:3000/updateItem/" + id, {
+      fetch("https://swiggy-server-tau.vercel.app/updateItem/" + id, {
         method: "PUT",
         body: JSON.stringify(newItem),
         headers: { 'Content-Type': 'application/json' },
@@ -550,7 +576,7 @@
 
 
           } else {
-
+            alert("image size is too large... try images with < 80kb")
           }
         })
 
@@ -558,7 +584,7 @@
     function Del() {
       var id = document.getElementById("currentItemIdSpan").innerText
 
-      fetch("http://localhost:3000/delItems/" + id, {
+      fetch("https://swiggy-server-tau.vercel.app/delItems/" + id, {
         method: "DELETE",
       })
         .then(response => {

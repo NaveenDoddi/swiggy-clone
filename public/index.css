@@ -93,9 +93,13 @@
     transform: translateY(100%); 
    
 }
+#topResItems{
+    overflow-y: hidden;
+}
 #topResItems .card{
-    border-bottom-left-radius: 20px;
-    border-bottom-right-radius: 20px;
+    border-radius: 20px;
+    /* border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px; */
 
 }
   

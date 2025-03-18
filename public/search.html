@@ -146,7 +146,7 @@
         function search(){
 
             document.getElementById("searchResult").innerHTML = ""
-            var input = document.getElementById("dishInput").value.toLowerCase()
+            var input = document.getElementById("dishInput").value
 
             console.log(input)
             fetch("https://swiggy-server-tau.vercel.app/searchItems/"+input)
@@ -213,8 +213,7 @@
 
         
         function addtoCart(element){    
-            
-            
+
             var mobile_number = Number(localStorage.getItem("customerMobile"))
 
             if(mobile_number){
