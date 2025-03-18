@@ -906,7 +906,7 @@
 
                 var availableTag = document.createElement("div")
                 availableTag.className = "fs-6 fw-normal"
-                availableTag.innerText = `Available: ${item.count ? item.count : "10"}`
+                availableTag.innerText = `Available: ${item.count}`
 
                 cardDetails.append(availableTag)
 
@@ -961,8 +961,9 @@
                     mobile: mobile_number,
                     itemId: currentId
                 }
+                console.log(item)
 
-                fetch("https://swiggy-server-tau.vercel.app/postCart", {
+                fetch("https://swiggy-server-tau.vercel.app/addToCart", {
                     method: "POST",
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(item),
