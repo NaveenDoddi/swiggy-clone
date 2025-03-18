@@ -944,6 +944,11 @@
         function addtoCart(element) {
 
             var mobile_number = Number(localStorage.getItem("customerMobile"))
+            var element2 = element.target.parentElement
+
+            var count = element2.getElementsByClassName("fw-normal")[0].innerText.split(":")[1]
+            element2.getElementsByClassName("fw-normal")[0].innerText =  `Available: ${Number(count) - 1}`
+
             var element1 = element.target.parentElement.parentElement
 
             var currentId = element1.getElementsByClassName("d-none")[0].innerText
@@ -961,7 +966,6 @@
                     mobile: mobile_number,
                     itemId: currentId
                 }
-                console.log(item)
 
                 fetch("https://swiggy-server-tau.vercel.app/addToCart", {
                     method: "POST",
