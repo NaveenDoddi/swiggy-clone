@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,12 +15,12 @@
 
 
     <style>
-        input:focus{
-            outline:black;
+        input:focus {
+            outline: black;
         }
 
-        #mindItems{
-            img{
+        #mindItems {
+            img {
                 height: 80px;
                 width: auto;
                 border-radius: 50px;
@@ -27,17 +28,19 @@
         }
     </style>
 </head>
+
 <body>
     <div class="m-2 ">
         <div>
             <nav class="bg-body-tertiary">
                 <div class="d-flex justify-content-between bg-light">
-                    
+
                     <div class=" p-3">
-                        <a href="index.html"><img src="images/Swiggy_logo.png" alt="logo" style="max-width: 60px; float: left;" id="logo"></a>
+                        <a href="index.html"><img src="images/Swiggy_logo.png" alt="logo"
+                                style="max-width: 60px; float: left;" id="logo"></a>
                         <span class="fw-bolder">Search</span>
                     </div>
-                        
+
                     <div class="pt-3">
 
                         <div class="d-sm-none">
@@ -45,21 +48,27 @@
                                 <i class="fa-solid fa-bars"></i>
                             </button>
                         </div>
-                        
-                        <div class="offcanvas-sm offcanvas-end" tabindex="-1" id="right" aria-labelledby="offcanvasExampleLabel">
+
+                        <div class="offcanvas-sm offcanvas-end" tabindex="-1" id="right"
+                            aria-labelledby="offcanvasExampleLabel">
                             <div class="offcanvas-header">
                                 <h5 class="offcanvas-title" id="offcanvasExampleLabel">Details</h5>
-                                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" data-bs-target="#right" aria-label="Close"></button>
+                                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
+                                    data-bs-target="#right" aria-label="Close"></button>
                             </div>
                             <div class="offcanvas-body">
                                 <div class="">
-                                    <a href="search.html"><button style="color: #fd7e14;" class="btn"><i class="fa-solid fa-search"></i> &nbsp; Search</button></a>
-                                    <a href="support.html"><button class="btn"><i class="fa-solid fa-life-ring"></i> &nbsp; Help</button></a>
+                                    <a href="search.html"><button style="color: #fd7e14;" class="btn"><i
+                                                class="fa-solid fa-search"></i> &nbsp; Search</button></a>
+                                    <a href="support.html"><button class="btn"><i class="fa-solid fa-life-ring"></i>
+                                            &nbsp; Help</button></a>
                                     <a href="cart.html">
                                         <button type="button" class="btn position-relative">
                                             <i class="fa-solid fa-cart-shopping"></i> Cart
-                                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-success" id="cartBadge">
-                                              +
+                                            <span
+                                                class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-success"
+                                                id="cartBadge">
+                                                +
                                             </span>
                                         </button>
                                     </a>
@@ -67,25 +76,78 @@
                             </div>
                         </div>
                     </div>
-        
+
                 </div>
             </nav>
         </div>
 
-        
+
 
         <div class="body m-md-5 mt-3">
 
-            <div style="border: 1px solid; border-radius: 5px;">
-                <div style="border: 0px solid;" class="input-group"  id="searchInput">
-                    <!-- input search -->
-                    <input style="font-weight: 500;" type="text" class="form-control p-3" placeholder="Search for restaurants and food" id="dishInput">
-                    <button onclick="search()" style="background-color: white; border: 1px rgb(201, 199, 199);" class="btn" type="button" id="button-addon2"><i class="fa-solid fa-search"></i></button>
+            <!-- filter for the items -->
+            <div class="container p-3">
+                <div class="row">
+                    <!-- Category Filter -->
+                    <div class="col-md-3">
+                        <label for="categoryFilter" class="form-label">Select Category:</label>
+                        <select class="form-control" id="categoryFilter">
+                            <option value="">All</option>
+                            <option value="Pizza">Pizza</option>
+                            <option value="Burger">Burger</option>
+                            <option value="Salad">Salad</option>
+                            <option value="Biryani">Biryani</option>
+                            <option value="Curries">Curries</option>
+                            <option value="Dessert">Dessert</option>
+                            <option value="Ice Cream">Ice Cream</option>
+                            <option value="Beverage">Beverage</option>
+                            <option value="Indian Cuisine">Indian Cuisine</option>
+                            <option value="Indo-Chinese">Indo-Chinese</option>
+                        </select>
+                    </div>
+
+                    <!-- Price Range Filter -->
+                    <div class="col-md-6">
+                        <label for="minPrice" class="form-label">Min Price (₹): <span
+                                id="minPriceValue">0</span></label>
+                        <input type="range" class="form-range" id="minPrice" min="0" max="900" step="50" value="0"
+                            oninput="minPriceValue.innerText = this.value">
+
+                        <label for="maxPrice" class="form-label">Max Price (₹): <span
+                                id="maxPriceValue">300</span></label>
+                        <input type="range" class="form-range" id="maxPrice" min="100" max="1000" step="50" value="300"
+                            oninput="maxPriceValue.innerText = this.value">
+                    </div>
+
+
+                    <!-- Search Input -->
+                    <div class="col-md-3">
+                        <label for="searchItem" class="form-label">Search Item:</label>
+                        <input style="font-weight: 500;" type="text" class="form-control p-3"
+                            placeholder="Search for restaurants and food" id="dishInput">
+                    </div>
+
+                    <!-- Search Btn -->
+                    <div class="col-12">
+                        <button class="btn btn-sm btn-success w-100 " onclick="getFilterItems()">Search <i
+                                class="fa-solid fa-search"></i></button>
+                    </div>
                 </div>
+
+
             </div>
 
+            <!-- <div style="border: 1px solid; border-radius: 5px;">
+                <div style="border: 0px solid;" class="input-group" id="searchInput">
+                    <input style="font-weight: 500;" type="text" class="form-control p-3"
+                        placeholder="Search for restaurants and food" id="dishInput">
+                    <button onclick="search()" style="background-color: white; border: 1px rgb(201, 199, 199);"
+                        class="btn" type="button" id="button-addon2"><i class="fa-solid fa-search"></i></button>
+                </div>
+            </div> -->
+
             <div>
-                <div class="row m-2 mt-2 d-flex justify-content-center"  id="searchResult"> 
+                <div class="row m-2 mt-2 d-flex justify-content-center" id="searchResult">
 
                 </div>
 
@@ -103,27 +165,27 @@
 
                 <div id="mindItems">
                     <div>
-                        <img src="images/Dosa.avif" >
+                        <img src="images/Dosa.avif">
                     </div>
                     <div>
-                        <img src="images/Biryaniscroll.avif" >
+                        <img src="images/Biryaniscroll.avif">
                     </div>
                     <div>
-                        <img src="images/Burger.avif" >
+                        <img src="images/Burger.avif">
                     </div>
                     <div>
-                        <img src="images/scrollCakes.avif" >
+                        <img src="images/scrollCakes.avif">
                     </div>
                     <div>
-                        <img src="images/sandwicth.avif" >
+                        <img src="images/sandwicth.avif">
                     </div>
                     <div>
-                        <img src="images/tea.avif" >
+                        <img src="images/tea.avif">
                     </div>
                     <div>
-                        <img src="images/beverages.avif" >
+                        <img src="images/beverages.avif">
                     </div>
-                    
+
                 </div>
             </div>
         </div>
@@ -131,55 +193,62 @@
 
         <div class="toast-container position-fixed bottom-0 end-0 p-3">
             <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
-              <div class="toast-body bg-success d-flex justify-content-between p-1" id="toast-body">
-                <span class="fw-bold pt-1" id="toast-text">1 Item added to Cart &#129321;</span>
-                <a href="cart.html"><button class="btn btn-sm text-light">View <i class="fa-solid fa-cart-shopping"></i></button></a>
-              </div>
-              
+                <div class="toast-body bg-success d-flex justify-content-between p-1" id="toast-body">
+                    <span class="fw-bold pt-1" id="toast-text">1 Item added to Cart &#129321;</span>
+                    <a href="cart.html"><button class="btn btn-sm text-light">View <i
+                                class="fa-solid fa-cart-shopping"></i></button></a>
+                </div>
+
             </div>
         </div>
 
     </div>
 
-    
+
     <script>
-        function search(){
-
+        function search() {
             document.getElementById("searchResult").innerHTML = ""
-            var input = document.getElementById("dishInput").value
+            let category = document.getElementById('categoryFilter').value
+            let minPrice = document.getElementById('minPrice').value
+            let maxPrice = document.getElementById('maxPrice').value
+            let dishName = document.getElementById('searchItem').value
 
-            console.log(input)
-            fetch("https://swiggy-server-tau.vercel.app/searchItems/"+input)
-            .then(res => res.json())
-            .then(data => {
-              data.map((item)=>{
-                
+            fetch(`https://swiggy-server-tau.vercel.app/filterItems?category=${category}&minPrice=${minPrice}&maxPrice=${maxPrice}&dishName=${dishName}`)
+                .then(response => response.json())
+                .then(data => displayItems(data))
+                .catch(error => console.error("Error fetching items:", error));
+
+        }
+
+        function displayItems(data) {
+            data.map((item) => {
+
                 var div = document.createElement('div')
                 div.className = "card col col-11 col-sm-6 col-md-4 col-lg-3 bg-light text-dark p-1"
                 div.style.width = "18 rem"
                 var cardDiv = document.createElement("div")
                 cardDiv.className = "cardimage"
-                  
+
                 var cardImage = document.createElement("img")
                 cardImage.src = item.pic
                 cardImage.style.height = "170px"
-                cardImage.style.borderRadius= "20px"
+                cardImage.style.borderRadius = "20px"
                 cardImage.className = "card-img-top"
                 cardDiv.append(cardImage)
 
                 var cardBody = document.createElement("div")
-                cardBody.className="card-body"
+                cardBody.className = "card-body"
                 var cardDetails = document.createElement("div")
                 cardDetails.className = "card-text"
                 var star = document.createElement("i")
                 star.className = "fa-solid fa-star text-warning"
-                
+
                 var restaurantNmae = document.createElement("h6")
-                restaurantNmae.innerText = item.restaurant+" "
+                restaurantNmae.innerText = item.restaurant + " "
                 restaurantNmae.className = "card-title"
                 restaurantNmae.append(star)
                 cardDetails.append(restaurantNmae)
-            
+
                 var itemName = document.createElement("h6")
                 itemName.innerText = item.dishName
                 cardDetails.append(itemName)
@@ -199,66 +268,61 @@
                 addButton.innerText = "Add +"
                 addButton.addEventListener("click", addtoCart)
                 cardBody.append(addButton)
-            
+
                 cardDiv.append(cardBody)
-            
+
                 div.append(cardDiv)
                 document.getElementById("searchResult").append(div)
-                          
-              })
-          
-
-            })            
+            })
         }
 
-        
-        function addtoCart(element){    
+        function addtoCart(element) {
 
             var mobile_number = Number(localStorage.getItem("customerMobile"))
 
-            if(mobile_number){
+            if (mobile_number) {
 
                 const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample)
                 document.getElementById('toast-body').className = "toast-body bg-warning d-flex justify-content-between p-1"
                 updateToastText('Adding Item to cart...⏳')
-                toastBootstrap.show()  
+                toastBootstrap.show()
 
                 var about = element.currentTarget.parentNode.innerText.split("\n\n")
-            
+
                 const item = {
-                    restaurant:  about[0].split("\n")[0],
+                    restaurant: about[0].split("\n")[0],
                     mobile: mobile_number,
-                    dishName : about[0].split("\n")[1],
-                    price : about[1].split(" ")[1],
-                    discription : about[1].split("\n")[1],
-                    image : element.currentTarget.parentNode.parentNode.childNodes[0].src,
+                    dishName: about[0].split("\n")[1],
+                    price: about[1].split(" ")[1],
+                    discription: about[1].split("\n")[1],
+                    image: element.currentTarget.parentNode.parentNode.childNodes[0].src,
                 }
 
-                fetch("https://swiggy-server-tau.vercel.app/postCart",{
-                  method: "POST",
-                  headers: {'Content-Type': 'application/json'},  
-                  body: JSON.stringify(item),
+                fetch("https://swiggy-server-tau.vercel.app/postCart", {
+                    method: "POST",
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(item),
 
                 })
-                .then(response => {
-                    console.log(response.status)
-                  if (response.ok) {
-                    const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample)
-                    document.getElementById('toast-body').className = "toast-body bg-success d-flex justify-content-between p-1"
+                    .then(response => {
+                        console.log(response.status)
+                        if (response.ok) {
+                            const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample)
+                            document.getElementById('toast-body').className = "toast-body bg-success d-flex justify-content-between p-1"
 
-                    updateToastText('1 Item added to Cart ✅')
-                    toastBootstrap.show()     
-                  }
-                }) 
+                            updateToastText('1 Item added to Cart ✅')
+                            toastBootstrap.show()
+                        }
+                    })
 
-            }else{
+            } else {
                 alert("you need SWIGGY account to ADD ITEM")
             }
 
             // var mobile_number = Number(localStorage.getItem("customerMobile"))
 
             // var about = element.currentTarget.parentNode.innerText.split("\n\n")
-            
+
             // const item = {
             //     restaurant:  about[0].split("\n")[0],
             //     mobile: mobile_number,
@@ -272,7 +336,7 @@
             //   method: "POST",
             //   headers: {'Content-Type': 'application/json'},  
             //   body: JSON.stringify(item),
-                
+
             // })
             // .then(response => {
             //     console.log(response.status)
@@ -289,19 +353,22 @@
         const toastLiveExample = document.getElementById('liveToast')
 
         if (toastTrigger) {
-          const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample)
-          toastTrigger.addEventListener('click', () => {
-            toastBootstrap.show()
-          })
+            const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample)
+            toastTrigger.addEventListener('click', () => {
+                toastBootstrap.show()
+            })
         }
 
         function updateToastText(newText) {
-          document.getElementById("toast-text").innerText = newText
+            document.getElementById("toast-text").innerText = newText
         }
 
     </script>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
 
 </body>
+
 </html>
