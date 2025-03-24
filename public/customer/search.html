@@ -124,7 +124,7 @@
                     <div class="col-md-3">
                         <label for="searchItem" class="form-label">Search Item:</label>
                         <input style="font-weight: 500;" type="text" class="form-control p-3"
-                            placeholder="Search for restaurants and food" id="dishInput">
+                            placeholder="Search for restaurants and food" id="searchItem">
                     </div>
 
                     <!-- Search Btn -->
@@ -151,6 +151,16 @@
 
                 </div>
 
+            </div>
+
+            <div id="pageNationDiv" style="visibility: hidden;">
+                <div class="d-flex justify-content-center mt-4">
+                    <button class="btn btn-sm me-2" id="prevBtn" style="background-color: #fd7e14;" onclick="prev()"> <i
+                            class="fa-solid fa-angle-left"></i> Prev</button>
+                    <span id="currentPage" class="me-2 fw-bold">1</span>
+                    <button class="btn btn-sm" id="nextBtn" style="background-color: #fd7e14;" onclick="next()">Next
+                        <i class="fa-solid fa-angle-right"></i></button>
+                </div>
             </div>
 
             <div class="recentSearch">
@@ -206,14 +216,18 @@
 
 
     <script>
-        function search() {
+        function getFilterItems() {
             document.getElementById("searchResult").innerHTML = ""
             let category = document.getElementById('categoryFilter').value
             let minPrice = document.getElementById('minPrice').value
             let maxPrice = document.getElementById('maxPrice').value
             let dishName = document.getElementById('searchItem').value
 
-            fetch(`https://swiggy-server-tau.vercel.app/filterItems?category=${category}&minPrice=${minPrice}&maxPrice=${maxPrice}&dishName=${dishName}`)
+            let currentPage = parseInt(document.getElementById('currentPage').innerText)
+            // let currentPage = 1
+
+            console.log(category, minPrice, maxPrice)
+            fetch(`https://swiggy-server-tau.vercel.app/filterItems?category=${category}&minPrice=${minPrice}&maxPrice=${maxPrice}&dishName=${dishName}&page=${currentPage}&limit=${12}`)
                 .then(response => response.json())
                 .then(data => displayItems(data))
                 .catch(error => console.error("Error fetching items:", error));
@@ -225,13 +239,13 @@
 
                 var div = document.createElement('div')
                 div.className = "card col col-11 col-sm-6 col-md-4 col-lg-3 bg-light text-dark p-1"
-                div.style.width = "18 rem"
+                // div.style.width = "15rem"
                 var cardDiv = document.createElement("div")
                 cardDiv.className = "cardimage"
 
                 var cardImage = document.createElement("img")
                 cardImage.src = item.pic
-                cardImage.style.height = "170px"
+                cardImage.style.height = "16rem"
                 cardImage.style.borderRadius = "20px"
                 cardImage.className = "card-img-top"
                 cardDiv.append(cardImage)
@@ -274,6 +288,8 @@
                 div.append(cardDiv)
                 document.getElementById("searchResult").append(div)
             })
+            document.getElementById('pageNationDiv').style.visibility = "visible"
+
         }
 
         function addtoCart(element) {
@@ -361,6 +377,23 @@
 
         function updateToastText(newText) {
             document.getElementById("toast-text").innerText = newText
+        }
+
+        function next() {
+            let page = parseInt(document.getElementById('currentPage').innerText);
+            document.getElementById('currentPage').innerText = page + 1
+
+            getFilterItems()
+        }
+
+        function prev() {
+            let page = parseInt(document.getElementById('currentPage').innerText);
+
+            if (page > 1) {
+                document.getElementById('currentPage').innerText = page - 1
+                getFilterItems()
+            }
+
         }
 
     </script>
