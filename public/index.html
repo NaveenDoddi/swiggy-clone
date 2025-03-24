@@ -43,12 +43,12 @@
 
                                     <table class="table table-borderless nav-link" id="signInOption">
                                         <tr>
-                                            <td class="w-50"><a href="customerLogin.html"><button
+                                            <td class="w-50"><a href="./customer/customerLogin.html"><button
                                                         class="w-100 btn btn-light">SIGN IN</button></a></td>
-                                            <td class="w-50"><a href="customerRestration.html"><button
+                                            <td class="w-50"><a href="./customer/customerRestration.html"><button
                                                         class="w-100 btn btn-light">SIGN UP</button></a></td>
                                             <td>
-                                                <a href="RestaurantDashboard.html">
+                                                <a href="./restaurant/RestaurantDashboard.html">
                                                     <button type="button" class="btn btn-light position-relative">
                                                         Restaurant
                                                         <span
@@ -117,13 +117,13 @@
                             </div>
                             <div class="offcanvas-body">
                                 <div class="">
-                                    <a href="search.html"><button class="btn"><i class="fa-solid fa-search"></i>
+                                    <a href="./customer/search.html"><button class="btn"><i class="fa-solid fa-search"></i>
                                             Search</button></a>
                                     <a href="#offers"><button class="btn"><i class="fa-solid fa-percent"></i>
                                             Offers</button></a>
-                                    <a href="support.html"><button class="btn"><i class="fa-solid fa-life-ring"></i>
+                                    <a href="./customer/support.html"><button class="btn"><i class="fa-solid fa-life-ring"></i>
                                             Help</button></a>
-                                    <a href="cart.html">
+                                    <a href="./customer/cart.html">
                                         <button type="button" class="btn position-relative">
                                             <i class="fa-solid fa-cart-shopping"></i> Cart
                                             <span
@@ -694,7 +694,7 @@
         <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
             <div class="toast-body bg-success d-flex justify-content-between p-1" id="toast-body">
                 <span class="fw-bold pt-1" id="toast-text">1 Item added to Cart &#129321;</span>
-                <a href="cart.html"><button class="btn btn-sm text-light">View <i
+                <a href="./customer/cart.html"><button class="btn btn-sm text-light">View <i
                             class="fa-solid fa-cart-shopping"></i></button></a>
             </div>
 
@@ -1065,7 +1065,7 @@
 
         function logOut() {
             localStorage.removeItem("customerMobile")
-            window.location.href = "customerLogin.html"
+            window.location.href = "./customer/customerLogin.html"
         }
 
         const contents = document.getElementsByClassName('content');
