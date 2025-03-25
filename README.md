@@ -11,27 +11,26 @@ Order Food Online from India's Best Food Delivery Service | Swiggy
     ![alt text](screenshots/signup.png)
 
 * Customer page    
-    * home -> displays food items uploaded by the restraurants, you can also add items to your cart. 
+    * Home - The home page showcases food items uploaded by restaurants and customer details, along with static images and informational content to enhance the dashboard experience. It features live geolocation tracking to detect the user's location and suggest nearby restaurants accordingly. Users can browse through various food options, view restaurant details, and add items to their cart. However, a customer account is required to proceed with orders. 
 
         ![alt text](screenshots/home.png)
         ![alt text](screenshots/home2.png)
 
-    * search -> get the food items based on the customer input.    
+    * Search - Allows users to search for food items based on their input and filter items by price and category.    
 
         ![alt text](screenshots/search.png)
 
-    * support -> consists all basic questions.
+    * Support - Provides answers to frequently asked questions.
 
         ![alt text](screenshots/help.png)
     
-    * cart -> displays food items from the cart, apply coupons and complete the order.  
+    * Cart -> Displays food items added to the cart, allows users to apply coupons, and complete their orders and maintained every orders histroy for the user.
 
         ![alt text](screenshots/cart.png)
         ![alt text](screenshots/cart2.png)
 
-
 * Restraurant page  
-    * home => new food items can be add, and edit and remove items   
+    * home - new food items can be add, and edit and remove items   
         * add  
         * edit  
         * remove  
@@ -42,35 +41,16 @@ Order Food Online from India's Best Food Delivery Service | Swiggy
 
 ## Getting Started
 
-
-### Dependencies
-
-* cors: ^2.8.5,
-* json-server: ^1.0.0-alpha.23
-* nodemon: ^3.1.0
-
 ### Installing
 
-* You need to install json-server using command -> ``` npm i json-server ```
-
-* if any problem in installation
-    * [installation json-server](https://chrisdevcode.hashnode.dev/how-to-create-and-deploy-a-json-server)
-
-### Executing program
-
-* Run db.json file using the following commands
-```
-json-server --watch db.json 
-         or 
-json-server --watch db.json --port 3000
-
-```
+* The project uses an externally deployed JSON server. No need to install or run ``` json-server``` locally. Simply use the provided API endpoint in your application.
 
 ## Help
 
 Any advise for common problems or issues.
 ```
 command to run if program contains helper info
+
 ```
 
 ## Authors
@@ -90,3 +70,4 @@ Naveen Doddi
 This project is licensed under the [ swiggy_clone] License - see the LICENSE.md file for details
 
 ## Acknowledgments
+Special thanks to contributors and open-source projects that helped make this project possible. If you have any suggestions for improving this README file, feel free to contribute!
