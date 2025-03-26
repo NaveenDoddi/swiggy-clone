@@ -38,7 +38,6 @@ Order Food Online from India's Best Food Delivery Service | Swiggy
     ![alt text](screenshots/restarent.png)
     ![alt text](screenshots/addnewItem.png)
 
-
 ## Getting Started
 
 ### Installing
