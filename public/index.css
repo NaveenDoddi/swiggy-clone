@@ -162,6 +162,11 @@
 .carousel-item img{
     height: 200px;
 }
+
+.addBtn :hover{
+    transform: scale(1.2);
+    transition: transform 0.2s ease-in-out;
+}
 .footer1Items{
     padding: 5px;
     border: 1px solid lightgray;
