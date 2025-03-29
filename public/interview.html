@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Document</title>
+</head>
+<style>
+      .parent{
+            height: 200px;
+            width: 200px;
+            border: 2px solid black;
+            background-color: pink;
+            /* display: flex; */
+
+
+      }
+      .child{
+            height: 100px;
+            width: 100px;
+            border: 2px solid black;
+            background-color: white;
+            top: 0;
+            left: 0;
+            position: absolute;
+            z-index: -1;
+      }
+      ul li:nth-child(-n+2){
+            background-color: red;
+      }
+      
+</style>
+<script>
+      // const reverseStr = (str)=> {str.split('').reverse().join('')}
+      // setInterval(() => {
+      //       console.log(Math.ceil(Math.random()*10)+1)
+      // }, 3000);
+      var str = '<div>this is my string</div>';
+      const strfunction = (str) => {
+            var div = document.createElement("div")
+            div.innerText = str
+            console.log(div.innerText)
+            
+            // console.log()
+            // var str1 = str.split('').indexOf('>')+1
+            // var str2 = str.split('').indexOf('<',1)-str1
+            // var str1 = str.split(">")[1].split('<')[0]
+
+            // console.log(str.split('').splice(str1, str2).join(''))
+      }
+      strfunction(str)
+</script>
+<body>
+      <!-- <div class="parent">
+            naveen
+            <div class="child">
+                  doddi
+            </div>
+      </div> -->
+      <ul>
+            <li>home</li>
+            <li>about</li>
+            <li>carrier</li>
+      </ul>
+</body>
+</html>
